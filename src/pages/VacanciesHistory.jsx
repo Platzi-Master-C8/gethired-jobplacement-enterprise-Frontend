@@ -1,14 +1,21 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 
 import { ListOfVacancies } from '../components/ListOfVacancies';
 import { Filters } from '../components/Filters';
 
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
 const VacanciesHistory = () => {
     return (
-        <Fragment>
+        <Container>
             <Filters />
             <ListOfVacancies />
-        </Fragment>
+        </Container>
     );
 };
 
