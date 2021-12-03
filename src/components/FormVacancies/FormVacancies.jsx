@@ -9,7 +9,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Paper from '@mui/material/Paper';
 import Select from '@mui/material/Select';
-import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -35,10 +34,10 @@ const VacanciesForm = () => {
             <Box component="form" onSubmit={handleSubmit(onSubmit)}>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                        <FormInputText name="portfolio" label="Portfolio" control={control} />
+                        <FormInputText name="portfolio" label="Portfolio" control={control} required />
                     </Grid>
                     <Grid item xs={12}>
-                        <TextField required id="company" name="company" label="Company" variant="filled" fullWidth />
+                        <FormInputText name="company" label="Company" control={control} required />
                     </Grid>
                     <Grid item xs={12}>
                         <FormControl variant="filled" fullWidth required>
@@ -59,59 +58,27 @@ const VacanciesForm = () => {
                         </FormControl>
                     </Grid>
                     <Grid item xs={12}>
-                        <TextField
-                            required
-                            id="job-location"
-                            name="job-location"
-                            label="Job location"
-                            variant="filled"
-                            fullWidth
-                        />
+                        <FormInputText name="job-location" label="Job location" control={control} required />
                     </Grid>
                     <Grid item xs={12}>
-                        <TextField
-                            required
-                            id="description"
-                            name="description"
-                            label="Description"
-                            variant="filled"
-                            fullWidth
-                            multiline
-                            rows={4}
-                        />
+                        <FormInputText name="description" label="Description" control={control} required />
                     </Grid>
                     <Grid item xs={12}>
-                        <TextField required id="salary" name="salary" label="Salary" variant="filled" fullWidth />
+                        <FormInputText name="salary" label="Salary" control={control} required />
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <TextField
-                            required
-                            id="hours-peer-week"
-                            name="hours-peer-week"
-                            label="Hours peer week"
-                            variant="filled"
-                            fullWidth
-                        />
+                        <FormInputText name="hours-per-week" label="Hours per week" control={control} required />
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <TextField
-                            required
-                            id="minumum-exprience"
-                            name="minumum-exprience"
+                        <FormInputText
+                            name="minimum-experience"
                             label="Minimum experience"
-                            variant="filled"
-                            fullWidth
+                            control={control}
+                            required
                         />
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <TextField
-                            required
-                            id="star-date"
-                            name="star-date"
-                            label="Start date"
-                            variant="filled"
-                            fullWidth
-                        />
+                        <FormInputText name="start-date" label="Start date" control={control} required />
                     </Grid>
 
                     <Grid item xs={12}>
