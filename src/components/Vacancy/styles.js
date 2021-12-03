@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Vacancy = styled.section`
     width: 100%;
-    max-width: 1048px;
     padding: 10px;
     border-radius: 18px;
     margin: 0 auto 15px;
@@ -43,6 +42,10 @@ export const Tag = styled.div`
     justify-content: center;
     border-radius: 30px;
     border: 1px solid black;
+`;
+
+export const Body = styled.p`
+    margin: 10px 0;
 `;
 
 export const Footer = styled.div`

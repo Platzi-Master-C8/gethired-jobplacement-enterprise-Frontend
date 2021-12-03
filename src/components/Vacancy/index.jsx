@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
-import { Vacancy as Container, Header, Div, DivRight, Tag, Salary, TagContainer, Title, Footer } from './styles';
+import { Vacancy as Container, Header, Div, DivRight, Tag, Salary, TagContainer, Title, Body, Footer } from './styles';
 
 export const Vacancy = ({ title, salary, modality, applies, seen, description }) => {
     return (
@@ -25,17 +25,15 @@ export const Vacancy = ({ title, salary, modality, applies, seen, description })
                     <Tag>{modality}</Tag>
                 </DivRight>
             </Header>
-            <div>
-                <p>
-                    {description} lorem Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
-                    texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde. Lorem Ipsum es
-                    simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto
-                    de relleno estándar de las industrias desde. Lorem Ipsum es simplemente el texto de relleno de las
-                    imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias
-                    desde.Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
-                    Ipsum ha sido el texto de relleno estándar de las industrias desde
-                </p>
-            </div>
+            <Body>
+                {description} lorem Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
+                Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde. Lorem Ipsum es simplemente el
+                texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar
+                de las industrias desde. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
+                texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde.Lorem Ipsum es
+                simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de
+                relleno estándar de las industrias desde
+            </Body>
             <Footer>
                 <FormControl
                     sx={{

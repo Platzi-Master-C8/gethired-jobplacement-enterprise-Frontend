@@ -1,12 +1,18 @@
-import React, { Fragment } from 'react';
-import { Vacancy } from '../Vacancy';
+import React from 'react';
+import Button from '@mui/material/Button';
 
-import { Title } from './styles';
+import { Vacancy } from '../Vacancy';
+import { Container, Title, Header } from './styles';
 
 export const ListOfVacancies = () => {
     return (
-        <Fragment>
-            <Title>History</Title>
+        <Container>
+            <Header>
+                <Title>History</Title>
+                <Button type="button" variant="contained">
+                    Create new vacancy
+                </Button>
+            </Header>
             <Vacancy
                 title="Job title"
                 date={new Date()}
@@ -34,6 +40,6 @@ export const ListOfVacancies = () => {
                 seen={300}
                 description="Lorem ipsum"
             />
-        </Fragment>
+        </Container>
     );
 };

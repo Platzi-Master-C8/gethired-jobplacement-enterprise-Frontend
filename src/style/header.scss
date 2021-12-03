@@ -3,15 +3,14 @@
     margin: 0;
 }
 
-.vacancies {
-    text-align: center;
-}
-
 .header-menu {
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 1rem 0;
     border-bottom: 2px #555bff solid;
+    width: 100%;
+    margin: 0 auto 25px;
+    text-align: center;
 }
 
 .header-menu .logo-gethired {
