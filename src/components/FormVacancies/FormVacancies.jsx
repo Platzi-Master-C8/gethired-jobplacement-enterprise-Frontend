@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+
+import FormInputText from 'Components/FormVacancies/FormInputText';
 
 import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
@@ -12,10 +15,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 const VacanciesForm = () => {
+    const { handleSubmit, control } = useForm();
     const [typeWork, setTypeWork] = useState('');
 
     const handleChange = (event) => {
         setTypeWork(event.target.value);
+    };
+
+    const onSubmit = (data) => {
+        console.log(data);
     };
 
     return (
@@ -24,17 +32,10 @@ const VacanciesForm = () => {
                 New vacancy
             </Typography>
 
-            <Box component="form">
+            <Box component="form" onSubmit={handleSubmit(onSubmit)}>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                        <TextField
-                            required
-                            id="portfolio"
-                            name="portfolio"
-                            label="Portfolio"
-                            variant="filled"
-                            fullWidth
-                        />
+                        <FormInputText name="portfolio" label="Portfolio" control={control} />
                     </Grid>
                     <Grid item xs={12}>
                         <TextField required id="company" name="company" label="Company" variant="filled" fullWidth />
@@ -115,7 +116,7 @@ const VacanciesForm = () => {
 
                     <Grid item xs={12}>
                         <Box sx={{ display: 'flex', justifyContent: 'end' }}>
-                            <Button variant="contained" color="primary">
+                            <Button variant="contained" color="primary" type="submit">
                                 Save
                             </Button>
                         </Box>
