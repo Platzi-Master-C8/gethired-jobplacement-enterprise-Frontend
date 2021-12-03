@@ -8,7 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
-const CreateVacancies = () => {
+export const CreateVacancies = () => {
     return (
         <React.Fragment>
             <CssBaseline />
@@ -25,5 +25,3 @@ const CreateVacancies = () => {
         </React.Fragment>
     );
 };
-
-export default CreateVacancies;
