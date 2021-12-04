@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.header-menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 2px #555bff solid;
+    width: 100%;
+    margin: 0 auto 25px;
+    text-align: center;
+}
+
+.header-menu .logo-gethired {
+    margin: 0;
+    width: 10%;
+}
+
+.header-menu ul {
+    display: flex;
+}
+
+.header-menu ul li {
+    padding: 0 1rem;
+    list-style: none;
+}
+
+.header-menu ul li a {
+    text-decoration: none;
+    color: #373f41;
+}
