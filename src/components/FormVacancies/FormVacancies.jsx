@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 
 import FormInputText from 'Components/FormVacancies/FormInputText';
@@ -13,7 +14,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const VacanciesForm = () => {
+const VacanciesForm = ({ title, buttonText }) => {
     const { handleSubmit, control } = useForm();
     const [typeWork, setTypeWork] = useState('');
 
@@ -28,7 +29,7 @@ const VacanciesForm = () => {
     return (
         <Paper sx={{ p: 3 }}>
             <Typography variant="h1" align="center" sx={{ mb: 2 }}>
-                New vacancy
+                {title}
             </Typography>
 
             <Box component="form" onSubmit={handleSubmit(onSubmit)}>
@@ -84,7 +85,7 @@ const VacanciesForm = () => {
                     <Grid item xs={12}>
                         <Box sx={{ display: 'flex', justifyContent: 'end' }}>
                             <Button variant="contained" color="primary" type="submit">
-                                Save
+                                {buttonText}
                             </Button>
                         </Box>
                     </Grid>
@@ -93,5 +94,10 @@ const VacanciesForm = () => {
         </Paper>
     );
 };
+
+VacanciesForm.propTypes = {
+    title: PropTypes.string.isRequired,
+    buttonText: PropTypes.string.isRequired
+}
 
 export default VacanciesForm;

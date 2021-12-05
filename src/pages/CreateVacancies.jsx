@@ -20,7 +20,7 @@ export const CreateVacancies = () => {
                 </Toolbar>
             </AppBar>
             <Container maxWidth="sm" sx={{ mt: 4, mb: 4 }}>
-                <FormVacancies />
+                <FormVacancies title="Create Vacancy" buttonText="Save"/>
             </Container>
         </React.Fragment>
     );
