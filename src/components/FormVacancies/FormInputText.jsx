@@ -26,7 +26,6 @@ const FormInputText = ({ name, control, label, defaultValue, required, rows, mul
                     multiline={multiline}
                 />
             )}
-            rules={{ required: true }}
         />
     );
 };
