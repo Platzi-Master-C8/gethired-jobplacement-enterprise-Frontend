@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import FormInputText from 'Components/FormVacancies/FormInputText';
 import { FormSelect } from 'Components/FormVacancies/FormSelect';
+import { FormInputDate } from 'Components/FormVacancies/FormInputDate';
 
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -84,7 +85,12 @@ const VacanciesForm = ({ title, buttonText }) => {
                         />
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <FormInputText name="start-date" label="Start date" control={control} required />
+                        <FormInputDate
+                            name="date-of-publication"
+                            label="Date of publication"
+                            control={control}
+                            required
+                        />
                     </Grid>
 
                     <Grid item xs={12}>
