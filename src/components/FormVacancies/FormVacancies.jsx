@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 
+import { makeStyles } from '@mui/styles';
+
 import FormInputText from 'Components/FormVacancies/FormInputText';
 import { FormSelect } from 'Components/FormVacancies/FormSelect';
 import { FormInputDate } from 'Components/FormVacancies/FormInputDate';
@@ -24,12 +26,14 @@ const dataCompany = [
     { value: '3', label: 'Company 3' },
 ];
 
-const VacanciesForm = ({ title, buttonText }) => {
+
+const VacanciesForm = ({ title, editButtonText, mainButtonText }) => {
     const { handleSubmit, control } = useForm();
 
     const onSubmit = (data) => {
         console.log(data);
     };
+
 
     return (
         <Paper sx={{ p: 3 }}>
@@ -94,9 +98,12 @@ const VacanciesForm = ({ title, buttonText }) => {
                     </Grid>
 
                     <Grid item xs={12}>
-                        <Box sx={{ display: 'flex', justifyContent: 'end' }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'end', gap:'20px' }}>
+                            <Button variant="contained" color="error">
+                                {editButtonText}
+                            </Button>   
                             <Button variant="contained" color="primary" type="submit">
-                                {buttonText}
+                                {mainButtonText}
                             </Button>
                         </Box>
                     </Grid>
@@ -108,7 +115,8 @@ const VacanciesForm = ({ title, buttonText }) => {
 
 VacanciesForm.propTypes = {
     title: PropTypes.string.isRequired,
-    buttonText: PropTypes.string.isRequired,
+    editButtonText: PropTypes.string.isRequired,
+    mainButtonText: PropTypes.string.isRequired,
 };
 
 export default VacanciesForm;
