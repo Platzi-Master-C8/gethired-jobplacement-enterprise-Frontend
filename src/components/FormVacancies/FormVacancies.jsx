@@ -67,6 +67,9 @@ const VacanciesForm = ({ title, buttonText }) => {
                         />
                     </Grid>
                     <Grid item xs={12}>
+                        <FormInputText name="skills" label="Skills and abilities" control={control} required />
+                    </Grid>
+                    <Grid item xs={12}>
                         <FormInputText name="salary" label="Salary" control={control} required />
                     </Grid>
                     <Grid item xs={12} sm={4}>
