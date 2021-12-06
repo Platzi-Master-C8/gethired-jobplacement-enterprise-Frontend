@@ -11,10 +11,16 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const mockData = [
+const dataTypeWork = [
     { value: '1', label: 'Remote' },
     { value: '2', label: 'Full-time' },
     { value: '3', label: 'Part-time' },
+];
+
+const dataCompany = [
+    { value: '1', label: 'Company 1' },
+    { value: '2', label: 'Company 2' },
+    { value: '3', label: 'Company 3' },
 ];
 
 const VacanciesForm = ({ title, buttonText }) => {
@@ -36,14 +42,14 @@ const VacanciesForm = ({ title, buttonText }) => {
                         <FormInputText name="name" label="Vacancy name" control={control} required />
                     </Grid>
                     <Grid item xs={12}>
-                        <FormInputText name="company" label="Company" control={control} required />
+                        <FormSelect name="company" label="Company" control={control} options={dataCompany} required />
                     </Grid>
                     <Grid item xs={12}>
                         <FormSelect
                             name="typeWork"
                             label="Type of work"
                             control={control}
-                            options={mockData}
+                            options={dataTypeWork}
                             required
                         />
                     </Grid>
