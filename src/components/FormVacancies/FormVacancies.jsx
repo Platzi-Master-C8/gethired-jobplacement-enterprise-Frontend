@@ -1,26 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 
 import FormInputText from 'Components/FormVacancies/FormInputText';
+import { FormSelect } from 'Components/FormVacancies/FormSelect';
 
-import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import Paper from '@mui/material/Paper';
-import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+const mockData = [
+    { value: '1', label: 'Remote' },
+    { value: '2', label: 'Full-time' },
+    { value: '3', label: 'Part-time' },
+];
+
 const VacanciesForm = ({ title, buttonText }) => {
     const { handleSubmit, control } = useForm();
-    const [typeWork, setTypeWork] = useState('');
-
-    const handleChange = (event) => {
-        setTypeWork(event.target.value);
-    };
 
     const onSubmit = (data) => {
         console.log(data);
@@ -35,28 +33,19 @@ const VacanciesForm = ({ title, buttonText }) => {
             <Box component="form" onSubmit={handleSubmit(onSubmit)}>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                        <FormInputText name="portfolio" label="Portfolio" control={control} required />
+                        <FormInputText name="name" label="Vacancy name" control={control} required />
                     </Grid>
                     <Grid item xs={12}>
                         <FormInputText name="company" label="Company" control={control} required />
                     </Grid>
                     <Grid item xs={12}>
-                        <FormControl variant="filled" fullWidth required>
-                            <InputLabel id="type-work">Type of work</InputLabel>
-                            <Select
-                                labelId="type-of-workplace"
-                                id="type-of-workplace"
-                                label="Type of workplace"
-                                variant="filled"
-                                value={typeWork}
-                                onChange={handleChange}
-                                fullWidth
-                            >
-                                <MenuItem value={10}>Ten</MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
-                            </Select>
-                        </FormControl>
+                        <FormSelect
+                            name="typeWork"
+                            label="Type of work"
+                            control={control}
+                            options={mockData}
+                            required
+                        />
                     </Grid>
                     <Grid item xs={12}>
                         <FormInputText name="job-location" label="Job location" control={control} required />
@@ -97,7 +86,7 @@ const VacanciesForm = ({ title, buttonText }) => {
 
 VacanciesForm.propTypes = {
     title: PropTypes.string.isRequired,
-    buttonText: PropTypes.string.isRequired
-}
+    buttonText: PropTypes.string.isRequired,
+};
 
 export default VacanciesForm;
