@@ -57,7 +57,14 @@ const VacanciesForm = ({ title, buttonText }) => {
                         <FormInputText name="job-location" label="Job location" control={control} required />
                     </Grid>
                     <Grid item xs={12}>
-                        <FormInputText name="description" label="Description" control={control} required />
+                        <FormInputText
+                            name="description"
+                            label="Description"
+                            control={control}
+                            rows={4}
+                            multiline
+                            required
+                        />
                     </Grid>
                     <Grid item xs={12}>
                         <FormInputText name="salary" label="Salary" control={control} required />
