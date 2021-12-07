@@ -1,45 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 
 import { Vacancy } from '../Vacancy';
-import { Container, Title, Header } from './styles';
+import { Container, Title, Header, LinkStyled } from './styles';
 
 export const ListOfVacancies = () => {
+    const [data, setData] = useState();
+
+    useEffect(() => {
+        fetch('https://61a82e0b387ab200171d3002.mockapi.io/api/v1/vacancies')
+            .then((vacancies) => vacancies.json())
+            .then((response) => setData(response));
+    }, []);
+
     return (
         <Container>
             <Header>
                 <Title>History</Title>
                 <Button type="button" variant="contained">
-                    Create new vacancy
+                    <LinkStyled color="#FFF" to="/vacancies">
+                        Create new vacancy
+                    </LinkStyled>
                 </Button>
             </Header>
-            <Vacancy
-                title="Job title"
-                date={new Date()}
-                salary={{ min: 500, max: 1000 }}
-                modality="remote"
-                applies={100}
-                seen={300}
-                description="Lorem ipsum"
-            />
-            <Vacancy
-                title="Job title"
-                date={new Date()}
-                salary={{ min: 500, max: 1000 }}
-                modality="remote"
-                applies={100}
-                seen={300}
-                description="Lorem ipsum"
-            />
-            <Vacancy
-                title="Job title"
-                date={new Date()}
-                salary={{ min: 500, max: 1000 }}
-                modality="remote"
-                applies={100}
-                seen={300}
-                description="Lorem ipsum"
-            />
+            {data ? (
+                data.map((vacancy) => (
+                    <Vacancy
+                        title={vacancy.title_of_vacancies}
+                        date={new Date()}
+                        salary={vacancy.salary}
+                        modality="Remote"
+                        applies={100}
+                        seen={300}
+                        description={vacancy.details}
+                    />
+                ))
+            ) : (
+                <p>Loading...</p>
+            )}
         </Container>
     );
 };
