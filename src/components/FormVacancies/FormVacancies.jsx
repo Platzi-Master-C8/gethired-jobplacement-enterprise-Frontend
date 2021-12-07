@@ -12,7 +12,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import { FormButton } from './styles';
+import { FormButton, FormEditSwitch } from './styles';
 
 const dataTypeWork = [
     { value: '1', label: 'Remote' },
@@ -27,7 +27,7 @@ const dataCompany = [
 ];
 
 
-const VacanciesForm = ({ title, editButtonDisplay, editButtonText, mainButtonText }) => {
+const VacanciesForm = ({ title, editDisplay, editButtonText, mainButtonText }) => {
     const { handleSubmit, control } = useForm();
 
     const onSubmit = (data) => {
@@ -95,10 +95,12 @@ const VacanciesForm = ({ title, editButtonDisplay, editButtonText, mainButtonTex
                             required
                         />
                     </Grid>
-
+                    <Grid item xs={12}>
+                        <FormEditSwitch label="Vacancy active" display="none"/>
+                    </Grid>
                     <Grid item xs={12}>
                         <Box sx={{ display: 'flex', justifyContent: 'end', gap:'20px' }}>
-                            <FormButton variant="contained" color="error" href="/" display={editButtonDisplay}>
+                            <FormButton variant="contained" color="error" href="/" display={editDisplay}>
                                 {editButtonText}
                             </FormButton>
                             <Button variant="contained" color="primary" type="submit">
@@ -114,7 +116,7 @@ const VacanciesForm = ({ title, editButtonDisplay, editButtonText, mainButtonTex
 
 VacanciesForm.propTypes = {
     title: PropTypes.string.isRequired,
-    editButtonDisplay: PropTypes.string.isRequired,
+    editDisplay: PropTypes.string.isRequired,
     editButtonText: PropTypes.string.isRequired,
     mainButtonText: PropTypes.string.isRequired,
 };
