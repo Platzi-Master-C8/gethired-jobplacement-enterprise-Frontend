@@ -6,7 +6,19 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
-import { Vacancy as Container, Header, Div, DivRight, Tag, Salary, TagContainer, Title, Body, Footer } from './styles';
+import {
+    Vacancy as Container,
+    Header,
+    Div,
+    DivRight,
+    Tag,
+    Salary,
+    TagContainer,
+    Title,
+    Body,
+    Footer,
+    LinkStyled,
+} from './styles';
 
 export const Vacancy = ({ title, salary, modality, applies, seen, description }) => {
     return (
@@ -19,9 +31,7 @@ export const Vacancy = ({ title, salary, modality, applies, seen, description })
                     </TagContainer>
                 </Div>
                 <DivRight>
-                    <Salary>
-                        ${salary.min} - ${salary.max}
-                    </Salary>
+                    <Salary>${salary}</Salary>
                     <Tag>{modality}</Tag>
                 </DivRight>
             </Header>
@@ -42,7 +52,11 @@ export const Vacancy = ({ title, salary, modality, applies, seen, description })
                 >
                     <InputLabel>Options</InputLabel>
                     <Select label="Options">
-                        <MenuItem value="edit">Edit</MenuItem>
+                        <MenuItem value="edit">
+                            <LinkStyled color="#000" to="/edit-vacancies">
+                                Edit
+                            </LinkStyled>
+                        </MenuItem>
                         <MenuItem value="delete">Delete</MenuItem>
                     </Select>
                 </FormControl>
@@ -56,10 +70,7 @@ export const Vacancy = ({ title, salary, modality, applies, seen, description })
 
 Vacancy.propTypes = {
     title: PropTypes.string.isRequired,
-    salary: PropTypes.shape({
-        min: PropTypes.number.isRequired,
-        max: PropTypes.number.isRequired,
-    }).isRequired,
+    salary: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     modality: PropTypes.oneOf(['remote', 'face-to-face']).isRequired,
     applies: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     seen: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
