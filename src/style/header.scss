@@ -14,7 +14,7 @@
 }
 
 .header-menu .logo-gethired {
-    margin: 0;
+    margin: 0 2rem;
     width: 10%;
 }
 
@@ -29,5 +29,20 @@
 
 .header-menu ul li a {
     text-decoration: none;
-    color: #373f41;
+}
+
+.icon-profile {
+    margin: 0 1rem;
+    width: 0.8rem;
+    border-radius: 50%;
+    background-color: #7d81f6;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-profile__user {
+    color: #fff;
+    font-weight: bold;
 }

@@ -3,11 +3,10 @@ import React from 'react';
 import logo from '../../img/gethired_logo.svg';
 import iconMessage from '../../img/icon_message.svg';
 import iconNotifications from '../../img/icon-notifications.svg';
-import iconForum from '../../img/icon-forum.svg';
-import iconAnci from '../../img/icon-briefcase.svg';
-import iconBlogpost from '../../img/icon-paper.svg';
-import iconMyWebSite from '../../img/icon-mywebsite.svg';
-import iconProfile from '../../img/icon-profile.svg';
+import iconVacancies from '../../img/icon-briefcase.png';
+import iconInterviews from '../../img/icon-interviews.png';
+import iconPostulations from '../../img/icon-postulations.png';
+import iconContacts from '../../img/icon-contacts.png';
 import 'Styles/header.scss';
 
 const Header = () => {
@@ -31,32 +30,31 @@ const Header = () => {
                 </li>
                 <li>
                     <a href="./">
-                        <img src={iconForum} alt="Icon Forum" />
-                        <p>Forum</p>
+                        <img src={iconVacancies} alt="Icon Forum" />
+                        <p>Vacancies</p>
                     </a>
                 </li>
                 <li>
                     <a href="./">
-                        <img src={iconAnci} alt="Icon Anci" />
-                        <p>Anci</p>
+                        <img src={iconInterviews} alt="Icon Interviews" />
+                        <p>Interviews</p>
                     </a>
                 </li>
                 <li>
                     <a href="./">
-                        <img src={iconBlogpost} alt="Icon Blogpost" />
-                        <p>Blogpost</p>
+                        <img src={iconPostulations} alt="Icon Postulations" />
+                        <p>Postulations</p>
                     </a>
                 </li>
                 <li>
                     <a href="./">
-                        <img src={iconMyWebSite} alt="Icon My WebSite" />
-                        <p>My WebSite</p>
+                        <img src={iconContacts} alt="Icon Contacts" />
+                        <p>Contacts</p>
                     </a>
                 </li>
-                <li>
-                    <a href="./">
-                        {/* this will change later */}
-                        <img src={iconProfile} alt="Icon Profile" />
+                <li className="icon-profile">
+                    <a className="icon-profile__user" href="./">
+                        {/* this will change later */}U
                     </a>
                 </li>
             </ul>
