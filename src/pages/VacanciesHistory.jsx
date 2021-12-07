@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { ListOfVacancies } from '../components/ListOfVacancies';
 import { Filters } from '../components/Filters';
 
-import Header from '../components/Header/header';
-
 const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -15,7 +13,6 @@ const Container = styled.div`
 const VacanciesHistory = () => {
     return (
         <Container>
-            <Header />
             <Filters />
             <ListOfVacancies />
         </Container>
