@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Vacancy = styled.section`
     width: 100%;
@@ -57,4 +58,12 @@ export const Footer = styled.div`
 export const Title = styled.h3`
     font-size: 24px;
     margin: 0;
+`;
+
+export const LinkStyled = styled(Link)`
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: ${(props) => props.color};
 `;
