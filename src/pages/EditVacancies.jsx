@@ -21,7 +21,7 @@ export const EditVacancies = () => {
                 </Toolbar>
             </AppBar>
             <Container maxWidth="sm" sx={{ mt: 4, mb: 4 }}>
-                <FormVacancies />
+                <FormVacancies title="Edit Vacancy" editButtonText="Cancel" mainButtonText="Update"/>
             </Container>
         </React.Fragment>
     );
