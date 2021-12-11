@@ -6,16 +6,18 @@ import { CreateVacancies } from 'Pages/CreateVacancies';
 import { EditVacancies } from 'Pages/EditVacancies';
 import VacanciesHistory from '../pages/VacanciesHistory';
 import Layout from '../components/Layout';
+import { ListCandidatesVacancies } from '../pages/ListCandidatesVacancies';
 
 const Routes = () => (
     <BrowserRouter>
         <Layout>
-          <Switch>
-              <Route path="/" element={<VacanciesHistory />} />
-              <Route path="/vacancies" element={<CreateVacancies />} />
-              <Route path="/edit-vacancies" element={<EditVacancies />} />
-              <Route path="*" element={<NotFound />} />
-          </Switch>
+            <Switch>
+                <Route path="/" element={<VacanciesHistory />} />
+                <Route path="/vacancies" element={<CreateVacancies />} />
+                <Route path="/edit-vacancies" element={<EditVacancies />} />
+                <Route path="/candidates" element={<ListCandidatesVacancies />} />
+                <Route path="*" element={<NotFound />} />
+            </Switch>
         </Layout>
     </BrowserRouter>
 );
