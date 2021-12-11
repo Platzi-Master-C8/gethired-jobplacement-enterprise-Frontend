@@ -1,0 +1,32 @@
+.container-card {
+    padding: 2rem 2rem;
+    border-radius: 5px;
+    background-color: #fafafa;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+}
+
+.profile .img-profile {
+    margin-right: 1rem;
+}
+
+.img-profile {
+    border: 1px black solid;
+    align-items: center;
+    padding: 1rem;
+    background-color: #fafafaed;
+    border-radius: 50%;
+}
+
+.content-profile p {
+    padding: 2px 0;
+}
+
+.container-status {
+    display: flex;
+    justify-content: space-between;
+}
