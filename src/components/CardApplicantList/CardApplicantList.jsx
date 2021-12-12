@@ -1,11 +1,11 @@
-import { Container } from '@mui/material';
 import React from 'react';
+import Button from '@mui/material/Button';
 import Contact from '../../img/icon-contacts.png';
 import '../../style/cardApplication.scss';
 
 export const CardApplicantList = () => {
     return (
-        <Container className="container-card" maxWidth="sm" sx={{ mt: 1, mb: 1 }}>
+        <div className="container-card">
             <div className="profile">
                 <figure className="img-profile">
                     <img src={Contact} alt="Profile" />
@@ -15,11 +15,14 @@ export const CardApplicantList = () => {
                     <p>Profile name</p>
                 </div>
             </div>
+            <div className="divider" />
             <div className="container-status">
                 <p>Status</p>
                 <p>date</p>
-                <input type="checkbox" />
+                <Button size="small" variant="contained">
+                    Make interview
+                </Button>
             </div>
-        </Container>
+        </div>
     );
 };
