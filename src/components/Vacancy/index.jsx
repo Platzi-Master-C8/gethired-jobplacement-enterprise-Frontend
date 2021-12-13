@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import {
     Vacancy as Container,
@@ -45,23 +41,15 @@ export const Vacancy = ({ title, salary, modality, applies, seen, description })
                 relleno estándar de las industrias desde
             </Body>
             <Footer>
-                <FormControl
-                    sx={{
-                        width: 100,
-                    }}
-                >
-                    <InputLabel>Options</InputLabel>
-                    <Select label="Options">
-                        <MenuItem value="edit">
-                            <LinkStyled color="#000" to="/edit-vacancies">
-                                Edit
-                            </LinkStyled>
-                        </MenuItem>
-                        <MenuItem value="delete">Delete</MenuItem>
-                    </Select>
-                </FormControl>
+                <Button type="button" variant="contained">
+                    <LinkStyled color="#FFF" to="/edit-vacancies">
+                        Edit
+                    </LinkStyled>
+                </Button>
                 <Button type="button" variant="outlined">
-                    See more
+                    <LinkStyled color="rgb(25, 118, 210)" to="/candidates-by-vacancy">
+                        See more
+                    </LinkStyled>
                 </Button>
             </Footer>
         </Container>
