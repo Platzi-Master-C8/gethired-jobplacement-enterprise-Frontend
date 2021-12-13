@@ -26,6 +26,8 @@ chrome-user-data
 dist
 .eslintcache
 .env
+package-lock.json
+yarn.lock
 
 packages/react-devtools-core/dist
 packages/react-devtools-extensions/chrome/build
