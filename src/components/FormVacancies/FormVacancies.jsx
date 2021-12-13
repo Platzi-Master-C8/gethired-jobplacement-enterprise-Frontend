@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 
 import FormInputText from 'Components/FormVacancies/FormInputText';
 import { FormSelect } from 'Components/FormVacancies/FormSelect';
-import { FormInputDate } from 'Components/FormVacancies/FormInputDate';
 
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -12,6 +11,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+import { postNewVacancy } from '../../api/Vacancies/postNewVacancy';
 import { FormButton, FormEditSwitch } from './styles';
 
 const dataTypeWork = [
@@ -26,12 +26,21 @@ const dataCompany = [
     { value: '3', label: 'Company 3' },
 ];
 
-
 const VacanciesForm = ({ title, editDisplay, editButtonText, mainButtonText }) => {
     const { handleSubmit, control } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
+        const formData = {
+            title_of_vacancie: data.name,
+            published_at: new Date(),
+            status: 'open',
+            salary: parseInt(data.salary, 10),
+            vacancie_details: data.description,
+            rol_id: 1,
+            postulation_deadline: new Date(),
+        };
+
+        postNewVacancy(formData).then((res) => console.log('Datos guardados', res));
     };
 
     return (
@@ -76,10 +85,10 @@ const VacanciesForm = ({ title, editDisplay, editButtonText, mainButtonText }) =
                     <Grid item xs={12}>
                         <FormInputText name="salary" label="Salary" control={control} required />
                     </Grid>
-                    <Grid item xs={12} sm={4}>
+                    <Grid item xs={12} sm={6}>
                         <FormInputText name="hours-per-week" label="Hours per week" control={control} required />
                     </Grid>
-                    <Grid item xs={12} sm={4}>
+                    <Grid item xs={12} sm={6}>
                         <FormInputText
                             name="minimum-experience"
                             label="Minimum experience"
@@ -87,19 +96,11 @@ const VacanciesForm = ({ title, editDisplay, editButtonText, mainButtonText }) =
                             required
                         />
                     </Grid>
-                    <Grid item xs={12} sm={4}>
-                        <FormInputDate
-                            name="date-of-publication"
-                            label="Date of publication"
-                            control={control}
-                            required
-                        />
+                    <Grid item xs={12}>
+                        <FormEditSwitch label="Vacancy active" display="none" />
                     </Grid>
                     <Grid item xs={12}>
-                        <FormEditSwitch label="Vacancy active" display="none"/>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Box sx={{ display: 'flex', justifyContent: 'end', gap:'20px' }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'end', gap: '20px' }}>
                             <FormButton variant="contained" color="error" href="/" display={editDisplay}>
                                 {editButtonText}
                             </FormButton>
