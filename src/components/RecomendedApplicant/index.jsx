@@ -1,13 +1,16 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import Typography from '@mui/material/Typography';
 
-import { Container, Title, Div, Details, Tag, MatchTag } from './styles';
+import { Container, Div, Details, Tag, MatchTag } from './styles';
 
 export const RecommendedApplicant = ({ name, description, percentage, matchType }) => {
     return (
         <Fragment>
-            <Title>Recommended</Title>
+            <Typography variant="h2" mb={2}>
+                Recommended
+            </Typography>
             <Container>
                 {/* <img src={img} alt={name} /> */}
                 <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5, fontSize: 60 }} />
