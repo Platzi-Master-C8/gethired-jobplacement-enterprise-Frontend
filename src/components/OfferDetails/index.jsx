@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -9,7 +8,7 @@ import Divider from '@mui/material/Divider';
 
 export const OfferDetails = ({ description, hoursWeek, budget, experience, startDate }) => {
     return (
-        <Container>
+        <Fragment>
             <Typography variant="h2" mb={2}>
                 Offer Details
             </Typography>
@@ -45,7 +44,7 @@ export const OfferDetails = ({ description, hoursWeek, budget, experience, start
                     Documents
                 </Typography>
             </Paper>
-        </Container>
+        </Fragment>
     );
 };
 

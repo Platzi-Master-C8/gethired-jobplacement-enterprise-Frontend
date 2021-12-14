@@ -1,6 +1,6 @@
 .container-card {
     margin-bottom: 2rem;
-    padding: 2rem 2rem;
+    padding: 1rem;
     border-radius: 5px;
     background-color: #fafafa;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -37,8 +37,11 @@
 
 .container-status {
     display: flex;
-    padding: 0 5%;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+.container-status p {
+    padding-right: 10px;
 }
 
 .container-candidates {

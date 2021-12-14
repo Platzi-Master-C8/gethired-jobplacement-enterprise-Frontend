@@ -20,7 +20,7 @@ export const CardApplicantList = () => {
                 <p>Status</p>
                 <p>date</p>
                 <Button size="small" variant="contained">
-                    Make interview
+                    Interview
                 </Button>
             </div>
         </div>

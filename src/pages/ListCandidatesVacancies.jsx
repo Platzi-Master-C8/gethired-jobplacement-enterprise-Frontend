@@ -1,36 +1,54 @@
 import React from 'react';
 
-import { Grid, Typography } from '@mui/material';
+import { Container, Typography, Box } from '@mui/material';
 
 import { ApplicantComparison } from '../components/ApplicantComparison';
 import { CardApplicantList } from '../components/CardApplicantList/CardApplicantList';
 import { OfferDetails } from '../components/OfferDetails/index';
 import { Filters } from '../components/Filters';
+import { RecommendedApplicant } from '../components/RecomendedApplicant';
+import { SuccessfulApplicant } from '../components/SuccessfulApplicant';
 
 import '../style/listCandidatesVacancies.scss';
 
 export const ListCandidatesVacancies = () => {
     return (
-        <div className="container-vacancies">
+        <Container className="container-vacancies">
             <div className="filter">
                 <Filters />
             </div>
-            <Grid container spacing={2} className="wrapper">
-                <Grid item xs={3}>
+            <Box
+                sx={{
+                    display: 'grid',
+                    gridAutoFlow: 'row',
+                    gridTemplateColumns: 'repeat(3, 1fr)',
+                    gridTemplateRows: 'repeat(2, 40%)',
+                    gap: 8,
+                }}
+                className="wrapper"
+            >
+                <div>
                     <OfferDetails />
-                </Grid>
-                <Grid item xs={6}>
+                </div>
+                <div>
                     <ApplicantComparison />
-                </Grid>
-                <Grid item xs={3}>
+                </div>
+                <div sx={{ gridRow: '1 / 2' }}>
                     <Typography variant="h2" mb={2}>
-                        Offer Details
+                        Applicant List
                     </Typography>
                     <CardApplicantList />
                     <CardApplicantList />
                     <CardApplicantList />
-                </Grid>
-            </Grid>
-        </div>
+                    <CardApplicantList />
+                </div>
+                <div>
+                    <SuccessfulApplicant />
+                </div>
+                <div>
+                    <RecommendedApplicant />
+                </div>
+            </Box>
+        </Container>
     );
 };
