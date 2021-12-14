@@ -31,15 +31,7 @@ export const Vacancy = ({ title, salary, modality, applies, seen, description })
                     <Tag>{modality}</Tag>
                 </DivRight>
             </Header>
-            <Body>
-                {description} lorem Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
-                Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde. Lorem Ipsum es simplemente el
-                texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar
-                de las industrias desde. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
-                texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde.Lorem Ipsum es
-                simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de
-                relleno estándar de las industrias desde
-            </Body>
+            <Body>{description}</Body>
             <Footer>
                 <Button type="button" variant="contained">
                     <LinkStyled color="#FFF" to="/edit-vacancies">
