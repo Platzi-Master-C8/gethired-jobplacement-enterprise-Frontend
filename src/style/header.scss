@@ -20,6 +20,7 @@
 
 .header-menu ul {
     display: flex;
+    align-items: flex-end;
 }
 
 .header-menu ul li {
@@ -33,7 +34,8 @@
 
 .icon-profile {
     margin: 0 1rem;
-    width: 0.8rem;
+    width: 25px;
+    height: 50px;
     border-radius: 50%;
     background-color: #7d81f6;
     text-align: center;
@@ -63,5 +65,5 @@
 }
 
 .button_login {
-    color: #AE4EFF;
+    color: #ae4eff;
 }
