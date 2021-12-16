@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom';
+import { HashRouter, Routes as Switch, Route } from 'react-router-dom';
 
 import NotFound from 'Pages/NotFound';
 import { CreateVacancies } from 'Pages/CreateVacancies';
@@ -9,7 +9,7 @@ import Layout from '../components/Layout';
 import { ListCandidatesVacancies } from '../pages/ListCandidatesVacancies';
 
 const Routes = () => (
-    <BrowserRouter>
+    <HashRouter>
         <Layout>
             <Switch>
                 <Route path="/" element={<VacanciesHistory />} />
@@ -19,7 +19,7 @@ const Routes = () => (
                 <Route path="*" element={<NotFound />} />
             </Switch>
         </Layout>
-    </BrowserRouter>
+    </HashRouter>
 );
 
 export default Routes;

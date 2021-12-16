@@ -16,7 +16,7 @@ import {
     LinkStyled,
 } from './styles';
 
-export const Vacancy = ({ title, salary, modality, applies, seen, description }) => {
+export const Vacancy = ({ title, salary, modality, applies, seen, description, id }) => {
     return (
         <Container>
             <Header>
@@ -31,18 +31,10 @@ export const Vacancy = ({ title, salary, modality, applies, seen, description })
                     <Tag>{modality}</Tag>
                 </DivRight>
             </Header>
-            <Body>
-                {description} lorem Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
-                Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde. Lorem Ipsum es simplemente el
-                texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar
-                de las industrias desde. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
-                texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde.Lorem Ipsum es
-                simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de
-                relleno estándar de las industrias desde
-            </Body>
+            <Body>{description}</Body>
             <Footer>
                 <Button type="button" variant="contained">
-                    <LinkStyled color="#FFF" to="/edit-vacancies">
+                    <LinkStyled color="#FFF" to={`/vacancies/${id}`}>
                         Edit
                     </LinkStyled>
                 </Button>
@@ -63,4 +55,5 @@ Vacancy.propTypes = {
     applies: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     seen: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     description: PropTypes.string.isRequired,
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };

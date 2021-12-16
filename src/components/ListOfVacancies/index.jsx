@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 
+import axios from 'axios';
+
 import { Vacancy } from '../Vacancy';
 import { Container, Title, Header, LinkStyled } from './styles';
 
@@ -8,9 +10,9 @@ export const ListOfVacancies = () => {
     const [data, setData] = useState();
 
     useEffect(() => {
-        fetch('https://61a82e0b387ab200171d3002.mockapi.io/api/v1/vacancies')
-            .then((vacancies) => vacancies.json())
-            .then((response) => setData(response));
+        axios.get('https://gethired-enterprise.herokuapp.com/vacancies/').then((response) => {
+            setData(response.data);
+        });
     }, []);
 
     return (
@@ -26,13 +28,15 @@ export const ListOfVacancies = () => {
             {data ? (
                 data.map((vacancy) => (
                     <Vacancy
-                        title={vacancy.title_of_vacancies}
+                        title={vacancy.title_of_vacancie}
                         date={new Date()}
                         salary={vacancy.salary}
-                        modality="Remote"
+                        modality="remote"
                         applies={100}
                         seen={300}
-                        description={vacancy.details}
+                        description={vacancy.vacancie_details}
+                        key={vacancy.id}
+                        id={vacancy.id}
                     />
                 ))
             ) : (
