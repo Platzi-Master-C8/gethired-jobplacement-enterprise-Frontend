@@ -36,6 +36,7 @@ export const ListOfVacancies = () => {
                         seen={300}
                         description={vacancy.vacancie_details}
                         key={vacancy.id}
+                        id={vacancy.id}
                     />
                 ))
             ) : (

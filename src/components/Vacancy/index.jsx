@@ -16,7 +16,7 @@ import {
     LinkStyled,
 } from './styles';
 
-export const Vacancy = ({ title, salary, modality, applies, seen, description }) => {
+export const Vacancy = ({ title, salary, modality, applies, seen, description, id }) => {
     return (
         <Container>
             <Header>
@@ -34,7 +34,7 @@ export const Vacancy = ({ title, salary, modality, applies, seen, description })
             <Body>{description}</Body>
             <Footer>
                 <Button type="button" variant="contained">
-                    <LinkStyled color="#FFF" to="/edit-vacancies">
+                    <LinkStyled color="#FFF" to={`/vacancies/${id}`}>
                         Edit
                     </LinkStyled>
                 </Button>
@@ -55,4 +55,5 @@ Vacancy.propTypes = {
     applies: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     seen: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     description: PropTypes.string.isRequired,
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };
