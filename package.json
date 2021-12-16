@@ -1,9 +1,12 @@
 {
+    "homepage": "https://platzi-master-c8.github.io/gethired-jobplacement-enterprise-Frontend/",
     "name": "gethired-base",
     "version": "1.0.3",
     "main": "index.js",
     "license": "MIT",
     "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist",
         "start": "webpack server --mode development",
         "build": "webpack --mode production",
         "analize": "webpack-bundle-analyzer dist/stats.json",
@@ -20,6 +23,7 @@
         "@date-io/date-fns": "^2.11.0",
         "@emotion/react": "11.6.0",
         "@emotion/styled": "11.6.0",
+        "@master-c8/commons": "^0.1.0",
         "@mui/icons-material": "5.1.1",
         "@mui/lab": "5.0.0-alpha.58",
         "@mui/material": "5.1.1",
@@ -31,6 +35,7 @@
         "@mui/utils": "5.1.1",
         "axios": "0.24.0",
         "date-fns": "2.27.0",
+        "gh-pages": "^3.2.3",
         "prop-types": "15.7.2",
         "react": "17.0.2",
         "react-dom": "17.0.2",
