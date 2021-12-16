@@ -15,19 +15,19 @@ const Header = () => {
             <nav>
                 <ul>
                     <li>
-                        <a href="./">
+                        <a href="https://platzi-master-c8.github.io/gethired-jobplacement-salaries-frontend/">
                             <img className="icons-menu" src={iconSalaries} alt="Icon Interviews" />
                             <p>Salaries</p>
                         </a>
                     </li>
                     <li>
-                        <a href="./">
+                        <a href="https://platzi-master-c8.github.io/gethired-jobplacement-ratings/">
                             <img className="icons-menu" src={iconStar} alt="Icon Postulations" />
                             <p>Ratings</p>
                         </a>
                     </li>
                     <li>
-                        <a href="./">
+                        <a href="https://platzi-master-c8.github.io/gethired-jobplacement-enterprise-Frontend/">
                             <img className="icons-menu" src={iconCompany} alt="Icon Contacts" />
                             <p>Company</p>
                         </a>
