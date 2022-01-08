@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 
@@ -11,7 +11,6 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import { postNewVacancy } from '../../api/Vacancies/postNewVacancy';
 import { FormButton, FormEditSwitch } from './styles';
 
 const dataTypeWork = [
@@ -26,22 +25,25 @@ const dataCompany = [
     { value: '3', label: 'Company 3' },
 ];
 
-const VacanciesForm = ({ title, editDisplay, editButtonText, mainButtonText }) => {
-    const { handleSubmit, control } = useForm();
+const VacanciesForm = ({ title, editDisplay, editButtonText, mainButtonText, defaultValues, onSubmit }) => {
+    const { handleSubmit, control, reset } = useForm({
+        defaultValues: {
+            id: '',
+            name: '',
+            salary: '',
+            description: '',
+            company: '',
+            typeWork: '',
+            'job-location': '',
+            skills: '',
+            'hours-per-week': '',
+            'minimum-experience': '',
+        },
+    });
 
-    const onSubmit = (data) => {
-        const formData = {
-            title_of_vacancie: data.name,
-            published_at: new Date(),
-            status: 'open',
-            salary: parseInt(data.salary, 10),
-            vacancie_details: data.description,
-            rol_id: 1,
-            postulation_deadline: new Date(),
-        };
-
-        postNewVacancy(formData).then((res) => console.log('Datos guardados', res));
-    };
+    useEffect(() => {
+        reset(defaultValues);
+    }, [reset, defaultValues]);
 
     return (
         <Paper sx={{ p: 3 }}>
@@ -49,7 +51,7 @@ const VacanciesForm = ({ title, editDisplay, editButtonText, mainButtonText }) =
                 {title}
             </Typography>
 
-            <Box component="form" onSubmit={handleSubmit(onSubmit)}>
+            <Box component="form" onSubmit={handleSubmit((data) => onSubmit(data))}>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <FormInputText name="name" label="Vacancy name" control={control} required />
@@ -120,6 +122,34 @@ VacanciesForm.propTypes = {
     editDisplay: PropTypes.string.isRequired,
     editButtonText: PropTypes.string.isRequired,
     mainButtonText: PropTypes.string.isRequired,
+    defaultValues: PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        salary: PropTypes.string,
+        description: PropTypes.string,
+        company: PropTypes.string,
+        typeWork: PropTypes.string,
+        'job-location': PropTypes.string,
+        skills: PropTypes.string,
+        'hours-per-week': PropTypes.string,
+        'minimum-experience': PropTypes.string,
+    }),
+    onSubmit: PropTypes.func.isRequired,
+};
+
+VacanciesForm.defaultProps = {
+    defaultValues: {
+        id: null,
+        name: '',
+        salary: '',
+        description: '',
+        company: '',
+        typeWork: '',
+        'job-location': '',
+        skills: '',
+        'hours-per-week': '',
+        'minimum-experience': '',
+    },
 };
 
 export default VacanciesForm;
