@@ -6,6 +6,7 @@ import { CreateVacancies } from 'Pages/CreateVacancies';
 import { EditVacancies } from 'Pages/EditVacancies';
 import { VacanciesHistory } from 'Pages/VacanciesHistory';
 import { ListCandidatesVacancies } from 'Pages/ListCandidatesVacancies';
+import { Interviews } from 'Pages/Interviews';
 import Layout from 'Components/Layout';
 
 const Routes = () => (
@@ -16,6 +17,7 @@ const Routes = () => (
                 <Route path="/vacancies" element={<CreateVacancies />} />
                 <Route path="/vacancies/:id" element={<EditVacancies />} />
                 <Route path="/candidates" element={<ListCandidatesVacancies />} />
+                <Route path="/interviews" element={<Interviews />} />
                 <Route path="*" element={<NotFound />} />
             </Switch>
         </Layout>
