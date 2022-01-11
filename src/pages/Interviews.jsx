@@ -88,8 +88,8 @@ export const Interviews = () => (
             <Grid item xs={12} md={3}>
                 <TextField
                     fullWidth
-                    id="ubication"
-                    label="Ubication"
+                    id="location"
+                    label="Location"
                     variant="filled"
                     InputProps={{
                         startAdornment: (
