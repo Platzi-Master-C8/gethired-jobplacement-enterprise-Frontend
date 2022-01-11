@@ -4,8 +4,8 @@ import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
+
+import { InterviewCard } from 'Components/InterviewCard';
 
 import iconMessage from '../img/icon_message.svg';
 
@@ -62,13 +62,9 @@ export const Interviews = () => (
         </Grid>
 
         <Grid container spacing={3} sx={{ my: 2 }}>
-            {Array.from({ length: 10 }).map((_, index) => (
-                <Grid item xs={12} md={6} lg={4} xl={3}>
-                    <Paper sx={{ p: 3 }}>
-                        <Typography variant="h3" align="center" sx={{ mb: 2 }}>
-                            Interview {index + 1}
-                        </Typography>
-                    </Paper>
+            {Array.from({ length: 10 }).map(() => (
+                <Grid item xs={12} sm={6} lg={4} xl={3}>
+                    <InterviewCard />
                 </Grid>
             ))}
         </Grid>
