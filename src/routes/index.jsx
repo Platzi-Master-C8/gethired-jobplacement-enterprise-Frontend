@@ -7,6 +7,7 @@ import { EditVacancies } from 'Pages/EditVacancies';
 import VacanciesHistory from '../pages/VacanciesHistory';
 import Layout from '../components/Layout';
 import { ListCandidatesVacancies } from '../pages/ListCandidatesVacancies';
+import { InterviewPlanning } from '../pages/InterviewPlanning';
 
 const Routes = () => (
     <HashRouter>
@@ -16,6 +17,7 @@ const Routes = () => (
                 <Route path="/vacancies" element={<CreateVacancies />} />
                 <Route path="/vacancies/:id" element={<EditVacancies />} />
                 <Route path="/candidates" element={<ListCandidatesVacancies />} />
+                <Route path="/interview-planning" element={<InterviewPlanning />} />
                 <Route path="*" element={<NotFound />} />
             </Switch>
         </Layout>
