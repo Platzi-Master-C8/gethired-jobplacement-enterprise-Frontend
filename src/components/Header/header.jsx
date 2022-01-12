@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import logo from '../../img/gethired_logo.svg';
 import iconMessage from '../../img/icon_message.svg';
 import iconNotifications from '../../img/icon-notifications.svg';
@@ -35,10 +37,10 @@ const Header = () => {
                     </a>
                 </li>
                 <li>
-                    <a href="./">
+                    <Link to="/interviews">
                         <img src={iconInterviews} alt="Icon Interviews" />
                         <p>Interviews</p>
-                    </a>
+                    </Link>
                 </li>
                 <li>
                     <a href="./">

@@ -1,12 +1,13 @@
 import React from 'react';
 import { HashRouter, Routes as Switch, Route } from 'react-router-dom';
 
-import NotFound from 'Pages/NotFound';
+import { NotFound } from 'Pages/NotFound';
 import { CreateVacancies } from 'Pages/CreateVacancies';
 import { EditVacancies } from 'Pages/EditVacancies';
-import VacanciesHistory from '../pages/VacanciesHistory';
-import Layout from '../components/Layout';
-import { ListCandidatesVacancies } from '../pages/ListCandidatesVacancies';
+import { VacanciesHistory } from 'Pages/VacanciesHistory';
+import { ListCandidatesVacancies } from 'Pages/ListCandidatesVacancies';
+import { Interviews } from 'Pages/Interviews';
+import Layout from 'Components/Layout';
 
 const Routes = () => (
     <HashRouter>
@@ -16,6 +17,7 @@ const Routes = () => (
                 <Route path="/vacancies" element={<CreateVacancies />} />
                 <Route path="/vacancies/:id" element={<EditVacancies />} />
                 <Route path="/candidates" element={<ListCandidatesVacancies />} />
+                <Route path="/interviews" element={<Interviews />} />
                 <Route path="*" element={<NotFound />} />
             </Switch>
         </Layout>
