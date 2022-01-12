@@ -10,7 +10,7 @@ const Container = styled.div`
     align-items: center;
 `;
 
-const VacanciesHistory = () => {
+export const VacanciesHistory = () => {
     return (
         <Container>
             <Filters />
@@ -18,5 +18,3 @@ const VacanciesHistory = () => {
         </Container>
     );
 };
-
-export default VacanciesHistory;
