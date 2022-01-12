@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { InterviewCard } from 'Components/InterviewCard';
+import { InterviewInformation } from 'Components/InterviewInformation';
 import { FormPlanning } from 'Components/FormPlanning';
 
 import { Container, Typography, Grid } from '@mui/material';
@@ -35,7 +35,7 @@ export const InterviewPlanning = ({ user }) => {
                     <FormPlanning />
                 </Grid>
                 <Grid item>
-                    <InterviewCard {...InterviewCardData} />
+                    <InterviewInformation {...InterviewCardData} />
                 </Grid>
             </Grid>
         </Container>

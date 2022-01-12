@@ -5,7 +5,7 @@ import { Paper, Typography, Grid, Button } from '@mui/material';
 import { InterviewerCard } from 'Components/InterviewerCard';
 import { Container, Img } from './styles';
 
-export const InterviewCard = ({
+export const InterviewInformation = ({
     img,
     companyName,
     country,
@@ -108,7 +108,7 @@ export const InterviewCard = ({
     );
 };
 
-InterviewCard.propTypes = {
+InterviewInformation.propTypes = {
     img: PropTypes.string.isRequired,
     companyName: PropTypes.string.isRequired,
     country: PropTypes.string.isRequired,
