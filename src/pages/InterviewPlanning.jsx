@@ -1,8 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { InterviewCard } from 'Components/InterviewCard';
 import { FormPlanning } from 'Components/FormPlanning';
+
+import { Container, Typography, Grid } from '@mui/material';
 
 const InterviewCardData = {
     img: 'https://picsum.photos/300',
@@ -21,11 +24,24 @@ const InterviewCardData = {
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, sit ratione reiciendis non sunt error assumenda eius doloribus, fugit quia consectetur, voluptas excepturi temporibus alias magnam. Modi sint tempore aperiam.',
 };
 
-export const InterviewPlanning = () => {
+export const InterviewPlanning = ({ user }) => {
     return (
-        <div>
-            <FormPlanning />
-            <InterviewCard {...InterviewCardData} />
-        </div>
+        <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
+            <Typography variant="h2" align="center">
+                Create an interview for {user}
+            </Typography>
+            <Grid container spacing={3} justifyContent="center">
+                <Grid item>
+                    <FormPlanning />
+                </Grid>
+                <Grid item>
+                    <InterviewCard {...InterviewCardData} />
+                </Grid>
+            </Grid>
+        </Container>
     );
+};
+
+InterviewPlanning.propTypes = {
+    user: PropTypes.string.isRequired,
 };
