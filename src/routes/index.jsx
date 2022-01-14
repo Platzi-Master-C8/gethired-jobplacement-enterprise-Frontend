@@ -7,6 +7,7 @@ import { EditVacancies } from 'Pages/EditVacancies';
 import { VacanciesHistory } from 'Pages/VacanciesHistory';
 import { ListCandidatesVacancies } from 'Pages/ListCandidatesVacancies';
 import { Interviews } from 'Pages/Interviews';
+import { CancelInterview } from 'Components/CancelInterviewModal';
 import Layout from 'Components/Layout';
 
 const Routes = () => (
@@ -18,6 +19,7 @@ const Routes = () => (
                 <Route path="/vacancies/:id" element={<EditVacancies />} />
                 <Route path="/candidates" element={<ListCandidatesVacancies />} />
                 <Route path="/interviews" element={<Interviews />} />
+                <Route path="/cancel-interview" element={<CancelInterview />} />
                 <Route path="*" element={<NotFound />} />
             </Switch>
         </Layout>
