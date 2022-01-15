@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -15,8 +15,8 @@ const style = {
 };
 
 export const CancelInterview = () => {
-    const [open, setOpen] = React.useState(false);
-    const [value, setValue] = React.useState();
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -36,7 +36,7 @@ export const CancelInterview = () => {
                 Open form dialog
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle sx={style}>¿Why are you going to cancel the interview?</DialogTitle>
+                <DialogTitle sx={style}>Why are you going to cancel the interview?</DialogTitle>
                 <DialogContent>
                     <FormControl component="fieldset">
                         <RadioGroup

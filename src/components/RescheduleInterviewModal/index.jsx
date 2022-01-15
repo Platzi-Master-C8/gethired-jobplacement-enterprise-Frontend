@@ -35,7 +35,7 @@ export const RescheduleInterview = () => {
             </Button>
             <Box component="form">
                 <Dialog open={open} onClose={handleClose}>
-                    <DialogTitle sx={style}>Specify the new information for the meeting</DialogTitle>
+                    <DialogTitle sx={style}>Specify the new information for the interview</DialogTitle>
                     <DialogContent sx={{ display: 'flex', flexDirection: 'column' }}>
                         <Box sx={{ mt: 2 }}>
                             <LocalizationProvider dateAdapter={AdapterDateFns}>
