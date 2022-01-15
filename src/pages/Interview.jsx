@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { Container, Button, Modal, Box, Typography } from '@mui/material';
+import { Container, Button, Modal, Box, TextField } from '@mui/material';
 import '../style/interview.scss';
+import iconWarning from '../img/warning.png';
+import iconAccepted from '../img/icon-accepted.png';
 
 const style = {
     position: 'absolute',
@@ -12,19 +14,25 @@ const style = {
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
+    borderRadius: '25px',
 };
 
 export const Interview = () => {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const [openNotification, setOpenNotification] = React.useState(false);
+    const handleOpenNotification = () => setOpenNotification(true);
+    const handleCloseNotification = () => setOpenNotification(false);
+
+    const [openRating, setOpenRating] = React.useState(false);
+    const handleOpenRating = () => setOpenRating(true);
+    const handleCloseRating = () => setOpenRating(false);
 
     return (
         <Container>
-            <Button onClick={handleOpen}>Open modal</Button>
+            <Button onClick={handleOpenNotification}>Open modal notification</Button>
+            <Button onClick={handleOpenRating}>Open modal rating</Button>
             <Modal
-                open={open}
-                onClose={handleClose}
+                open={openNotification}
+                onClose={handleCloseNotification}
                 className="principal-modal"
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
@@ -32,19 +40,96 @@ export const Interview = () => {
                 <Box sx={style}>
                     <Box className="containerStyle">
                         <h2 className="title-interview">Interview Title</h2>
-                        <div className="candidate-profile">
-                            <div>Avatar</div>
-                            <div>
-                                <h2>Candidate</h2>
-                                <p>User role</p>
-                            </div>
-                        </div>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            Text in a modal
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                        </Typography>
+                        <Box className="container-interview">
+                            <Box>
+                                <div className="candidate-profile">
+                                    <div className="icon-profile">
+                                        <a className="icon-profile__user" href="./">
+                                            User
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <h2>Candidate</h2>
+                                        <p>User role</p>
+                                    </div>
+                                </div>
+                                <div className="local-data">
+                                    <p>Local time: 17:55 | GMT -2</p>
+                                    <p>Country</p>
+                                </div>
+                            </Box>
+                            <Box>
+                                <div className="waiting-image">
+                                    <img src={iconWarning} alt="Waiting" width={35} />
+                                </div>
+                                <p>Waiting...</p>
+                            </Box>
+                        </Box>
+                        <Box className="container-interview">
+                            <Box>
+                                <div className="candidate-profile">
+                                    <div className="icon-profile">
+                                        <a className="icon-profile__user" href="./">
+                                            User
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <h2>Recruiter</h2>
+                                        <p>User role</p>
+                                    </div>
+                                </div>
+                                <div className="local-data">
+                                    <p>Local time: 17:55 | GMT -2</p>
+                                    <p>Country</p>
+                                </div>
+                            </Box>
+                            <Box>
+                                <div className="waiting-image">
+                                    <img src={iconAccepted} alt="Waiting" width={35} />
+                                </div>
+                                <p>Accepted</p>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
+            </Modal>
+            <Modal
+                open={openRating}
+                onClose={handleCloseRating}
+                className="principal-modal"
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <Box className="containerStyle">
+                        <h2 className="title-interview">Rate this interview</h2>
+                        <Box className="container-interview">
+                            <Box>
+                                <div className="candidate-profile">
+                                    <div className="icon-profile">
+                                        <a className="icon-profile__user" href="./">
+                                            User
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <h2>Candidate</h2>
+                                        <p>User role</p>
+                                    </div>
+                                </div>
+                            </Box>
+                            <Box>
+                                <div className="waiting-image">
+                                    <p>Meet time</p>
+                                </div>
+                                <p>30:00 Min</p>
+                            </Box>
+                            <Box>
+                                <img src={iconWarning} alt="star" />
+                            </Box>
+                            <Box>
+                                <TextField name="additionalComments" label="Additional comments(Optional)..." />
+                            </Box>
+                        </Box>
                     </Box>
                 </Box>
             </Modal>
