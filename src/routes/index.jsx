@@ -4,7 +4,7 @@ import { HashRouter, Routes as Switch, Route } from 'react-router-dom';
 import { NotFound } from 'Pages/NotFound';
 import { CreateVacancies } from 'Pages/CreateVacancies';
 import { EditVacancies } from 'Pages/EditVacancies';
-import { InterviewPlanning } from '../pages/InterviewPlanning';
+import { InterviewPlanning } from 'Pages/InterviewPlanning';
 import { VacanciesHistory } from 'Pages/VacanciesHistory';
 import { ListCandidatesVacancies } from 'Pages/ListCandidatesVacancies';
 import { Interviews } from 'Pages/Interviews';
