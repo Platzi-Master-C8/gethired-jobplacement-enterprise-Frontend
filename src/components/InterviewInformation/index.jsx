@@ -81,7 +81,7 @@ export const InterviewInformation = ({
                 </Grid>
             </Grid>
             <Typography variant="body1" sx={{ mb: 1, mt: 1 }}>
-                Location: <a href={location}>{location}</a>
+                <a href={location}>{location}</a>
             </Typography>
             <Typography variant="body1" sx={{ mb: 2 }}>
                 {interviewDescription}
