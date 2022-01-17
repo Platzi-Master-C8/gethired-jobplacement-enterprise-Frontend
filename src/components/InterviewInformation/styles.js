@@ -4,7 +4,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    maring-botton: 15px;
+    maring-bottom: 15px;
 `;
 
 export const Img = styled.img`
