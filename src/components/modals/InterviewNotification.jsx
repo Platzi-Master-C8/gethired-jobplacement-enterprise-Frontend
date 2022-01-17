@@ -1,21 +1,8 @@
 import React, { useState } from 'react';
 import { Modal, Box } from '@mui/material';
 import '../../style/interview.scss';
-import iconWarning from '../img/warning.png';
+import iconWarning from '../../img/warning.png';
 import iconAccepted from '../../img/icon-accepted.png';
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 600,
-    padding: '15px',
-    bgcolor: 'background.paper',
-    boxShadow: 24,
-    p: 4,
-    borderRadius: '25px',
-};
 
 export const InterviewNotification = () => {
     const [openNotification, setOpenNotification] = useState(false);
@@ -31,7 +18,7 @@ export const InterviewNotification = () => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Box sx={style}>
+            <Box sx className="container-modal-interview">
                 <Box className="containerStyle">
                     <h2 className="title-interview">Interview Title</h2>
                     <Box className="container-interview">
