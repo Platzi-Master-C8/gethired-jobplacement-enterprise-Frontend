@@ -54,7 +54,7 @@ export const FormPlanning = () => {
                         onChange={handleChange}
                     >
                         <MenuItem value="remote">Remote</MenuItem>
-                        <MenuItem value="presencial">Presencial</MenuItem>
+                        <MenuItem value="presencial">Face-to-face</MenuItem>
                     </Select>
                 </FormControl>
             </Box>
