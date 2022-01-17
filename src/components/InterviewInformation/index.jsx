@@ -87,23 +87,6 @@ export const InterviewInformation = ({
                 {interviewDescription}
             </Typography>
             <InterviewerCard name="Lorem ipsum" img="https://picsum.photos/300" roleRecruiter="Recruiter" />
-            <Grid container spacing={2} sx={{ mt: 2 }}>
-                <Grid item xs={6}>
-                    <Button sx={{ width: '100%' }} variant="contained">
-                        Accept
-                    </Button>
-                </Grid>
-                <Grid item xs={6}>
-                    <Button sx={{ width: '100%' }} variant="outlined">
-                        Decline
-                    </Button>
-                </Grid>
-                <Grid item xs={12}>
-                    <Button sx={{ width: '100%' }} variant="outlined">
-                        Propose another schedule {'>'}
-                    </Button>
-                </Grid>
-            </Grid>
         </Paper>
     );
 };
