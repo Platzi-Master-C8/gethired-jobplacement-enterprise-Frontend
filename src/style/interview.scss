@@ -1,0 +1,72 @@
+.principal-modal {
+    padding: 25px;
+    border: 1px solid #f87;
+}
+
+.containerStyle {
+    border: 1px solid #000;
+    border-radius: 25px;
+    padding: 15px;
+}
+
+.container-interview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-interview {
+    text-align: center;
+}
+
+.container-interview {
+    margin: 3.5rem 2rem 3.5rem 0;
+}
+
+.candidate-profile {
+    display: flex;
+}
+
+.candidate-profile div h2 {
+    margin-bottom: 10px;
+}
+
+.icon-profile {
+    width: 4rem;
+    border-radius: 50%;
+    background-color: #7d81f6;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-profile__user {
+    color: #fff;
+    font-weight: bold;
+}
+
+.local-data {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin-left: 20px;
+}
+
+.waiting-image {
+    display: flex;
+    justify-content: center;
+}
+
+.container-modal-interview {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    padding: 32px;
+    background-color: #fff;
+    box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%),
+        0px 9px 46px 8px rgb(0 0 0 / 12%);
+    border-radius: 25px;
+}
