@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm } from "react-hook-form";
 
 import { Box, TextField, Select, InputLabel, MenuItem, FormControl, Button } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
@@ -8,64 +9,46 @@ import DatePicker from '@mui/lab/DatePicker';
 import TimePicker from '@mui/lab/TimePicker';
 
 export const FormPlanning = () => {
-    const [date, setDate] = useState(null);
-    const [hour, setHour] = useState(null);
-    const [type, setType] = useState(null);
-    const [platform, setPlatform] = useState(null);
-
-    const handleChange = (event) => {
-        setType(event.target.value);
-    };
-
-    const changePlatform = (event) => {
-        setPlatform(event.target.value);
-    };
+    const { register, handleSubmit } = useForm();
+    
     return (
-        <Box component="form">
+        <Box component="form" onSubmit={handleSubmit(onSubmit)} >
             <TextField id="outlined-basic" label="Interview title" variant="outlined" sx={{ width: '100%', mb: 2 }} />
             <Box sx={{ mb: 2 }}>
                 <LocalizationProvider dateAdapter={AdapterDateFns} sx={{ mr: 1 }}>
                     <DatePicker
                         label="Choose date"
-                        value={date}
-                        onChange={(newValue) => {
-                            setDate(newValue);
-                        }}
+                        {...register("date")}
                         renderInput={(params) => <TextField {...params} />}
                     />
                 </LocalizationProvider>
                 <LocalizationProvider dateAdapter={AdapterDateFns} sx={{ mr: 1 }}>
                     <TimePicker
                         label="Choose hour"
-                        value={hour}
-                        onChange={(newValue) => {
-                            setHour(newValue);
-                        }}
+                        {...register("hour")}
                         renderInput={(params) => <TextField {...params} />}
                     />
                 </LocalizationProvider>
                 <FormControl sx={{ width: 200 }}>
-                    <InputLabel id="demo-simple-select-label">Interview type</InputLabel>
+                    <InputLabel id="select-interview-type">Interview type</InputLabel>
                     <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={type}
+                        labelId="select-interview-type"
+                        id="interview-select"
+                        {...register("type")}
                         label="Interview type"
-                        onChange={handleChange}
                     >
                         <MenuItem value="remote">Remote</MenuItem>
-                        <MenuItem value="presencial">Face-to-face</MenuItem>
+                        <MenuItem value="face-to-face">Face-to-face</MenuItem>
                     </Select>
                 </FormControl>
             </Box>
             <FormControl sx={{ width: '50%', mb: 2 }}>
-                <InputLabel id="demo-simple-select-label">Platform</InputLabel>
+                <InputLabel id="platform">Platform</InputLabel>
                 <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={platform}
+                    labelId="platform"
+                    id="platform-select"
+                    {...register("platform")}
                     label="Interview type"
-                    onChange={changePlatform}
                 >
                     <MenuItem value="zoom">Zoom</MenuItem>
                     <MenuItem value="google-meet">Google meet</MenuItem>
@@ -82,13 +65,12 @@ export const FormPlanning = () => {
             </Box>
             <Box sx={{ mb: 2 }}>
                 <FormControl sx={{ width: '100%' }}>
-                    <InputLabel id="demo-simple-select-label">Who is going to interview?</InputLabel>
+                    <InputLabel id="interviewer">Who is going to interview?</InputLabel>
                     <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={platform}
+                        labelId="interviewer"
+                        id="interviewer-select"
                         label="Interview type"
-                        onChange={changePlatform}
+                        {...register("interviewer")}
                     >
                         <MenuItem value="1">Person 1</MenuItem>
                         <MenuItem value="2">Person 2</MenuItem>
