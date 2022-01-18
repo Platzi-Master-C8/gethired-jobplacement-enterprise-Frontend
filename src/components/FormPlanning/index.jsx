@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
 
 import { Box, TextField, Select, InputLabel, MenuItem, FormControl, Button } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
@@ -10,22 +10,23 @@ import TimePicker from '@mui/lab/TimePicker';
 
 export const FormPlanning = () => {
     const { register, handleSubmit } = useForm();
-    
+
+    const onSubmit = (data) => console.log(data);
     return (
-        <Box component="form" onSubmit={handleSubmit(onSubmit)} >
+        <Box component="form" onSubmit={handleSubmit(onSubmit)}>
             <TextField id="outlined-basic" label="Interview title" variant="outlined" sx={{ width: '100%', mb: 2 }} />
             <Box sx={{ mb: 2 }}>
                 <LocalizationProvider dateAdapter={AdapterDateFns} sx={{ mr: 1 }}>
                     <DatePicker
                         label="Choose date"
-                        {...register("date")}
+                        {...register('date')}
                         renderInput={(params) => <TextField {...params} />}
                     />
                 </LocalizationProvider>
                 <LocalizationProvider dateAdapter={AdapterDateFns} sx={{ mr: 1 }}>
                     <TimePicker
                         label="Choose hour"
-                        {...register("hour")}
+                        {...register('hour')}
                         renderInput={(params) => <TextField {...params} />}
                     />
                 </LocalizationProvider>
@@ -34,7 +35,7 @@ export const FormPlanning = () => {
                     <Select
                         labelId="select-interview-type"
                         id="interview-select"
-                        {...register("type")}
+                        {...register('type')}
                         label="Interview type"
                     >
                         <MenuItem value="remote">Remote</MenuItem>
@@ -44,12 +45,7 @@ export const FormPlanning = () => {
             </Box>
             <FormControl sx={{ width: '50%', mb: 2 }}>
                 <InputLabel id="platform">Platform</InputLabel>
-                <Select
-                    labelId="platform"
-                    id="platform-select"
-                    {...register("platform")}
-                    label="Interview type"
-                >
+                <Select labelId="platform" id="platform-select" {...register('platform')} label="Interview type">
                     <MenuItem value="zoom">Zoom</MenuItem>
                     <MenuItem value="google-meet">Google meet</MenuItem>
                     <MenuItem value="microsoft-teams">Microsoft teams</MenuItem>
@@ -70,7 +66,7 @@ export const FormPlanning = () => {
                         labelId="interviewer"
                         id="interviewer-select"
                         label="Interview type"
-                        {...register("interviewer")}
+                        {...register('interviewer')}
                     >
                         <MenuItem value="1">Person 1</MenuItem>
                         <MenuItem value="2">Person 2</MenuItem>
