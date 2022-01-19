@@ -6,7 +6,11 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Grid from '@mui/material/Grid';
 
 import { InterviewCard } from 'Components/InterviewCard';
+import { CancelInterview } from 'Components/CancelInterviewModal';
+import { RescheduleInterview } from 'Components/RescheduleInterviewModal';
+import { InterviewNotification } from 'Components/InterviewNotificationModal';
 
+import useModal from '../hooks/useModal';
 import iconMessage from '../img/icon_message.svg';
 
 const fakeData = [
@@ -66,73 +70,85 @@ const fakeData = [
     },
 ];
 
-export const Interviews = () => (
-    <Container maxWidth="xl">
-        <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
-                <TextField
-                    fullWidth
-                    id="search"
-                    label="Search"
-                    variant="filled"
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <img src={iconMessage} alt="Icon Message" />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
-            </Grid>
+export const Interviews = () => {
+    const [isOpenModalCancel, setCancelModal] = useModal();
+    const [isOpenScheduleModal, setScheduleModal] = useModal();
+    const [isOpenNotificationModal, setNotificationModal] = useModal();
 
-            <Grid item xs={12} md={3}>
-                <TextField
-                    fullWidth
-                    id="location"
-                    label="Location"
-                    variant="filled"
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <img src={iconMessage} alt="Icon Message" />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
-            </Grid>
-
-            <Grid item xs={12} md={3}>
-                <TextField
-                    fullWidth
-                    id="date"
-                    label="Date"
-                    variant="filled"
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <img src={iconMessage} alt="Icon Message" />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
-            </Grid>
-        </Grid>
-
-        <Grid container spacing={3} sx={{ my: 2 }}>
-            {fakeData.map(({ id, status, name, location, experience, applyingFor, typeTime }) => (
-                <Grid item xs={12} sm={6} lg={4} xl={3}>
-                    <InterviewCard
-                        key={id}
-                        id={id}
-                        status={status}
-                        name={name}
-                        location={location}
-                        experience={experience}
-                        applyingFor={applyingFor}
-                        typeTime={typeTime}
+    return (
+        <Container maxWidth="xl">
+            <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
+                    <TextField
+                        fullWidth
+                        id="search"
+                        label="Search"
+                        variant="filled"
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <img src={iconMessage} alt="Icon Message" />
+                                </InputAdornment>
+                            ),
+                        }}
                     />
                 </Grid>
-            ))}
-        </Grid>
-    </Container>
-);
+
+                <Grid item xs={12} md={3}>
+                    <TextField
+                        fullWidth
+                        id="location"
+                        label="Location"
+                        variant="filled"
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <img src={iconMessage} alt="Icon Message" />
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
+                </Grid>
+
+                <Grid item xs={12} md={3}>
+                    <TextField
+                        fullWidth
+                        id="date"
+                        label="Date"
+                        variant="filled"
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <img src={iconMessage} alt="Icon Message" />
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
+                </Grid>
+            </Grid>
+
+            <Grid container spacing={3} sx={{ my: 2 }}>
+                {fakeData.map(({ id, status, name, location, experience, applyingFor, typeTime }) => (
+                    <Grid item xs={12} sm={6} lg={4} xl={3} key={id}>
+                        <InterviewCard
+                            id={id}
+                            status={status}
+                            name={name}
+                            location={location}
+                            experience={experience}
+                            applyingFor={applyingFor}
+                            typeTime={typeTime}
+                            cancelModal={setCancelModal}
+                            scheduleModal={setScheduleModal}
+                            notificationModal={setNotificationModal}
+                        />
+                    </Grid>
+                ))}
+            </Grid>
+
+            <CancelInterview isOpen={isOpenModalCancel} onClose={setCancelModal} />
+            <RescheduleInterview isOpen={isOpenScheduleModal} onClose={setScheduleModal} />
+            <InterviewNotification isOpen={isOpenNotificationModal} onClose={setNotificationModal} />
+        </Container>
+    );
+};
