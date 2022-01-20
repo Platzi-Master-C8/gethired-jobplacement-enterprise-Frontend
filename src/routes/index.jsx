@@ -8,8 +8,6 @@ import { InterviewPlanning } from 'Pages/InterviewPlanning';
 import { VacanciesHistory } from 'Pages/VacanciesHistory';
 import { ListCandidatesVacancies } from 'Pages/ListCandidatesVacancies';
 import { Interviews } from 'Pages/Interviews';
-import { CancelInterview } from 'Components/CancelInterviewModal';
-import { RescheduleInterview } from 'Components/RescheduleInterviewModal';
 import Layout from 'Components/Layout';
 
 const Routes = () => (
@@ -22,8 +20,6 @@ const Routes = () => (
                 <Route path="/candidates" element={<ListCandidatesVacancies />} />
                 <Route path="/interview-planning" element={<InterviewPlanning />} />
                 <Route path="/interviews" element={<Interviews />} />
-                <Route path="/cancel-interview" element={<CancelInterview />} />
-                <Route path="/reschedule-interview" element={<RescheduleInterview />} />
                 <Route path="*" element={<NotFound />} />
             </Switch>
         </Layout>
