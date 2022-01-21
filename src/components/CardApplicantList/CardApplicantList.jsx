@@ -1,28 +1,70 @@
 import React from 'react';
-import Button from '@mui/material/Button';
+import { Button, Box, Typography } from '@mui/material';
+
 import Contact from '../../img/icon-contacts.png';
-import '../../style/cardApplication.scss';
+import { LinkStyled, CardContainer, ImageProfile, Divider } from './styles';
 
 export const CardApplicantList = () => {
     return (
-        <div className="container-card">
-            <div className="profile">
-                <figure className="img-profile">
+        <CardContainer>
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}
+            >
+                <ImageProfile>
                     <img src={Contact} alt="Profile" />
-                </figure>
-                <div className="content-profile">
-                    <p>Name</p>
-                    <p>Profile name</p>
-                </div>
-            </div>
-            <div className="divider" />
-            <div className="container-status">
-                <p>Status</p>
-                <p>date</p>
+                </ImageProfile>
+                <Box>
+                    <Typography
+                        component="p"
+                        sx={{
+                            py: 0.3,
+                        }}
+                    >
+                        Name
+                    </Typography>
+                    <Typography
+                        component="p"
+                        sx={{
+                            py: 0.3,
+                        }}
+                    >
+                        Profile name
+                    </Typography>
+                </Box>
+            </Box>
+            <Divider />
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'space-around',
+                }}
+            >
+                <Typography
+                    component="p"
+                    sx={{
+                        pr: 1.3,
+                    }}
+                >
+                    Status
+                </Typography>
+                <Typography
+                    component="p"
+                    sx={{
+                        pr: 1.3,
+                    }}
+                >
+                    date
+                </Typography>
+
                 <Button size="small" variant="contained">
-                    Interview
+                    <LinkStyled color="#FFF" to="/interview-planning">
+                        Interview
+                    </LinkStyled>
                 </Button>
-            </div>
-        </div>
+            </Box>
+        </CardContainer>
     );
 };
