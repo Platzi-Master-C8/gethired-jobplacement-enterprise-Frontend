@@ -29,3 +29,13 @@ export const SignupButton = () => {
         </Button>
     );
 };
+
+export const LogoutButton = () => {
+    const { logout } = useAuth0();
+
+    return (
+        <Button type="button" onClick={() => logout({ returnTo: window.location.origin })}>
+            Log Out
+        </Button>
+    );
+};
