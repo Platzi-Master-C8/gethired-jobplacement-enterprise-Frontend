@@ -3,24 +3,25 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 import Button from '@mui/material/Button';
 
-export const LoginButton = () => {
-    const { loginWithReact } = useAuth0();
+const LoginButton = () => {
+    const { loginWithRedirect } = useAuth0();
 
     return (
-        <Button type="button" onClick={() => loginWithReact()}>
+        <Button variant="contained" type="button" onClick={() => loginWithRedirect()}>
             Log in
         </Button>
     );
 };
 
 export const SignupButton = () => {
-    const { loginWithReact } = useAuth0();
+    const { loginWithRedirect } = useAuth0();
 
     return (
         <Button
+            variant="contained"
             type="button"
             onClick={() =>
-                loginWithReact({
+                loginWithRedirect({
                     screen_hint: 'signup',
                 })
             }
@@ -30,12 +31,18 @@ export const SignupButton = () => {
     );
 };
 
-export const LogoutButton = () => {
+const LogoutButton = () => {
     const { logout } = useAuth0();
 
     return (
-        <Button type="button" onClick={() => logout({ returnTo: window.location.origin })}>
+        <Button variant="contained" type="button" onClick={() => logout({ returnTo: window.location.origin })}>
             Log Out
         </Button>
     );
+};
+
+export const AuthenticationButton = () => {
+    const { isAuthenticated } = useAuth0();
+
+    return isAuthenticated ? <LogoutButton /> : <LoginButton />;
 };
