@@ -1,67 +1,132 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Header } from '@master-c8/commons';
+import Avatar from '@mui/material/Avatar';
+import { MenuList, MenuItem, Link, ListItemIcon, ListItemText, useMediaQuery, useTheme } from '@mui/material';
+import { Message, BriefCase, Notification, Blog, UserGroup, Website } from '@master-c8/icons';
+import { grey } from '@mui/material/colors';
 
-import logo from '../../img/gethired_logo.svg';
-import iconMessage from '../../img/icon_message.svg';
-import iconNotifications from '../../img/icon-notifications.svg';
-import iconVacancies from '../../img/icon-briefcase.png';
-import iconInterviews from '../../img/icon-interviews.png';
-import iconPostulations from '../../img/icon-postulations.png';
-import iconContacts from '../../img/icon-contacts.png';
-import 'Styles/header.scss';
+import { HeaderMobile } from './HeaderMobile';
 
-const Header = () => {
+const HeaderEnterprise = () => {
+    const [openDrawer, setOpenDrawer] = useState(false);
+    const theme = useTheme();
+    const isMatch = useMediaQuery(theme.breakpoints.down('md'));
     return (
-        <div className="header-menu">
-            <figure className="logo-gethired">
-                <img src={logo} alt="Logo Gethired" />
-            </figure>
-            <ul>
-                <li className="icon-message">
-                    <a href="./">
-                        <img src={iconMessage} alt="Icon Message" />
-                        <p>Message</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="./">
-                        <img src={iconNotifications} alt="Icon Notifications" />
-                        <p>Notifications</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="./">
-                        <img src={iconVacancies} alt="Icon Forum" />
-                        <p>Vacancies</p>
-                    </a>
-                </li>
-                <li>
-                    <Link to="/interviews">
-                        <img src={iconInterviews} alt="Icon Interviews" />
-                        <p>Interviews</p>
-                    </Link>
-                </li>
-                <li>
-                    <a href="./">
-                        <img src={iconPostulations} alt="Icon Postulations" />
-                        <p>Postulations</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="./">
-                        <img src={iconContacts} alt="Icon Contacts" />
-                        <p>Contacts</p>
-                    </a>
-                </li>
-                <li className="icon-profile">
-                    <a className="icon-profile__user" href="./">
-                        {/* this will change later */}U
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <Header className="header-menu" isLogged>
+            {isMatch ? (
+                <HeaderMobile openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
+            ) : (
+                <MenuList sx={{ display: 'flex' }}>
+                    <MenuItem>
+                        <Link
+                            sx={{
+                                flexDirection: { sm: 'row', md: 'column' },
+                                display: 'flex',
+                                textDecoration: 'none',
+                                alignItems: 'center',
+                            }}
+                            size="small"
+                            href="/"
+                        >
+                            <ListItemIcon>
+                                <Message sx={{ color: grey[900] }} />
+                            </ListItemIcon>
+                            <ListItemText sx={{ color: 'black' }}>Message</ListItemText>
+                        </Link>
+                    </MenuItem>
+                    <MenuItem>
+                        <Link
+                            sx={{
+                                flexDirection: { sm: 'row', md: 'column' },
+                                display: 'flex',
+                                textDecoration: 'none',
+                                alignItems: 'center',
+                            }}
+                            size="small"
+                            href="/"
+                        >
+                            <ListItemIcon>
+                                <Notification sx={{ color: grey[900] }} />
+                            </ListItemIcon>
+                            <ListItemText sx={{ color: 'black' }}>Notifications</ListItemText>
+                        </Link>
+                    </MenuItem>
+                    <MenuItem>
+                        <Link
+                            sx={{
+                                flexDirection: { sm: 'row', md: 'column' },
+                                display: 'flex',
+                                textDecoration: 'none',
+                                alignItems: 'center',
+                            }}
+                            size="small"
+                            href="/"
+                        >
+                            <ListItemIcon>
+                                <BriefCase sx={{ color: grey[900] }} />
+                            </ListItemIcon>
+                            <ListItemText sx={{ color: 'black' }}>Vacancies</ListItemText>
+                        </Link>
+                    </MenuItem>
+                    <MenuItem>
+                        <Link
+                            sx={{
+                                flexDirection: { sm: 'row', md: 'column' },
+                                display: 'flex',
+                                textDecoration: 'none',
+                                alignItems: 'center',
+                            }}
+                            size="small"
+                            href="/#/interviews"
+                        >
+                            <ListItemIcon>
+                                <UserGroup sx={{ color: grey[900] }} />
+                            </ListItemIcon>
+                            <ListItemText sx={{ color: 'black' }}>Interviews</ListItemText>
+                        </Link>
+                    </MenuItem>
+                    <MenuItem>
+                        <Link
+                            sx={{
+                                flexDirection: { sm: 'row', md: 'column' },
+                                display: 'flex',
+                                textDecoration: 'none',
+                                alignItems: 'center',
+                            }}
+                            size="small"
+                            href="/"
+                        >
+                            <ListItemIcon>
+                                <Blog sx={{ color: grey[900] }} />
+                            </ListItemIcon>
+                            <ListItemText sx={{ color: 'black' }}>Postulations</ListItemText>
+                        </Link>
+                    </MenuItem>
+                    <MenuItem>
+                        <Link
+                            sx={{
+                                flexDirection: { sm: 'row', md: 'column' },
+                                display: 'flex',
+                                textDecoration: 'none',
+                                alignItems: 'center',
+                            }}
+                            size="small"
+                            href="/"
+                        >
+                            <ListItemIcon>
+                                <Website sx={{ color: grey[900] }} />
+                            </ListItemIcon>
+                            <ListItemText sx={{ color: 'black' }}>Contacts</ListItemText>
+                        </Link>
+                    </MenuItem>
+                    <ListItemIcon sx={{ display: 'flex', alignItems: 'center', color: 'black' }} size="large">
+                        <Avatar sx={{ bgcolor: '#AE4EFF', width: 45, height: 45, ml: 3 }} alt="Profile" />
+                    </ListItemIcon>
+                </MenuList>
+            )}
+        </Header>
     );
 };
 
-export default Header;
+export default HeaderEnterprise;
