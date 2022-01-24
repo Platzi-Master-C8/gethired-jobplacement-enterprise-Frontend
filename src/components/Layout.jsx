@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from './Header/header';
+import HeaderEnterprise from './Header/Header';
 
 const Layout = ({ children }) => {
     return (
         <div>
-            <Header />
+            <HeaderEnterprise />
             {children}
         </div>
     );
