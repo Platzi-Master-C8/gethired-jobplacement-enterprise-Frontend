@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import HeaderEnterprise from './Header/Header';
+import { HeaderEnterprise } from './Header';
 
 const Layout = ({ children }) => {
     return (
