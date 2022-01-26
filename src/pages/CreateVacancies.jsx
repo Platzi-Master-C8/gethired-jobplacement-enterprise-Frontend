@@ -17,7 +17,7 @@ export const CreateVacancies = () => {
             postulation_deadline: new Date(),
         };
 
-        postNewVacancy(formData).then((res) => console.log('Datos guardados', res));
+        return postNewVacancy(formData);
     };
     return (
         <Container maxWidth="sm" sx={{ mt: 4, mb: 4 }}>
