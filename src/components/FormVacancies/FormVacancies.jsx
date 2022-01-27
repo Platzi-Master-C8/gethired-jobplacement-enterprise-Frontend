@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
-import FormInputText from 'Components/FormVacancies/FormInputText';
-import { FormSelect } from 'Components/FormVacancies/FormSelect';
-
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
 import Snackbar from '@mui/material/Snackbar';
+import Typography from '@mui/material/Typography';
+import FormInputText from 'Components/FormVacancies/FormInputText';
+import { FormSelect } from 'Components/FormVacancies/FormSelect';
 
 import { FormButton, FormEditSwitch } from './styles';
 
@@ -29,6 +31,7 @@ const dataCompany = [
 const VacanciesForm = ({ title, editDisplay, editButtonText, mainButtonText, defaultValues, onSubmit }) => {
     const [open, setOpen] = useState(false);
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const { handleSubmit, control, reset } = useForm({
         defaultValues: {
@@ -52,13 +55,12 @@ const VacanciesForm = ({ title, editDisplay, editButtonText, mainButtonText, def
     const handleForm = (data) => {
         onSubmit(data)
             .then(() => {
-                setOpen(true);
-                setMessage('Vacancy created successfully');
                 reset();
+                navigate('/');
             })
             .catch(() => {
+                setMessage('There was an error creating vacancy');
                 setOpen(true);
-                setMessage('Error creating vacancy');
             });
     };
 
@@ -138,7 +140,17 @@ const VacanciesForm = ({ title, editDisplay, editButtonText, mainButtonText, def
                     </Grid>
                 </Box>
             </Paper>
-            <Snackbar open={open} autoHideDuration={6000} onClose={() => setOpen(false)} message={message} />
+            <Snackbar
+                open={open}
+                autoHideDuration={3000}
+                onClose={() => setOpen(false)}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+            >
+                <Alert severity="error">
+                    <AlertTitle>Ops!</AlertTitle>
+                    {message}
+                </Alert>
+            </Snackbar>
         </React.Fragment>
     );
 };
