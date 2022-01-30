@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Avatar from '@mui/material/Avatar';
-import { Box, MenuList, MenuItem, Link, ListItemIcon, ListItemText, Drawer, IconButton } from '@mui/material';
-import { Message, BriefCase, Notification, Blog, UserGroup, Website, Menu } from '@master-c8/icons';
+import { Box, MenuList, MenuItem, Link, ListItemIcon, ListItemText, Drawer, IconButton, Button } from '@mui/material';
+import { Message, BriefCase, Notification, Blog, UserGroup, Currency, Menu } from '@master-c8/icons';
 import { grey } from '@mui/material/colors';
 
 export const HeaderMobile = ({ openDrawer, setOpenDrawer }) => {
@@ -108,15 +108,20 @@ export const HeaderMobile = ({ openDrawer, setOpenDrawer }) => {
                             href="/interviews"
                         >
                             <ListItemIcon>
-                                <Website sx={{ color: grey[900] }} />
+                                <Currency sx={{ color: grey[900] }} />
                             </ListItemIcon>
-                            <ListItemText sx={{ color: 'black' }}>Contacts</ListItemText>
+                            <ListItemText sx={{ color: 'black' }}>Calculator</ListItemText>
                         </Link>
                     </MenuItem>
                     <MenuItem sx={{ justifyContent: 'center' }}>
                         <ListItemIcon sx={{ color: 'black' }} size="large">
                             <Avatar sx={{ bgcolor: '#AE4EFF', width: 45, height: 45 }} alt="Profile" />
                         </ListItemIcon>
+                    </MenuItem>
+                    <MenuItem sx={{ justifyContent: 'center' }}>
+                        <Button variant="contained" size="large" type="button" sx={{ width: '60%' }}>
+                            Sign out
+                        </Button>
                     </MenuItem>
                 </MenuList>
             </Drawer>
