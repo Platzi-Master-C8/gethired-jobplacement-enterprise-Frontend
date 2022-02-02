@@ -2,6 +2,7 @@ import React from 'react';
 import { HashRouter, Routes as Switch, Route } from 'react-router-dom';
 
 import { NotFound } from 'Pages/NotFound';
+import { EnterpriseHome } from 'Pages/EnterpriseHome';
 import { CreateVacancies } from 'Pages/CreateVacancies';
 import { EditVacancies } from 'Pages/EditVacancies';
 import { InterviewPlanning } from 'Pages/InterviewPlanning';
@@ -14,6 +15,7 @@ const Routes = () => (
     <HashRouter>
         <Layout>
             <Switch>
+                <Route path="/home" element={<EnterpriseHome />} />
                 <Route path="/" element={<VacanciesHistory />} />
                 <Route path="/vacancies" element={<CreateVacancies />} />
                 <Route path="/vacancies/:id" element={<EditVacancies />} />
