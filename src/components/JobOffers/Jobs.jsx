@@ -1,44 +1,74 @@
-import React, { useState, useCallback, useEffect, Fragment } from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+
+import Pagination from '@mui/material/Pagination';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/system/Box';
 
-import { getJobs } from 'Api/Vacancies/allVacancies';
+import usePagination from 'Hooks/usePagination';
+
 import JobCard from './JobCard';
+import { countPage } from './helpers';
 
-const Jobs = () => {
-    const [listJobs, setListJobs] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    const getJobsList = useCallback(async () => {
-        const jobs = await getJobs();
-        setListJobs(jobs);
-    }, []);
-
-    useEffect(() => {
-        setLoading(true);
-        getJobsList();
-        setLoading(false);
-    }, [getJobsList]);
+const Jobs = ({ loading, error, data }) => {
+    const { handleChange, sliceData } = usePagination(data);
+    const enumPage = countPage(data);
 
     const handleClick = () => {
         // TODO: redirect to job detail
         console.log('clicked');
     };
-    console.log(listJobs);
+
+    if (error && !loading) return error;
+
     return (
         <Fragment>
-            {!listJobs && !loading && (
+            {!sliceData.length && loading && (
                 <Typography variant="h4" component="h4">
                     Loading...
                 </Typography>
             )}
-            {listJobs < 1 && loading && (
+            {sliceData.length < 1 && !loading && (
                 <Typography variant="h4" component="h4">
                     No jobs found
                 </Typography>
             )}
-            {listJobs && listJobs.map((job) => <JobCard key={job.id} job={job} onClick={handleClick} />)}
+            {sliceData?.map((job) => (
+                <JobCard key={job.id} job={job} onClick={handleClick} />
+            ))}
+            {!!sliceData.length && (
+                <Box sx={{ mt: 3, mb: 4, display: 'flex', justifyContent: 'center' }}>
+                    <Pagination count={enumPage} shape="rounded" color="primary" onChange={handleChange} />
+                </Box>
+            )}
         </Fragment>
     );
+};
+
+Jobs.propTypes = {
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.string,
+    data: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number,
+            userId: PropTypes.string,
+            name: PropTypes.string,
+            postulation_deadline: PropTypes.string,
+            description: PropTypes.string,
+            status: PropTypes.bool,
+            salary: PropTypes.string,
+            company_id: PropTypes.number,
+            typeWork: PropTypes.string,
+            job_location: PropTypes.string,
+            skills: PropTypes.string,
+            hours_per_week: PropTypes.string,
+            minimum_experience: PropTypes.string,
+        }),
+    ).isRequired,
+};
+
+Jobs.defaultProps = {
+    error: '',
 };
 
 export default Jobs;
