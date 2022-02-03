@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Avatar from '@mui/material/Avatar';
-import { Box, MenuList, MenuItem, Link, ListItemIcon, ListItemText, Drawer, IconButton, Button } from '@mui/material';
+import { Box, MenuList, MenuItem, ListItemIcon, ListItemText, Drawer, IconButton, Button } from '@mui/material';
+
 import { Message, BriefCase, Notification, Blog, UserGroup, Currency, Menu } from '@master-c8/icons';
 import { grey } from '@mui/material/colors';
+
+import { LinkStyled } from './styles';
 
 export const HeaderMobile = ({ openDrawer, setOpenDrawer }) => {
     return (
@@ -12,106 +15,52 @@ export const HeaderMobile = ({ openDrawer, setOpenDrawer }) => {
             <Drawer anchor="right" onClose={() => setOpenDrawer(false)} open={openDrawer}>
                 <MenuList sx={{ display: 'block' }}>
                     <MenuItem>
-                        <Link
-                            sx={{
-                                flexDirection: { sm: 'row', md: 'column' },
-                                display: 'flex',
-                                textDecoration: 'none',
-                                alignItems: 'center',
-                            }}
-                            size="small"
-                            href="/"
-                        >
+                        <LinkStyled to="/">
                             <ListItemIcon>
                                 <Message sx={{ color: grey[900] }} />
                             </ListItemIcon>
                             <ListItemText sx={{ color: 'black' }}>Message</ListItemText>
-                        </Link>
+                        </LinkStyled>
                     </MenuItem>
                     <MenuItem>
-                        <Link
-                            sx={{
-                                flexDirection: { sm: 'row', md: 'column' },
-                                display: 'flex',
-                                textDecoration: 'none',
-                                alignItems: 'center',
-                            }}
-                            size="small"
-                            href="/"
-                        >
+                        <LinkStyled to="/">
                             <ListItemIcon>
                                 <Notification sx={{ color: grey[900] }} />
                             </ListItemIcon>
                             <ListItemText sx={{ color: 'black' }}>Notifications</ListItemText>
-                        </Link>
+                        </LinkStyled>
                     </MenuItem>
                     <MenuItem>
-                        <Link
-                            sx={{
-                                flexDirection: { sm: 'row', md: 'column' },
-                                display: 'flex',
-                                textDecoration: 'none',
-                                alignItems: 'center',
-                            }}
-                            size="small"
-                            href="/"
-                        >
+                        <LinkStyled to="/">
                             <ListItemIcon>
                                 <BriefCase sx={{ color: grey[900] }} />
                             </ListItemIcon>
                             <ListItemText sx={{ color: 'black' }}>Vacancies</ListItemText>
-                        </Link>
+                        </LinkStyled>
                     </MenuItem>
                     <MenuItem>
-                        <Link
-                            sx={{
-                                flexDirection: { sm: 'row', md: 'column' },
-                                display: 'flex',
-                                textDecoration: 'none',
-                                alignItems: 'center',
-                            }}
-                            size="small"
-                            href="/interviews"
-                        >
+                        <LinkStyled to="/interviews">
                             <ListItemIcon>
                                 <UserGroup sx={{ color: grey[900] }} />
                             </ListItemIcon>
                             <ListItemText sx={{ color: 'black' }}>Interviews</ListItemText>
-                        </Link>
+                        </LinkStyled>
                     </MenuItem>
                     <MenuItem>
-                        <Link
-                            sx={{
-                                flexDirection: { sm: 'row', md: 'column' },
-                                display: 'flex',
-                                textDecoration: 'none',
-                                alignItems: 'center',
-                            }}
-                            size="small"
-                            href="/interviews"
-                        >
+                        <LinkStyled to="/">
                             <ListItemIcon>
                                 <Blog sx={{ color: grey[900] }} />
                             </ListItemIcon>
                             <ListItemText sx={{ color: 'black' }}>Postulations</ListItemText>
-                        </Link>
+                        </LinkStyled>
                     </MenuItem>
                     <MenuItem>
-                        <Link
-                            sx={{
-                                flexDirection: { sm: 'row', md: 'column' },
-                                display: 'flex',
-                                textDecoration: 'none',
-                                alignItems: 'center',
-                            }}
-                            size="small"
-                            href="/interviews"
-                        >
+                        <LinkStyled to="/">
                             <ListItemIcon>
                                 <Currency sx={{ color: grey[900] }} />
                             </ListItemIcon>
                             <ListItemText sx={{ color: 'black' }}>Calculator</ListItemText>
-                        </Link>
+                        </LinkStyled>
                     </MenuItem>
                     <MenuItem sx={{ justifyContent: 'center' }}>
                         <ListItemIcon sx={{ color: 'black' }} size="large">
