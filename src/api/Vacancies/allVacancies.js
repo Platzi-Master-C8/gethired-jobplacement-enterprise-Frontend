@@ -11,5 +11,6 @@ export const getJobs = async () => {
             return list;
         })
         .flat();
-    return vacancies;
+    const statusActive = vacancies?.filter((vacancy) => vacancy.status === true);
+    return statusActive;
 };
