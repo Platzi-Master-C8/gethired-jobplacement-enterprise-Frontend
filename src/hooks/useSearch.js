@@ -7,7 +7,7 @@ const useSearch = (data) => {
 
     useMemo(() => {
         const resultData = data?.filter((item) => {
-            const filter = item.name.toLowerCase().includes(query.toLowerCase());
+            const filter = `${item.name} ${item.skills}`.toLowerCase().includes(query.toLowerCase());
             if (query.length >= Constants.MinCharacter) {
                 return filter;
             }

@@ -26,7 +26,7 @@ const JobOffers = () => {
                     <TextField
                         error={errorSearch}
                         helperText={errorSearch && 'Must have a minimum of 3 characters'}
-                        placeholder="Search Job Title"
+                        placeholder="Search Job Title / Skills"
                         value={query}
                         onChange={handleChange}
                         fullWidth

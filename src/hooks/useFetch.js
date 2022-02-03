@@ -11,7 +11,7 @@ const useFetch = (callback) => {
             const listData = await callback();
             setData(listData);
         } catch {
-            setError('Ups!! There is a error!');
+            setError('Ups!! There is an error!');
         } finally {
             setLoading(false);
         }

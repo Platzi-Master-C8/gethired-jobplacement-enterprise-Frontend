@@ -9,6 +9,7 @@ import usePagination from 'Hooks/usePagination';
 
 import JobCard from './JobCard';
 import { countPage } from './helpers';
+import GroupSkeleton from './JobSkeleton';
 
 const Jobs = ({ loading, error, data }) => {
     const { handleChange, sliceData } = usePagination(data);
@@ -19,18 +20,19 @@ const Jobs = ({ loading, error, data }) => {
         console.log('clicked');
     };
 
-    if (error && !loading) return error;
+    if (error && !loading)
+        return (
+            <Typography variant="h6" sx={{ textAlign: 'center', mt: 4 }}>
+                {error} 🥲
+            </Typography>
+        );
 
     return (
         <Fragment>
-            {!sliceData.length && loading && (
-                <Typography variant="h4" component="h4">
-                    Loading...
-                </Typography>
-            )}
+            {!sliceData.length && loading && <GroupSkeleton />}
             {sliceData.length < 1 && !loading && (
-                <Typography variant="h4" component="h4">
-                    No jobs found
+                <Typography variant="h6" sx={{ textAlign: 'center', mt: 4 }}>
+                    No jobs found 🥲
                 </Typography>
             )}
             {sliceData?.map((job) => (
