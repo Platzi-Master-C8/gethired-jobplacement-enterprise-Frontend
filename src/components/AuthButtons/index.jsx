@@ -31,7 +31,7 @@ export const SignupButton = () => {
     );
 };
 
-const LogoutButton = () => {
+export const LogoutButton = () => {
     const { logout } = useAuth0();
 
     return (
