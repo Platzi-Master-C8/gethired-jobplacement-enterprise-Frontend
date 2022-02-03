@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import { ListOfVacancies } from 'Components/ListOfVacancies';
 import { Filters } from 'Components/Filters';
-import { AuthenticationButton } from 'Components/AuthButtons';
 
 const Container = styled.div`
     display: flex;
@@ -15,7 +14,6 @@ const Container = styled.div`
 export const VacanciesHistory = () => {
     return (
         <Container>
-            <AuthenticationButton />
             <Filters />
             <ListOfVacancies />
         </Container>

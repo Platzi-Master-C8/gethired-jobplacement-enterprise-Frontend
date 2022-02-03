@@ -1545,17 +1545,9 @@
     "@mui/material" "^5.2.1"
     prop-types "15.7.2"
 
-"@master-c8/theme@0.1.9":
+"@master-c8/theme@0.1.9", "@master-c8/theme@^0.1.8":
   version "0.1.9"
   resolved "https://registry.yarnpkg.com/@master-c8/theme/-/theme-0.1.9.tgz#105ca2c84e3662b5e0d5068001adaab3558d67e5"
-  integrity sha512-kJKorzcSOBmSlljqWwSGiVbeT2ilTqwgUw7BYoFTThyXIDJ5U/k/5raEgwrd8muREljfp3TxvoexILYwnO0+iQ==
-  dependencies:
-    "@mui/material" "^5.2.1"
-    prop-types "15.7.2"
-
-"@master-c8/theme@^0.1.8":
-  version "0.1.9"
-  resolved "https://registry.npmjs.org/@master-c8/theme/-/theme-0.1.9.tgz"
   integrity sha512-kJKorzcSOBmSlljqWwSGiVbeT2ilTqwgUw7BYoFTThyXIDJ5U/k/5raEgwrd8muREljfp3TxvoexILYwnO0+iQ==
   dependencies:
     "@mui/material" "^5.2.1"
