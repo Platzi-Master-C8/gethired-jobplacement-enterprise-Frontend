@@ -7,6 +7,7 @@ import { getJobs } from 'Api/Vacancies/allVacancies';
 
 import useSearch from 'Hooks/useSearch';
 import useFetch from 'Hooks/useFetch';
+import Constants from 'Constants';
 
 import Jobs from './Jobs';
 import FiltersUsers from '../FiltersUsers';
@@ -14,7 +15,7 @@ import FiltersUsers from '../FiltersUsers';
 const JobOffers = () => {
     const { data: listJobs, ...rest } = useFetch(getJobs);
     const { query, setQuery, filteredSearch } = useSearch(listJobs);
-    const errorSearch = query.length > 0 && query.length < 3;
+    const errorSearch = query.length > Constants.Zero && query.length < Constants.MinCharacter;
 
     const handleChange = (e) => setQuery(e.target.value);
 

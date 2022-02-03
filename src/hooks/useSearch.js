@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import Constants from 'Constants';
 
 const useSearch = (data) => {
     const [query, setQuery] = useState('');
@@ -7,7 +8,7 @@ const useSearch = (data) => {
     useMemo(() => {
         const resultData = data?.filter((item) => {
             const filter = item.name.toLowerCase().includes(query.toLowerCase());
-            if (query.length >= 3) {
+            if (query.length >= Constants.MinCharacter) {
                 return filter;
             }
             return data;

@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
-import { scrollTop } from '../components/JobOffers/helpers';
 
-const usePagination = (dataArr, itemsPerPage = 10) => {
-    const FirstPage = 1;
+import { scrollTop } from 'Components/JobOffers/helpers';
+import Constants from 'Constants';
+
+const usePagination = (dataArr, itemsPerPage = Constants.PerPage) => {
+    const FirstPage = Constants.FirstEnumPage;
     const [currentPage, setCurrentPage] = useState(FirstPage);
+    const [sliceData, setSliceData] = useState([]);
 
     const beginArr = (currentPage - 1) * itemsPerPage;
     const endArr = beginArr + itemsPerPage;
 
-    const sliceArr = [...dataArr]?.slice(beginArr, endArr);
-    const [sliceData, setSliceData] = useState(sliceArr);
+    const sliceArr = dataArr.slice(beginArr, endArr);
 
     useEffect(() => {
         setSliceData(sliceArr);
@@ -20,15 +22,9 @@ const usePagination = (dataArr, itemsPerPage = 10) => {
         setCurrentPage(value);
     };
 
-    const jump = (page) => {
-        const pageNumber = Math.max(FirstPage, page);
-        setCurrentPage(Math.min(pageNumber, page));
-    };
-
     return {
         sliceData,
         handleChange,
-        jump,
     };
 };
 
