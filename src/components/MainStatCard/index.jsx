@@ -6,7 +6,7 @@ import { Box, Card, CardContent, Typography } from '@mui/material';
 export const MainStatCard = ({ stat, title }) => {
     return (
         <Box>
-            <Card sx={{ width: 160 }}>
+            <Card sx={{ width: 160 }} elevation={3}>
                 <CardContent>
                     <Typography variant="h2" align="left">
                         {stat}
