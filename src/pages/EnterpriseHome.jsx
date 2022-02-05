@@ -4,6 +4,10 @@ import { Container, Grid } from '@mui/material';
 import { MainStatCard } from '../components/MainStatCard';
 import MainScheduler from '../components/MainScheduler';
 
+import { NewApplicants } from '../components/NewApplicants';
+
+import { NewVacancies } from '../components/NewVacancies';
+
 const fakeStats = [
     {
         id: 1,
@@ -27,8 +31,6 @@ const fakeStats = [
     },
 ];
 
-// const currentDate = new Date();
-
 export const EnterpriseHome = () => {
     return (
         <Container sx={{ pt: 2 }}>
@@ -44,8 +46,16 @@ export const EnterpriseHome = () => {
                 </Grid>
             </Grid>
             <Grid container>
-                <Grid item xs={12} sx={{ pt: 2 }}>
+                <Grid item xs={12} sx={{ py: 2 }}>
                     <MainScheduler />
+                </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+                <Grid item xs={12} md={6}>
+                    <NewApplicants />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <NewVacancies />
                 </Grid>
             </Grid>
         </Container>
