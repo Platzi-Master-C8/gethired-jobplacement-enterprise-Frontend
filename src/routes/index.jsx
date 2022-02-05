@@ -10,6 +10,7 @@ import { ListCandidatesVacancies } from 'Pages/ListCandidatesVacancies';
 import { Interviews } from 'Pages/Interviews';
 
 import { HeaderEnterprise } from 'Components/Header';
+import { ScrollToTop } from 'Components/ScrollTop';
 
 const Routes = () => (
     <HashRouter>
@@ -23,6 +24,7 @@ const Routes = () => (
             <Route path="/interviews" element={<Interviews />} />
             <Route path="*" element={<NotFound />} />
         </Switch>
+        <ScrollToTop />
     </HashRouter>
 );
 
