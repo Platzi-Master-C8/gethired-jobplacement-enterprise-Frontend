@@ -1,7 +1,10 @@
 import React from 'react';
 
-import FormVacancies from 'Components/FormVacancies';
 import Container from '@mui/material/Container';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+
+import { FormVacancies } from 'Components/FormVacancies';
 
 import { postNewVacancy } from '../api/Vacancies/postNewVacancy';
 
@@ -19,15 +22,16 @@ export const CreateVacancies = () => {
 
         return postNewVacancy(formData);
     };
+
     return (
         <Container maxWidth="sm" sx={{ mt: 4, mb: 4 }}>
-            <FormVacancies
-                title="Create Vacancy"
-                editDisplay="none"
-                editButtonText="Cancel"
-                mainButtonText="Save"
-                onSubmit={onSubmit}
-            />
+            <Paper sx={{ p: 3 }}>
+                <Typography variant="h1" align="center" sx={{ mb: 2 }}>
+                    Create a new vacancy
+                </Typography>
+
+                <FormVacancies mainButtonText="Save" onSubmit={onSubmit} />
+            </Paper>
         </Container>
     );
 };
