@@ -19,6 +19,7 @@
         "@mui/material": "5.2.1"
     },
     "dependencies": {
+        "@auth0/auth0-react": "^1.9.0",
         "@date-io/date-fns": "^2.11.0",
         "@devexpress/dx-react-core": "^3.0.0",
         "@devexpress/dx-react-scheduler": "^3.0.0",
@@ -39,6 +40,7 @@
         "@mui/utils": "5.2.2",
         "axios": "0.24.0",
         "date-fns": "2.27.0",
+        "dotenv": "^14.2.0",
         "gh-pages": "^3.2.3",
         "moment": "^2.29.1",
         "prop-types": "15.7.2",
@@ -61,6 +63,7 @@
         "babel-loader": "8.2.3",
         "clean-webpack-plugin": "4.0.0",
         "css-loader": "6.5.1",
+        "dotenv-webpack": "^7.0.3",
         "eslint": "8.3.0",
         "eslint-config-airbnb": "19.0.0",
         "eslint-config-prettier": "8.3.0",

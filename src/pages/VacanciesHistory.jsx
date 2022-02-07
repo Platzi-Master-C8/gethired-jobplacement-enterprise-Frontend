@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ListOfVacancies } from '../components/ListOfVacancies';
-import { Filters } from '../components/Filters';
+import { ListOfVacancies } from 'Components/ListOfVacancies';
+import { Filters } from 'Components/Filters';
 
 const Container = styled.div`
     display: flex;
