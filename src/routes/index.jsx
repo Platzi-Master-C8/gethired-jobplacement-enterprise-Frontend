@@ -21,10 +21,10 @@ const Routes = () => {
             <Layout>
                 {isAuthenticated ? (
                     <Switch>
-                        <Route path="/home" element={<EnterpriseHome />} />
-                        <Route path="/" element={<VacanciesHistory />} />
-                        <Route path="/vacancies" element={<CreateVacancies />} />
-                        <Route path="/vacancies/:id" element={<EditVacancies />} />
+                        <Route path="/" element={<EnterpriseHome />} />
+                        <Route path="/vacancies" element={<VacanciesHistory />} />
+                        <Route path="/vacancies/create" element={<CreateVacancies />} />
+                        <Route path="/vacancies/:id/edit" element={<EditVacancies />} />
                         <Route path="/candidates" element={<ListCandidatesVacancies />} />
                         <Route path="/interview-planning" element={<InterviewPlanning />} />
                         <Route path="/interviews" element={<Interviews />} />
