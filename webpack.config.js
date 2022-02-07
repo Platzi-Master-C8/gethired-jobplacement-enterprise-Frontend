@@ -3,6 +3,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     entry: './src/index.jsx',
@@ -99,6 +100,9 @@ module.exports = {
             // generateStatsFile: true,
             analyzerMode: 'disabled',
             generateStatsFile: true,
+        }),
+        new Dotenv({
+            path: './.env',
         }),
     ],
 };
