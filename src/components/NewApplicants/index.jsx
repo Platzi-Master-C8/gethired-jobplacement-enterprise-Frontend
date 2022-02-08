@@ -20,9 +20,8 @@ import LastPageIcon from '@mui/icons-material/LastPage';
 import { Typography } from '@mui/material';
 import { ApplicantItemCard } from '../ApplicantItemCard';
 
-const TablePaginationActions = (props) => {
+const TablePaginationActions = ({ count, page, rowsPerPage, onPageChange }) => {
     const theme = useTheme();
-    const { count, page, rowsPerPage, onPageChange } = props;
 
     const handleFirstPageButtonClick = (event) => {
         onPageChange(event, 0);
