@@ -28,11 +28,11 @@ const Routes = () => {
                         <Route path="/candidates" element={<ListCandidatesVacancies />} />
                         <Route path="/interview-planning" element={<InterviewPlanning />} />
                         <Route path="/interviews" element={<Interviews />} />
-                        <Route path="/offers" element={<Offers />} />
                         <Route path="*" element={<NotFound />} />
                     </Switch>
                 ) : (
                     <Switch>
+                        <Route path="/users" element={<Offers />} />
                         <Route path="/" element={<VacanciesHistory />} />
                         <Route path="*" element={<NotFound />} />
                     </Switch>
