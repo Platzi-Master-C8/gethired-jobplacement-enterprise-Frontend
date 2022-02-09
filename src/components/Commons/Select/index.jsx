@@ -1,39 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Controller } from 'react-hook-form';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import SelectMUI from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import FormHelperText from '@mui/material/FormHelperText';
 
-import { Controller } from 'react-hook-form';
-
-export const Select = ({ name, label, control, defaultValue, options, required }) => {
+export const Select = ({ name, control, label, options, required, helperText }) => {
     return (
-        <FormControl variant="filled" fullWidth required={required}>
-            <InputLabel id={name}>{label}</InputLabel>
-            <Controller
-                name={name}
-                control={control}
-                defaultValue={defaultValue}
-                render={({ field: { onChange, value }, fieldState: { error } }) => (
-                    <SelectMUI labelId={name} id={name} onChange={onChange} value={value} error={!!error}>
+        <Controller
+            name={name}
+            control={control}
+            render={({ field: { onChange, value }, fieldState: { invalid, error } }) => (
+                <FormControl variant="filled" fullWidth error={invalid}>
+                    <InputLabel id={name}>{label}</InputLabel>
+                    <SelectMUI labelId={name} id={name} onChange={onChange} value={value}>
                         {options.map((option) => (
                             <MenuItem key={option.value} value={option.value}>
                                 {option.label}
                             </MenuItem>
                         ))}
                     </SelectMUI>
-                )}
-            />
-        </FormControl>
+                    {error && <FormHelperText>{error.message}</FormHelperText>}
+                </FormControl>
+            )}
+            rules={{
+                required: {
+                    value: required,
+                    message: helperText,
+                },
+            }}
+        />
     );
 };
 
 Select.propTypes = {
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    defaultValue: PropTypes.string,
     options: PropTypes.arrayOf(
         PropTypes.shape({
             value: PropTypes.string.isRequired,
@@ -42,9 +47,10 @@ Select.propTypes = {
     ).isRequired,
     required: PropTypes.bool,
     control: PropTypes.shape({}).isRequired,
+    helperText: PropTypes.string,
 };
 
 Select.defaultProps = {
-    defaultValue: '',
     required: false,
+    helperText: 'Please enter the value',
 };
