@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Routes as Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import { NotFound } from 'Pages/NotFound';
@@ -17,7 +17,7 @@ const Routes = () => {
     const { isAuthenticated } = useAuth0();
 
     return (
-        <HashRouter>
+        <BrowserRouter>
             <Layout>
                 {isAuthenticated ? (
                     <Switch>
@@ -38,7 +38,7 @@ const Routes = () => {
                     </Switch>
                 )}
             </Layout>
-        </HashRouter>
+        </BrowserRouter>
     );
 };
 

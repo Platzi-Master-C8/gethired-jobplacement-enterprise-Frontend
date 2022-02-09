@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import Paper from '@mui/material/Paper';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
@@ -179,40 +179,34 @@ const ExternalViewSwitcher = ({ currentViewName, onChange }) => (
     </ToggleButtonGroup>
 );
 
-export default class MainScheduler extends React.PureComponent {
-    constructor(props) {
-        super(props);
+export const MainScheduler = () => {
+    const [data, setData] = useState();
+    const [currentViewName, setCurrentViewName] = useState('Month');
 
-        this.state = {
-            data: appointments,
-            currentViewName: 'Month',
-        };
+    const currentViewNameChange = (e) => {
+        setCurrentViewName(e.target.value);
+    };
 
-        this.currentViewNameChange = (e) => {
-            this.setState({ currentViewName: e.target.value });
-        };
-    }
+    useEffect(() => {
+        setData(appointments);
+    });
 
-    render() {
-        const { data, currentViewName } = this.state;
-
-        return (
-            <Paper elevation={3}>
-                <ExternalViewSwitcher currentViewName={currentViewName} onChange={this.currentViewNameChange} />
-                <Scheduler data={data} height={700}>
-                    <ViewState currentViewName={currentViewName} />
-                    <DayView startDayHour={8} endDayHour={18} />
-                    <WeekView startDayHour={8} endDayHour={18} />
-                    <MonthView />
-                    <Toolbar />
-                    <DateNavigator />
-                    <TodayButton />
-                    <Appointments />
-                </Scheduler>
-            </Paper>
-        );
-    }
-}
+    return (
+        <Paper elevation={3}>
+            <ExternalViewSwitcher currentViewName={currentViewName} onChange={currentViewNameChange} />
+            <Scheduler data={data} height={700}>
+                <ViewState currentViewName={currentViewName} />
+                <DayView startDayHour={8} endDayHour={18} />
+                <WeekView startDayHour={8} endDayHour={18} />
+                <MonthView />
+                <Toolbar />
+                <DateNavigator />
+                <TodayButton />
+                <Appointments />
+            </Scheduler>
+        </Paper>
+    );
+};
 
 ExternalViewSwitcher.propTypes = {
     currentViewName: PropTypes.string.isRequired,
