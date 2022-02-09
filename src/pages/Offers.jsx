@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
-import ModalCode from 'Components/ModalCode';
 import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import JobDetailsModal from '../components/JobDetailsModal';
+import Container from '@mui/material/Container';
+import JobDetailsModal from 'Components/JobDetailsModal';
+import JobOffers from 'Components/JobOffers';
 
 const Offers = () => {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
     const [openDetail, setOpenDetail] = useState(false);
     const handleOpenDetail = () => setOpenDetail(true);
     const handleCloseDetail = () => setOpenDetail(false);
@@ -33,12 +29,11 @@ const Offers = () => {
     };
 
     return (
-        <Grid container>
-            <Button onClick={handleOpen}>Status of my offer</Button>
-            <ModalCode open={open} handleClose={handleClose} />
+        <Container>
+            <JobOffers />
             <Button onClick={handleOpenDetail}>See detail of offer</Button>
             <JobDetailsModal open={openDetail} handleClose={handleCloseDetail} vacancyInfo={vacancyInfo} />
-        </Grid>
+        </Container>
     );
 };
 

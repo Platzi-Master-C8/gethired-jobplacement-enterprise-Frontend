@@ -20,6 +20,7 @@ module.exports = {
         'arrow-body-style': 'off',
         'react/jsx-fragments': ['error', 'element'],
         'import/no-extraneous-dependencies': 'off',
+        'react-hooks/exhaustive-deps': 'off',
         'react/function-component-definition': [
             'error',
             {
