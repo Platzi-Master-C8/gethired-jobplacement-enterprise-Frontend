@@ -22,7 +22,7 @@ export const ListOfVacancies = () => {
                 <Title>History</Title>
                 {isAuthenticated && (
                     <Button type="button" variant="contained">
-                        <LinkStyled color="#FFF" to="/vacancies">
+                        <LinkStyled color="#FFF" to="/vacancies/create">
                             Create new vacancy
                         </LinkStyled>
                     </Button>
