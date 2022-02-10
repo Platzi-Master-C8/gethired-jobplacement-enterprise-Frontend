@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const axiosClient = axios.create();
 
-axiosClient.defaults.baseURL = 'https://gethired-enterprise.herokuapp.com';
+axiosClient.defaults.baseURL = 'https://gethiredplatzi.herokuapp.com/api/v1';
 axiosClient.defaults.headers = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
