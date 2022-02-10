@@ -16,6 +16,7 @@ module.exports = {
         extensions: ['.js', '.jsx'],
         alias: {
             Components: path.resolve(__dirname, './src/components'),
+            Services: path.resolve(__dirname, './src/api'),
             Constants: path.resolve(__dirname, './src/constants'),
             Pages: path.resolve(__dirname, './src/pages'),
             Styles: path.resolve(__dirname, './src/style'),
