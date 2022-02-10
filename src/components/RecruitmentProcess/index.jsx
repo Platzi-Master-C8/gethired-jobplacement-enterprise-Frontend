@@ -21,36 +21,28 @@ const rows = [
     createData(5, 'Roscoe Johns', 'Behance', '1 year', '1k USD', '30/11/2016'),
 ];
 
-export const ApplicantComparison = () => {
+export const RecruitmentProcess = () => {
     return (
         <React.Fragment>
             {/* <Grid container spacing={3} > */}
             <Typography variant="h2" sx={{ mb: 2 }}>
-                Applicant comparison
+                Recruitment Progress
             </Typography>
-            <TableContainer component={Paper} elevation={3}>
+            <TableContainer component={Paper} elevation={3} sx={{ px: 4, mb: 2 }}>
                 <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>ID</TableCell>
-                            <TableCell align="right">name</TableCell>
-                            <TableCell align="right">portfolio</TableCell>
-                            <TableCell align="right">experience</TableCell>
-                            <TableCell align="right">salary</TableCell>
-                            <TableCell align="right">start</TableCell>
+                            <TableCell align="right">Status</TableCell>
+                            <TableCell align="right">Date</TableCell>
+                            <TableCell align="right">Details</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {rows.map((row) => (
                             <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                <TableCell component="th" scope="row">
-                                    {row.id}
-                                </TableCell>
                                 <TableCell align="right">{row.name}</TableCell>
                                 <TableCell align="right">{row.portfolio}</TableCell>
                                 <TableCell align="right">{row.experience}</TableCell>
-                                <TableCell align="right">{row.salary}</TableCell>
-                                <TableCell align="right">{row.start}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

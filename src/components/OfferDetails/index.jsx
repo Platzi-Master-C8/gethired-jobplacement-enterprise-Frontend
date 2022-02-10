@@ -12,7 +12,7 @@ export const OfferDetails = ({ description, hoursWeek, budget, experience, start
             <Typography variant="h2" mb={2}>
                 Offer Details
             </Typography>
-            <Paper sx={{ p: 2 }}>
+            <Paper sx={{ p: 2 }} elevation={3}>
                 <Typography variant="h3" mb={1}>
                     Description
                 </Typography>
