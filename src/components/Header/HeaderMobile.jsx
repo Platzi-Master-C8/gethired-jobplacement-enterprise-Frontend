@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Avatar from '@mui/material/Avatar';
-import { Box, MenuList, MenuItem, Link, ListItemIcon, ListItemText, Drawer, IconButton, Button } from '@mui/material';
+import { Box, MenuList, MenuItem, Link, ListItemIcon, ListItemText, Drawer, IconButton } from '@mui/material';
 import { Message, BriefCase, Notification, Blog, UserGroup, Currency, Menu } from '@master-c8/icons';
 import { grey } from '@mui/material/colors';
+import { LogoutButton } from 'Components/AuthButtons';
 
 export const HeaderMobile = ({ openDrawer, setOpenDrawer }) => {
     return (
@@ -119,9 +120,7 @@ export const HeaderMobile = ({ openDrawer, setOpenDrawer }) => {
                         </ListItemIcon>
                     </MenuItem>
                     <MenuItem sx={{ justifyContent: 'center' }}>
-                        <Button variant="contained" size="large" type="button" sx={{ width: '60%' }}>
-                            Sign out
-                        </Button>
+                        <LogoutButton size="large" sx={{ width: '60%' }} />
                     </MenuItem>
                 </MenuList>
             </Drawer>

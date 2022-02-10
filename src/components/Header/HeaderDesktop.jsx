@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
-import { Menu, MenuList, MenuItem, Link, ListItemIcon, ListItemText, Box, Button } from '@mui/material';
+import { Menu, MenuList, MenuItem, Link, ListItemIcon, ListItemText, Box } from '@mui/material';
 import { Message, BriefCase, Notification, Blog, UserGroup, Currency } from '@master-c8/icons';
 import { grey } from '@mui/material/colors';
+import { LogoutButton } from 'Components/AuthButtons';
 
 export const HeaderDesktop = () => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -58,7 +59,7 @@ export const HeaderDesktop = () => {
                         alignItems: 'center',
                     }}
                     size="small"
-                    href="/"
+                    href="/vacancies"
                 >
                     <ListItemIcon>
                         <BriefCase sx={{ color: grey[900] }} />
@@ -75,7 +76,7 @@ export const HeaderDesktop = () => {
                         alignItems: 'center',
                     }}
                     size="small"
-                    href="/#/interviews"
+                    href="/interviews"
                 >
                     <ListItemIcon>
                         <UserGroup sx={{ color: grey[900] }} />
@@ -92,7 +93,7 @@ export const HeaderDesktop = () => {
                         alignItems: 'center',
                     }}
                     size="small"
-                    href="/"
+                    href="/postulations"
                 >
                     <ListItemIcon>
                         <Blog sx={{ color: grey[900] }} />
@@ -127,9 +128,7 @@ export const HeaderDesktop = () => {
                 </ListItemIcon>
                 <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
                     <MenuItem>
-                        <Button variant="contained" size="large" type="button">
-                            Sign out
-                        </Button>
+                        <LogoutButton />
                     </MenuItem>
                 </Menu>
             </Box>
