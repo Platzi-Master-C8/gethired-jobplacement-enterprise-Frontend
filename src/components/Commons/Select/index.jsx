@@ -18,8 +18,8 @@ export const Select = ({ name, control, label, options, required, helperText }) 
                     <InputLabel id={name}>{label}</InputLabel>
                     <SelectMUI labelId={name} id={name} onChange={onChange} value={value}>
                         {options.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
-                                {option.label}
+                            <MenuItem key={option.id} value={option.id}>
+                                {option.name}
                             </MenuItem>
                         ))}
                     </SelectMUI>
@@ -41,8 +41,8 @@ Select.propTypes = {
     label: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(
         PropTypes.shape({
-            value: PropTypes.string.isRequired,
-            label: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
         }),
     ).isRequired,
     required: PropTypes.bool,
