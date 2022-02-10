@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import { activeVacancy, inactiveVacancy } from '../../api/Vacancies/updateVacancy';
 import {
     Vacancy as Container,
     Header,
@@ -24,10 +24,10 @@ export const Vacancy = ({ title, checked, salary, modality, applies, description
 
     const handleStatus = () => {
         if (status) {
-            axios.patch(`https://gethiredplatzi.herokuapp.com/api/v1/vacancies-status-inactive/${id}`);
+            inactiveVacancy(id);
             setStatus(false);
         } else {
-            axios.patch(`https://gethiredplatzi.herokuapp.com/api/v1/vacancies-status-active/${id}`);
+            activeVacancy(id);
             setStatus(true);
         }
     };
