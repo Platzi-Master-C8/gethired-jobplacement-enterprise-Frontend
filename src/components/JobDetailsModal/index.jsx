@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -10,15 +11,15 @@ import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
 import { IconButton, Typography } from '@mui/material';
 
-const JobDetailsModal = ({ handleClose, open, vacancyInfo }) => {
-    const { companyName, location, description, skills, name, salary, typeWork, hoursPerWeek, minimumExperience } =
+const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
+    const { companyName, location, description, skills, name, salary, typeWork, hours_per_week, minimum_experience } =
         vacancyInfo;
 
     return (
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={showDetail} onClose={handleOpenClose}>
             <IconButton
                 aria-label="close"
-                onClick={handleClose}
+                onClick={handleOpenClose}
                 sx={{
                     position: 'absolute',
                     right: 8,
@@ -70,7 +71,7 @@ const JobDetailsModal = ({ handleClose, open, vacancyInfo }) => {
                             <li>
                                 <Typography variant="p" component="p" sx={{ marginTop: '10px' }}>
                                     <b>Hours per week: </b>
-                                    {hoursPerWeek}
+                                    {hours_per_week}
                                 </Typography>
                             </li>
                             <li>
@@ -82,16 +83,21 @@ const JobDetailsModal = ({ handleClose, open, vacancyInfo }) => {
                             <li>
                                 <Typography variant="p" component="p" sx={{ marginTop: '10px' }}>
                                     <b>Minum experience: </b>
-                                    {minimumExperience}
+                                    {minimum_experience}
                                 </Typography>
                             </li>
                         </ul>
                     </DialogContent>
                     <DialogActions sx={{ display: 'flex', justifyContent: 'space-around', mb: 3 }}>
-                        <Button onClick={handleClose} size="large" variant="contained">
+                        <Button onClick={() => console.log('Apply to Vacancy')} size="large" variant="contained">
                             Apply
                         </Button>
-                        <Button size="large" variant="contained" type="button" href="#">
+                        <Button
+                            size="large"
+                            variant="contained"
+                            type="button"
+                            onClick={() => console.log('See Company Details')}
+                        >
                             Company details
                         </Button>
                     </DialogActions>
@@ -102,8 +108,8 @@ const JobDetailsModal = ({ handleClose, open, vacancyInfo }) => {
 };
 
 JobDetailsModal.propTypes = {
-    handleClose: PropTypes.func.isRequired,
-    open: PropTypes.bool.isRequired,
+    handleOpenClose: PropTypes.func.isRequired,
+    showDetail: PropTypes.bool.isRequired,
     vacancyInfo: PropTypes.shape({
         companyName: PropTypes.string,
         location: PropTypes.string,
@@ -116,8 +122,8 @@ JobDetailsModal.propTypes = {
         company_id: PropTypes.number,
         typeWork: PropTypes.string,
         job_location: PropTypes.string,
-        hoursPerWeek: PropTypes.string,
-        minimumExperience: PropTypes.string,
+        hours_per_week: PropTypes.string,
+        minimum_experience: PropTypes.string,
         created_at: PropTypes.string,
         updated_at: PropTypes.string,
     }).isRequired,
