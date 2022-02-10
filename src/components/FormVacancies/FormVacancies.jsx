@@ -56,7 +56,7 @@ const VacanciesForm = ({ title, editDisplay, editButtonText, mainButtonText, def
         onSubmit(data)
             .then(() => {
                 reset();
-                navigate('/');
+                navigate('/vacancies');
             })
             .catch(() => {
                 setMessage('There was an error creating vacancy');

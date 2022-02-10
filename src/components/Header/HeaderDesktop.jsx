@@ -59,7 +59,7 @@ export const HeaderDesktop = () => {
                         alignItems: 'center',
                     }}
                     size="small"
-                    href="/"
+                    href="/vacancies"
                 >
                     <ListItemIcon>
                         <BriefCase sx={{ color: grey[900] }} />
@@ -76,7 +76,7 @@ export const HeaderDesktop = () => {
                         alignItems: 'center',
                     }}
                     size="small"
-                    href="/#/interviews"
+                    href="/interviews"
                 >
                     <ListItemIcon>
                         <UserGroup sx={{ color: grey[900] }} />
@@ -93,7 +93,7 @@ export const HeaderDesktop = () => {
                         alignItems: 'center',
                     }}
                     size="small"
-                    href="/"
+                    href="/postulations"
                 >
                     <ListItemIcon>
                         <Blog sx={{ color: grey[900] }} />

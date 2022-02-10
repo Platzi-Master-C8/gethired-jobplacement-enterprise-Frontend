@@ -14,6 +14,7 @@ const ModalCode = ({ handleClose, open }) => {
     const { register, handleSubmit, formState } = useForm();
     const { errors } = formState;
 
+    // eslint-disable-next-line no-console
     const onSubmit = (data) => console.log(data);
 
     const valueRequired = {

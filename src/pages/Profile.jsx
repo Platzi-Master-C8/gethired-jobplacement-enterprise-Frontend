@@ -5,6 +5,7 @@ export const Profile = () => {
     const { user } = useAuth0();
     const { name, picture, email } = user;
 
+    // eslint-disable-next-line no-console
     console.log(name, picture, email);
     return (
         <div>

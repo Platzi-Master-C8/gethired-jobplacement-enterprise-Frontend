@@ -37,7 +37,7 @@ export const Vacancy = ({ title, salary, modality, applies, seen, description, i
             {isAuthenticated && (
                 <Footer>
                     <Button type="button" variant="contained">
-                        <LinkStyled color="#FFF" to={`/vacancies/${id}`}>
+                        <LinkStyled color="#FFF" to={`/vacancies/${id}/edit`}>
                             Edit
                         </LinkStyled>
                     </Button>
