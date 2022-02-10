@@ -60,7 +60,7 @@ export const CardApplicantList = () => {
                 </Typography>
 
                 <Button size="small" variant="contained">
-                    <LinkStyled color="#FFF" to="/interview-planning">
+                    <LinkStyled color="#FFF" to="/interviews/create">
                         Interview
                     </LinkStyled>
                 </Button>
