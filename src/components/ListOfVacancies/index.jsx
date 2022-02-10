@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
+import { Divider } from '@mui/material';
 
 import axios from 'axios';
 
 import { Vacancy } from '../Vacancy';
 import { Container, Title, Header, LinkStyled } from './styles';
+import SkeletonVacancyHistory from '../SkeletonVacancyHistory';
 
 export const ListOfVacancies = () => {
     const [data, setData] = useState();
 
     useEffect(() => {
-        axios.get('https://gethired-enterprise.herokuapp.com/vacancies/').then((response) => {
-            setData(response.data);
+        axios.get('https://gethiredplatzi.herokuapp.com/api/v1/vacancies').then((response) => {
+            setData(response.data.data);
         });
     }, []);
 
@@ -27,20 +29,23 @@ export const ListOfVacancies = () => {
             </Header>
             {data ? (
                 data.map((vacancy) => (
-                    <Vacancy
-                        title={vacancy.title_of_vacancie}
-                        date={new Date()}
-                        salary={vacancy.salary}
-                        modality="remote"
-                        applies={100}
-                        seen={300}
-                        description={vacancy.vacancie_details}
-                        key={vacancy.id}
-                        id={vacancy.id}
-                    />
+                    <Container>
+                        <Vacancy
+                            title={vacancy.name}
+                            date={new Date()}
+                            checked={vacancy.status}
+                            salary={vacancy.salary}
+                            modality={vacancy.typeWork}
+                            applies={100}
+                            description={vacancy.description}
+                            key={vacancy.id}
+                            id={vacancy.id}
+                        />
+                        <Divider />
+                    </Container>
                 ))
             ) : (
-                <p>Loading...</p>
+                <SkeletonVacancyHistory />
             )}
         </Container>
     );
