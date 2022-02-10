@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import { Divider } from '@mui/material';
 
-import axios from 'axios';
-
 import { Vacancy } from '../Vacancy';
 import { Container, Title, Header, LinkStyled } from './styles';
 import SkeletonVacancyHistory from '../SkeletonVacancyHistory';
+
+import { getAllVacancy } from '../../api/Vacancies/updateVacancy';
 
 export const ListOfVacancies = () => {
     const [data, setData] = useState();
 
     useEffect(() => {
-        axios.get('https://gethiredplatzi.herokuapp.com/api/v1/vacancies').then((response) => {
+        getAllVacancy().then((response) => {
             setData(response.data.data);
         });
     }, []);
