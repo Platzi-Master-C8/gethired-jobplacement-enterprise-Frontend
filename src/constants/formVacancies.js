@@ -1,10 +1,10 @@
 export const initialValues = {
-    id: '',
+    id: undefined,
     name: '',
     salary: '',
     description: '',
     company: '',
-    typeWork: '',
+    'type-work': '',
     'job-location': '',
     skills: [],
     'hours-per-week': '',
