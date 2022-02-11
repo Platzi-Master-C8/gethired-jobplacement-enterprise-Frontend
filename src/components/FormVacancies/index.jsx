@@ -10,30 +10,36 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Snackbar from '@mui/material/Snackbar';
 
+import { initialValues } from 'Constants/formVacancies';
+import { getAllTypesOfWork } from 'Services/TypesOfWork';
+import { getAllSkills } from 'Services/Skills';
+import { getAllCompaniesToSelect } from 'Services/Companies';
 import { InputText } from 'Components/Commons/InputText';
 import { Select } from 'Components/Commons/Select';
-
-import { typeOfWork, companyName } from 'Constants/mockData';
+import { Tags } from 'Components/Commons/Tags';
 
 export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
     const [open, setOpen] = useState(false);
     const [message, setMessage] = useState('');
+    const [skillsList, setSkills] = useState([]);
+    const [companiesList, setCompanies] = useState([]);
+    const [typesOfWorkList, setTypesOfWork] = useState([]);
     const navigate = useNavigate();
 
-    const { handleSubmit, control, reset } = useForm({
-        defaultValues: {
-            id: '',
-            name: '',
-            salary: '',
-            description: '',
-            company: '',
-            typeWork: '',
-            'job-location': '',
-            skills: '',
-            'hours-per-week': '',
-            'minimum-experience': '',
-        },
-    });
+    const { handleSubmit, control, reset } = useForm({ defaultValues: initialValues });
+
+    useEffect(() => {
+        Promise.all([getAllSkills(), getAllCompaniesToSelect(), getAllTypesOfWork()])
+            .then(([skills, companies, typesWork]) => {
+                setSkills(skills.data);
+                setCompanies(companies.data);
+                setTypesOfWork(typesWork);
+            })
+            .catch(() => {
+                setMessage('Occurs an error trying to get the data');
+                setOpen(true);
+            });
+    }, []);
 
     useEffect(() => {
         reset(defaultValues);
@@ -41,12 +47,9 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
 
     const handleForm = (data) => {
         onSubmit(data)
-            .then(() => {
-                reset();
-                navigate('/');
-            })
+            .then(navigate('/'))
             .catch(() => {
-                setMessage('There was an error creating vacancy');
+                setMessage('There was an error creating the vacancy');
                 setOpen(true);
             });
     };
@@ -56,38 +59,90 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
             <Box component="form" onSubmit={handleSubmit(handleForm)}>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                        <InputText name="name" label="Vacancy name" control={control} required />
+                        <InputText
+                            name="name"
+                            label="Vacancy name"
+                            helperText="Please enter the name of the vacancy"
+                            control={control}
+                            autofocus
+                            required
+                        />
                     </Grid>
                     <Grid item xs={12}>
-                        <Select name="company" label="Company" control={control} options={companyName} required />
+                        <Select
+                            name="company"
+                            label="Company"
+                            helperText="Please select an option"
+                            control={control}
+                            options={companiesList}
+                            required
+                        />
                     </Grid>
                     <Grid item xs={12}>
-                        <Select name="typeWork" label="Type of work" control={control} options={typeOfWork} required />
+                        <Select
+                            name="type-work"
+                            label="Type of work"
+                            helperText="Please select an option"
+                            control={control}
+                            options={typesOfWorkList}
+                            required
+                        />
                     </Grid>
                     <Grid item xs={12}>
-                        <InputText name="job-location" label="Job location" control={control} required />
+                        <InputText
+                            name="job-location"
+                            label="Job location"
+                            helperText="Please enter the location"
+                            control={control}
+                            required
+                        />
                     </Grid>
                     <Grid item xs={12}>
                         <InputText
                             name="description"
                             label="Description"
-                            control={control}
                             rows={4}
                             multiline
+                            helperText="Please enter the description of the vacancy"
+                            control={control}
                             required
                         />
                     </Grid>
                     <Grid item xs={12}>
-                        <InputText name="skills" label="Skills and abilities" control={control} required />
+                        <Tags
+                            name="skills"
+                            label="Skills and abilities"
+                            control={control}
+                            options={skillsList}
+                            required
+                        />
                     </Grid>
                     <Grid item xs={12}>
-                        <InputText name="salary" label="Salary" control={control} required />
+                        <InputText
+                            name="salary"
+                            label="Salary"
+                            helperText="Please enter the salary"
+                            control={control}
+                            required
+                        />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <InputText name="hours-per-week" label="Hours per week" control={control} required />
+                        <InputText
+                            name="hours-per-week"
+                            label="Hours per week"
+                            helperText="Please enter the hours"
+                            control={control}
+                            required
+                        />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <InputText name="minimum-experience" label="Minimum experience" control={control} required />
+                        <InputText
+                            name="minimum-experience"
+                            label="Minimum experience"
+                            helperText="Please enter the neccessary experience"
+                            control={control}
+                            required
+                        />
                     </Grid>
 
                     <Grid item xs={12}>
@@ -123,14 +178,14 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
 FormVacancies.propTypes = {
     mainButtonText: PropTypes.string.isRequired,
     defaultValues: PropTypes.shape({
-        id: PropTypes.number,
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         name: PropTypes.string,
         salary: PropTypes.string,
         description: PropTypes.string,
-        company: PropTypes.string,
-        typeWork: PropTypes.string,
+        company: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        'type-work': PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         'job-location': PropTypes.string,
-        skills: PropTypes.string,
+        skills: PropTypes.arrayOf(PropTypes.string),
         'hours-per-week': PropTypes.string,
         'minimum-experience': PropTypes.string,
     }),
@@ -138,16 +193,5 @@ FormVacancies.propTypes = {
 };
 
 FormVacancies.defaultProps = {
-    defaultValues: {
-        id: null,
-        name: '',
-        salary: '',
-        description: '',
-        company: '',
-        typeWork: '',
-        'job-location': '',
-        skills: '',
-        'hours-per-week': '',
-        'minimum-experience': '',
-    },
+    defaultValues: initialValues,
 };
