@@ -32,8 +32,7 @@ const Routes = () => {
                     </Switch>
                 ) : (
                     <Switch>
-                        <Route path="/users" element={<Offers />} />
-                        <Route path="/" element={<VacanciesHistory />} />
+                        <Route path="/" element={<Offers />} />
                         <Route path="*" element={<NotFound />} />
                     </Switch>
                 )}
