@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useAuth0 } from '@auth0/auth0-react';
 
 import Button from '@mui/material/Button';
 import {
@@ -17,6 +18,7 @@ import {
 } from './styles';
 
 export const Vacancy = ({ title, salary, modality, applies, seen, description, id }) => {
+    const { isAuthenticated } = useAuth0();
     return (
         <Container>
             <Header>
@@ -32,18 +34,20 @@ export const Vacancy = ({ title, salary, modality, applies, seen, description, i
                 </DivRight>
             </Header>
             <Body>{description}</Body>
-            <Footer>
-                <Button type="button" variant="contained">
-                    <LinkStyled color="#FFF" to={`/vacancies/${id}`}>
-                        Edit
-                    </LinkStyled>
-                </Button>
-                <Button type="button" variant="outlined">
-                    <LinkStyled color="rgb(25, 118, 210)" to="/candidates">
-                        See more
-                    </LinkStyled>
-                </Button>
-            </Footer>
+            {isAuthenticated && (
+                <Footer>
+                    <Button type="button" variant="contained">
+                        <LinkStyled color="#FFF" to={`/vacancies/${id}/edit`}>
+                            Edit
+                        </LinkStyled>
+                    </Button>
+                    <Button type="button" variant="outlined">
+                        <LinkStyled color="rgb(25, 118, 210)" to={`/vacancies/${id}`}>
+                            See more
+                        </LinkStyled>
+                    </Button>
+                </Footer>
+            )}
         </Container>
     );
 };

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
 import Avatar from '@mui/material/Avatar';
-import { Menu, MenuList, MenuItem, ListItemIcon, ListItemText, Box, Button } from '@mui/material';
+import { Menu, MenuList, MenuItem, ListItemIcon, ListItemText, Box } from '@mui/material';
+import { grey } from '@mui/material/colors';
 
 import { Message, BriefCase, Notification, Blog, UserGroup, Currency } from '@master-c8/icons';
-import { grey } from '@mui/material/colors';
+
+import { LogoutButton } from 'Components/AuthButtons';
 
 import { LinkStyled } from './styles';
 
@@ -38,7 +40,7 @@ export const HeaderDesktop = () => {
                 </LinkStyled>
             </MenuItem>
             <MenuItem>
-                <LinkStyled to="/">
+                <LinkStyled to="/vacancies">
                     <ListItemIcon>
                         <BriefCase sx={{ color: grey[900] }} />
                     </ListItemIcon>
@@ -54,7 +56,7 @@ export const HeaderDesktop = () => {
                 </LinkStyled>
             </MenuItem>
             <MenuItem>
-                <LinkStyled to="/">
+                <LinkStyled to="/postulations">
                     <ListItemIcon>
                         <Blog sx={{ color: grey[900] }} />
                     </ListItemIcon>
@@ -79,9 +81,7 @@ export const HeaderDesktop = () => {
                 </ListItemIcon>
                 <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
                     <MenuItem>
-                        <Button variant="contained" size="large" type="button">
-                            Sign out
-                        </Button>
+                        <LogoutButton />
                     </MenuItem>
                 </Menu>
             </Box>

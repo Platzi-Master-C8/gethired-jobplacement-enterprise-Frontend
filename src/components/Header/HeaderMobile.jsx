@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Avatar from '@mui/material/Avatar';
-import { Box, MenuList, MenuItem, ListItemIcon, ListItemText, Drawer, IconButton, Button } from '@mui/material';
-
-import { Message, BriefCase, Notification, Blog, UserGroup, Currency, Menu } from '@master-c8/icons';
+import { Box, MenuList, MenuItem, ListItemIcon, ListItemText, Drawer, IconButton } from '@mui/material';
 import { grey } from '@mui/material/colors';
 
+import { Message, BriefCase, Notification, Blog, UserGroup, Currency, Menu } from '@master-c8/icons';
+
+import { LogoutButton } from 'Components/AuthButtons';
 import { LinkStyled } from './styles';
 
 export const HeaderMobile = ({ openDrawer, setOpenDrawer }) => {
@@ -31,7 +32,7 @@ export const HeaderMobile = ({ openDrawer, setOpenDrawer }) => {
                         </LinkStyled>
                     </MenuItem>
                     <MenuItem>
-                        <LinkStyled to="/">
+                        <LinkStyled to="/vacancies">
                             <ListItemIcon>
                                 <BriefCase sx={{ color: grey[900] }} />
                             </ListItemIcon>
@@ -47,7 +48,7 @@ export const HeaderMobile = ({ openDrawer, setOpenDrawer }) => {
                         </LinkStyled>
                     </MenuItem>
                     <MenuItem>
-                        <LinkStyled to="/">
+                        <LinkStyled to="/postulations">
                             <ListItemIcon>
                                 <Blog sx={{ color: grey[900] }} />
                             </ListItemIcon>
@@ -68,9 +69,7 @@ export const HeaderMobile = ({ openDrawer, setOpenDrawer }) => {
                         </ListItemIcon>
                     </MenuItem>
                     <MenuItem sx={{ justifyContent: 'center' }}>
-                        <Button variant="contained" size="large" type="button" sx={{ width: '60%' }}>
-                            Sign out
-                        </Button>
+                        <LogoutButton size="large" sx={{ width: '60%' }} />
                     </MenuItem>
                 </MenuList>
             </Drawer>

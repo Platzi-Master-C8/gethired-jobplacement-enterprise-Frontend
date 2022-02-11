@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
+import { useAuth0 } from '@auth0/auth0-react';
 
 import axios from 'axios';
 
@@ -8,7 +9,7 @@ import { Container, Title, Header, LinkStyled } from './styles';
 
 export const ListOfVacancies = () => {
     const [data, setData] = useState();
-
+    const { isAuthenticated } = useAuth0();
     useEffect(() => {
         axios.get('https://gethired-enterprise.herokuapp.com/vacancies/').then((response) => {
             setData(response.data);
@@ -19,11 +20,13 @@ export const ListOfVacancies = () => {
         <Container>
             <Header>
                 <Title>History</Title>
-                <Button type="button" variant="contained">
-                    <LinkStyled color="#FFF" to="/vacancies">
-                        Create new vacancy
-                    </LinkStyled>
-                </Button>
+                {isAuthenticated && (
+                    <Button type="button" variant="contained">
+                        <LinkStyled color="#FFF" to="/vacancies/create">
+                            Create new vacancy
+                        </LinkStyled>
+                    </Button>
+                )}
             </Header>
             {data ? (
                 data.map((vacancy) => (

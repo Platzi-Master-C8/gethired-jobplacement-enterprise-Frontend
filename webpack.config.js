@@ -18,10 +18,11 @@ module.exports = {
             Components: path.resolve(__dirname, './src/components'),
             Services: path.resolve(__dirname, './src/api'),
             Constants: path.resolve(__dirname, './src/constants'),
+            Hooks: path.resolve(__dirname, './src/hooks'),
             Pages: path.resolve(__dirname, './src/pages'),
             Styles: path.resolve(__dirname, './src/style'),
             Routes: path.resolve(__dirname, './src/routes'),
-            Hooks: path.resolve(__dirname, './src/hooks'),
+            Api: path.resolve(__dirname, './src/api'),
         },
     },
     devServer: {
