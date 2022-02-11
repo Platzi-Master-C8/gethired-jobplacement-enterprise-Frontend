@@ -76,7 +76,7 @@ Vacancy.propTypes = {
     title: PropTypes.string.isRequired,
     checked: PropTypes.bool.isRequired,
     salary: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    modality: PropTypes.oneOf(['remote', 'face-to-face']).isRequired,
+    modality: PropTypes.oneOf(['Remote', 'Full-time', 'Part-time']).isRequired,
     applies: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     description: PropTypes.string.isRequired,
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
