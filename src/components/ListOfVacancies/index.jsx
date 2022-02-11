@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Button from '@mui/material/Button';
-import { Divider } from '@mui/material';
+import { Divider, Button } from '@mui/material';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import { Container, Title, Header, LinkStyled } from './styles';

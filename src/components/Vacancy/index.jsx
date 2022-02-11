@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useAuth0 } from '@auth0/auth0-react';
 
-import Button from '@mui/material/Button';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
+import { Button, FormControlLabel, Switch } from '@mui/material';
 import { activeVacancy, inactiveVacancy } from '../../api/Vacancies/updateVacancy';
 import {
     Vacancy as Container,

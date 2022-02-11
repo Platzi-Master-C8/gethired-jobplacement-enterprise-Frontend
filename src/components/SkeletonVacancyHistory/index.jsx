@@ -1,9 +1,6 @@
 import React, { Fragment } from 'react';
 
-import Skeleton from '@mui/material/Skeleton';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
+import { Skeleton, Box, Container, Divider } from '@mui/material';
 
 const LoadingVacancyHistory = () => {
     return (
