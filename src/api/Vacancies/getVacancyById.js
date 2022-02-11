@@ -1,5 +1,24 @@
 import axiosClient from '../axiosClient';
 
-export default function getVacancyById(id) {
-    return axiosClient.get(`/vacancies/${id}`);
+export default async function getVacancyById(id) {
+    try {
+        const response = await axiosClient.get(`/vacancies/${id}`);
+        const { data } = response;
+        const vacancy = data.data;
+
+        return {
+            id: vacancy.id,
+            name: vacancy.name,
+            salary: vacancy.salary,
+            description: vacancy.description,
+            company: vacancy.company_id,
+            'type-work': 1,
+            'job-location': vacancy.job_location,
+            skills: [],
+            'hours-per-week': vacancy.hours_per_week,
+            'minimum-experience': vacancy.minimum_experience,
+        };
+    } catch (error) {
+        console.log(error);
+    }
 }
