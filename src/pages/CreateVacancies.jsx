@@ -6,22 +6,10 @@ import Typography from '@mui/material/Typography';
 
 import { FormVacancies } from 'Components/FormVacancies';
 
-import { postNewVacancy } from '../api/Vacancies/postNewVacancy';
+import { postNewVacancy } from 'Services/Vacancies';
 
 export const CreateVacancies = () => {
-    const onSubmit = (data) => {
-        const formData = {
-            title_of_vacancie: data.name,
-            published_at: new Date(),
-            status: 'open',
-            salary: parseInt(data.salary, 10),
-            vacancie_details: data.description,
-            rol_id: 1,
-            postulation_deadline: new Date(),
-        };
-
-        return postNewVacancy(formData);
-    };
+    const onSubmit = (data) => postNewVacancy(data);
 
     return (
         <Container maxWidth="sm" sx={{ mt: 4, mb: 4 }}>
