@@ -47,7 +47,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
 
     const handleForm = (data) => {
         onSubmit(data)
-            .then(navigate('/'))
+            .then(navigate('/vacancies'))
             .catch(() => {
                 setMessage('There was an error creating the vacancy');
                 setOpen(true);
@@ -147,7 +147,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
 
                     <Grid item xs={12}>
                         <Box sx={{ display: 'flex', justifyContent: 'end', gap: '20px' }}>
-                            <Link to="/">
+                            <Link to="/vacancies">
                                 <Button variant="contained" color="error">
                                     Cancel
                                 </Button>
