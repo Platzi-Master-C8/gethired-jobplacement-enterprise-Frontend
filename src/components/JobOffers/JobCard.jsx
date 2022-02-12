@@ -22,7 +22,7 @@ const JobCard = ({ job }) => {
                 </Grid>
                 <Grid item xs={12} sm={12} md={2} sx={{ display: 'flex', alignItems: 'center' }}>
                     <Button onClick={handleOpenClose} variant="contained" color="primary" size="large">
-                        See Details
+                        Details
                     </Button>
                 </Grid>
             </Grid>
