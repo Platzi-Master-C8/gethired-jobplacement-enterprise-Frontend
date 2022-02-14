@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Grid } from '@mui/material';
 
 import { MainStatCard } from '../components/MainStatCard';
-import MainScheduler from '../components/MainScheduler';
+import { MainScheduler } from '../components/MainScheduler';
 
 import { NewApplicants } from '../components/NewApplicants';
 

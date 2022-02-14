@@ -42,7 +42,7 @@ export const Vacancy = ({ title, salary, modality, applies, seen, description, i
                         </LinkStyled>
                     </Button>
                     <Button type="button" variant="outlined">
-                        <LinkStyled color="rgb(25, 118, 210)" to="/candidates">
+                        <LinkStyled color="rgb(25, 118, 210)" to={`/vacancies/${id}`}>
                             See more
                         </LinkStyled>
                     </Button>

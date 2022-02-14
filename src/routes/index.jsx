@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Routes as Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import { NotFound } from 'Pages/NotFound';
@@ -17,7 +17,7 @@ const Routes = () => {
     const { isAuthenticated } = useAuth0();
 
     return (
-        <HashRouter>
+        <BrowserRouter>
             <Layout>
                 {isAuthenticated ? (
                     <Switch>
@@ -25,20 +25,19 @@ const Routes = () => {
                         <Route path="/vacancies" element={<VacanciesHistory />} />
                         <Route path="/vacancies/create" element={<CreateVacancies />} />
                         <Route path="/vacancies/:id/edit" element={<EditVacancies />} />
-                        <Route path="/candidates" element={<ListCandidatesVacancies />} />
-                        <Route path="/interview-planning" element={<InterviewPlanning />} />
+                        <Route path="/vacancies/:id" element={<ListCandidatesVacancies />} />
                         <Route path="/interviews" element={<Interviews />} />
-                        <Route path="/offers" element={<Offers />} />
+                        <Route path="/interviews/create" element={<InterviewPlanning />} />
                         <Route path="*" element={<NotFound />} />
                     </Switch>
                 ) : (
                     <Switch>
-                        <Route path="/" element={<VacanciesHistory />} />
+                        <Route path="/" element={<Offers />} />
                         <Route path="*" element={<NotFound />} />
                     </Switch>
                 )}
             </Layout>
-        </HashRouter>
+        </BrowserRouter>
     );
 };
 
