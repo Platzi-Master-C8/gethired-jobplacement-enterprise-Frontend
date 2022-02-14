@@ -12,9 +12,14 @@ import { ListCandidatesVacancies } from 'Pages/ListCandidatesVacancies';
 import { Interviews } from 'Pages/Interviews';
 import Offers from 'Pages/Offers';
 import Layout from 'Components/Layout';
+import { Loader } from 'Components/Loader';
 
 const Routes = () => {
-    const { isAuthenticated } = useAuth0();
+    const { isAuthenticated, isLoading } = useAuth0();
+
+    if (isLoading) {
+        return <Loader />;
+    }
 
     return (
         <BrowserRouter>
