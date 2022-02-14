@@ -1,10 +1,9 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-require('dotenv').config({ path: './.env' });
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     entry: './src/index.jsx',
@@ -17,6 +16,7 @@ module.exports = {
         extensions: ['.js', '.jsx'],
         alias: {
             Components: path.resolve(__dirname, './src/components'),
+            Services: path.resolve(__dirname, './src/api'),
             Constants: path.resolve(__dirname, './src/constants'),
             Hooks: path.resolve(__dirname, './src/hooks'),
             Pages: path.resolve(__dirname, './src/pages'),
@@ -103,8 +103,8 @@ module.exports = {
             analyzerMode: 'disabled',
             generateStatsFile: true,
         }),
-        new webpack.DefinePlugin({
-            'process.env': JSON.stringify(process.env),
+        new Dotenv({
+            path: './.env',
         }),
     ],
 };
