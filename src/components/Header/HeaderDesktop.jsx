@@ -4,7 +4,7 @@ import Avatar from '@mui/material/Avatar';
 import { Menu, MenuList, MenuItem, ListItemIcon, ListItemText, Box } from '@mui/material';
 import { grey } from '@mui/material/colors';
 
-import { Message, BriefCase, Notification, Blog, UserGroup, Currency } from '@master-c8/icons';
+import { Home, BriefCase, Blog, UserGroup } from '@master-c8/icons';
 
 import { LogoutButton } from 'Components/AuthButtons';
 
@@ -26,17 +26,9 @@ export const HeaderDesktop = () => {
             <MenuItem>
                 <LinkStyled to="/">
                     <ListItemIcon>
-                        <Message sx={{ color: grey[900] }} />
+                        <Home sx={{ color: grey[900] }} />
                     </ListItemIcon>
-                    <ListItemText sx={{ color: 'black' }}>Message</ListItemText>
-                </LinkStyled>
-            </MenuItem>
-            <MenuItem>
-                <LinkStyled to="/">
-                    <ListItemIcon>
-                        <Notification sx={{ color: grey[900] }} />
-                    </ListItemIcon>
-                    <ListItemText sx={{ color: 'black' }}>Notifications</ListItemText>
+                    <ListItemText sx={{ color: 'black' }}>Home</ListItemText>
                 </LinkStyled>
             </MenuItem>
             <MenuItem>
@@ -61,14 +53,6 @@ export const HeaderDesktop = () => {
                         <Blog sx={{ color: grey[900] }} />
                     </ListItemIcon>
                     <ListItemText sx={{ color: 'black' }}>Postulations</ListItemText>
-                </LinkStyled>
-            </MenuItem>
-            <MenuItem>
-                <LinkStyled to="/">
-                    <ListItemIcon>
-                        <Currency sx={{ color: grey[900] }} />
-                    </ListItemIcon>
-                    <ListItemText sx={{ color: 'black' }}>Calculator</ListItemText>
                 </LinkStyled>
             </MenuItem>
             <Box sx={{ display: 'flex' }}>
