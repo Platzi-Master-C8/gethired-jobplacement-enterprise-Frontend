@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
@@ -24,6 +25,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
     const [skillsList, setSkills] = useState([]);
     const [companiesList, setCompanies] = useState([]);
     const [typesOfWorkList, setTypesOfWork] = useState([]);
+    const { user } = useAuth0();
     const navigate = useNavigate();
 
     const { handleSubmit, control, reset } = useForm({ defaultValues: initialValues });
@@ -33,7 +35,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
             .then(([skills, companies, typesWork]) => {
                 setSkills(skills.data);
                 setCompanies(companies.data);
-                setTypesOfWork(typesWork);
+                setTypesOfWork(typesWork.data);
             })
             .catch(() => {
                 setMessage('Occurs an error trying to get the data');
@@ -46,7 +48,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
     }, [reset, defaultValues]);
 
     const handleForm = (data) => {
-        onSubmit(data)
+        onSubmit({ user_id: user.sub, ...data })
             .then(navigate('/vacancies'))
             .catch(() => {
                 setMessage('There was an error creating the vacancy');
@@ -112,6 +114,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
                         <Tags
                             name="skills"
                             label="Skills and abilities"
+                            helperText="Please select the skills and abilities"
                             control={control}
                             options={skillsList}
                             required
@@ -139,7 +142,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
                         <InputText
                             name="minimum-experience"
                             label="Minimum experience"
-                            helperText="Please enter the neccessary experience"
+                            helperText="Please enter the necessary experience"
                             control={control}
                             required
                         />

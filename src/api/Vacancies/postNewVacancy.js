@@ -11,6 +11,8 @@ export default function postNewVacancy(data) {
         hours_per_week: data['hours-per-week'],
         minimum_experience: data['minimum-experience'],
         skills: data.skills.join(),
+        status: 1,
+        user_id: data.user_id,
     };
 
     return axiosClient.post('/vacancies', formatData);
