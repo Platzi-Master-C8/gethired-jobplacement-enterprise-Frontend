@@ -7,9 +7,13 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import TimePicker from '@mui/lab/TimePicker';
+import { getInterviews } from 'Api/Interviews/allInterviews';
+import useFetch from 'Hooks/useFetch';
 
 export const FormPlanning = () => {
     const { register, handleSubmit } = useForm();
+
+    console.log(useFetch(getInterviews));
 
     const onSubmit = (data) => console.log(data);
     return (
