@@ -15,11 +15,6 @@ const Jobs = ({ loading, error, data }) => {
     const { handleChange, sliceData } = usePagination(data);
     const enumPage = countPage(data);
 
-    const handleClick = () => {
-        // TODO: redirect to job detail
-        console.log('clicked');
-    };
-
     if (error && !loading)
         return (
             <Typography variant="h6" sx={{ textAlign: 'center', mt: 4 }}>
@@ -36,7 +31,7 @@ const Jobs = ({ loading, error, data }) => {
                 </Typography>
             )}
             {sliceData?.map((job) => (
-                <JobCard key={job.id} job={job} onClick={handleClick} />
+                <JobCard key={job.id} job={job} />
             ))}
             {!!sliceData.length && (
                 <Box sx={{ mt: 3, mb: 4, display: 'flex', justifyContent: 'center' }}>
