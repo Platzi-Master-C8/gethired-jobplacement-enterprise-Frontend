@@ -2,10 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Avatar from '@mui/material/Avatar';
-import { Box, MenuList, MenuItem, Link, ListItemIcon, ListItemText, Drawer, IconButton } from '@mui/material';
-import { Message, BriefCase, Notification, Blog, UserGroup, Currency, Menu } from '@master-c8/icons';
+import { Box, MenuList, MenuItem, ListItemIcon, ListItemText, Drawer, IconButton } from '@mui/material';
 import { grey } from '@mui/material/colors';
+
+import { Home, BriefCase, Blog, UserGroup, Menu } from '@master-c8/icons';
+
 import { LogoutButton } from 'Components/AuthButtons';
+import { LinkStyled } from './styles';
 
 export const HeaderMobile = ({ openDrawer, setOpenDrawer }) => {
     return (
@@ -13,106 +16,44 @@ export const HeaderMobile = ({ openDrawer, setOpenDrawer }) => {
             <Drawer anchor="right" onClose={() => setOpenDrawer(false)} open={openDrawer}>
                 <MenuList sx={{ display: 'block' }}>
                     <MenuItem>
-                        <Link
-                            sx={{
-                                flexDirection: { sm: 'row', md: 'column' },
-                                display: 'flex',
-                                textDecoration: 'none',
-                                alignItems: 'center',
-                            }}
-                            size="small"
-                            href="/"
-                        >
-                            <ListItemIcon>
-                                <Message sx={{ color: grey[900] }} />
-                            </ListItemIcon>
-                            <ListItemText sx={{ color: 'black' }}>Message</ListItemText>
-                        </Link>
+                        <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
+                            <LinkStyled to="/">
+                                <ListItemIcon>
+                                    <Home sx={{ color: grey[900] }} />
+                                </ListItemIcon>
+                                <ListItemText sx={{ color: 'black' }}>Home</ListItemText>
+                            </LinkStyled>
+                        </IconButton>
                     </MenuItem>
                     <MenuItem>
-                        <Link
-                            sx={{
-                                flexDirection: { sm: 'row', md: 'column' },
-                                display: 'flex',
-                                textDecoration: 'none',
-                                alignItems: 'center',
-                            }}
-                            size="small"
-                            href="/"
-                        >
-                            <ListItemIcon>
-                                <Notification sx={{ color: grey[900] }} />
-                            </ListItemIcon>
-                            <ListItemText sx={{ color: 'black' }}>Notifications</ListItemText>
-                        </Link>
+                        <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
+                            <LinkStyled to="/vacancies">
+                                <ListItemIcon>
+                                    <BriefCase sx={{ color: grey[900] }} />
+                                </ListItemIcon>
+                                <ListItemText sx={{ color: 'black' }}>Vacancies</ListItemText>
+                            </LinkStyled>
+                        </IconButton>
                     </MenuItem>
                     <MenuItem>
-                        <Link
-                            sx={{
-                                flexDirection: { sm: 'row', md: 'column' },
-                                display: 'flex',
-                                textDecoration: 'none',
-                                alignItems: 'center',
-                            }}
-                            size="small"
-                            href="/"
-                        >
-                            <ListItemIcon>
-                                <BriefCase sx={{ color: grey[900] }} />
-                            </ListItemIcon>
-                            <ListItemText sx={{ color: 'black' }}>Vacancies</ListItemText>
-                        </Link>
+                        <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
+                            <LinkStyled to="/interviews">
+                                <ListItemIcon>
+                                    <UserGroup sx={{ color: grey[900] }} />
+                                </ListItemIcon>
+                                <ListItemText sx={{ color: 'black' }}>Interviews</ListItemText>
+                            </LinkStyled>
+                        </IconButton>
                     </MenuItem>
                     <MenuItem>
-                        <Link
-                            sx={{
-                                flexDirection: { sm: 'row', md: 'column' },
-                                display: 'flex',
-                                textDecoration: 'none',
-                                alignItems: 'center',
-                            }}
-                            size="small"
-                            href="/interviews"
-                        >
-                            <ListItemIcon>
-                                <UserGroup sx={{ color: grey[900] }} />
-                            </ListItemIcon>
-                            <ListItemText sx={{ color: 'black' }}>Interviews</ListItemText>
-                        </Link>
-                    </MenuItem>
-                    <MenuItem>
-                        <Link
-                            sx={{
-                                flexDirection: { sm: 'row', md: 'column' },
-                                display: 'flex',
-                                textDecoration: 'none',
-                                alignItems: 'center',
-                            }}
-                            size="small"
-                            href="/interviews"
-                        >
-                            <ListItemIcon>
-                                <Blog sx={{ color: grey[900] }} />
-                            </ListItemIcon>
-                            <ListItemText sx={{ color: 'black' }}>Postulations</ListItemText>
-                        </Link>
-                    </MenuItem>
-                    <MenuItem>
-                        <Link
-                            sx={{
-                                flexDirection: { sm: 'row', md: 'column' },
-                                display: 'flex',
-                                textDecoration: 'none',
-                                alignItems: 'center',
-                            }}
-                            size="small"
-                            href="/interviews"
-                        >
-                            <ListItemIcon>
-                                <Currency sx={{ color: grey[900] }} />
-                            </ListItemIcon>
-                            <ListItemText sx={{ color: 'black' }}>Calculator</ListItemText>
-                        </Link>
+                        <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
+                            <LinkStyled to="/postulations">
+                                <ListItemIcon>
+                                    <Blog sx={{ color: grey[900] }} />
+                                </ListItemIcon>
+                                <ListItemText sx={{ color: 'black' }}>Postulations</ListItemText>
+                            </LinkStyled>
+                        </IconButton>
                     </MenuItem>
                     <MenuItem sx={{ justifyContent: 'center' }}>
                         <ListItemIcon sx={{ color: 'black' }} size="large">
