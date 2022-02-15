@@ -12,7 +12,7 @@ export default async function getVacancyById(id) {
             salary: vacancy.salary,
             description: vacancy.description,
             company: vacancy.company_id,
-            'type-work': 1,
+            'type-work': vacancy.typeWork,
             'job-location': vacancy.job_location,
             skills: [],
             'hours-per-week': vacancy.hours_per_week,
