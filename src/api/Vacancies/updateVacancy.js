@@ -1,21 +1,16 @@
 import axiosClient from '../axiosClient';
 
-export const getVacancy = (id) => {
-    return axiosClient.get(`/vacancies/${id}`);
-};
+export default function updateVacancy({ id, ...data }) {
+    const formatData = {
+        name: data.name,
+        company_id: data.company,
+        typeWork: data['type-work'],
+        job_location: data['job-location'],
+        description: data.description,
+        salary: data.salary,
+        hours_per_week: data['hours-per-week'],
+        minimum_experience: data['minimum-experience'],
+    };
 
-export const updateVacancy = (id, data) => {
-    return axiosClient.put(`/vacancies/${id}`, data);
-};
-
-export const getAllVacancy = () => {
-    return axiosClient.get(`/vacancies`);
-};
-
-export const activeVacancy = (id) => {
-    return axiosClient.patch(`/vacancies-status-active/${id}`);
-};
-
-export const inactiveVacancy = (id) => {
-    return axiosClient.patch(`/vacancies-status-inactive/${id}`);
-};
+    return axiosClient.put(`/vacancies/${id}`, formatData);
+}
