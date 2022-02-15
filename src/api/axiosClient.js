@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const axiosClient = axios.create();
 
-axiosClient.defaults.baseURL = 'https://gethired-enterprise.herokuapp.com';
+axiosClient.defaults.baseURL = process.env.API;
+
 axiosClient.defaults.headers = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',

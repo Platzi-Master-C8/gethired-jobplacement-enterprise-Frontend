@@ -5,11 +5,12 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import DatePicker from '@mui/lab/DatePicker';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import TextField from '@mui/material/TextField';
+
 import formatDate from 'date-fns/locale/en-GB';
+
 import { Controller } from 'react-hook-form';
 
-// eslint-disable-next-line react/prop-types
-export const FormInputDate = ({ name, control, defaultValue, label, required }) => {
+export const InputDate = ({ name, control, defaultValue, label, required }) => {
     return (
         <Controller
             name={name}
@@ -43,14 +44,15 @@ export const FormInputDate = ({ name, control, defaultValue, label, required }) 
     );
 };
 
-FormInputDate.propTypes = {
+InputDate.propTypes = {
     name: PropTypes.string.isRequired,
     defaultValue: PropTypes.string,
     label: PropTypes.string.isRequired,
     required: PropTypes.bool,
+    control: PropTypes.shape({}).isRequired,
 };
 
-FormInputDate.defaultProps = {
+InputDate.defaultProps = {
     defaultValue: '',
     required: false,
 };
