@@ -20,27 +20,28 @@ const Routes = () => {
     if (isLoading) {
         return <Loader />;
     }
+
     return (
         <BrowserRouter>
-            <HeaderEnterprise />
-            {isAuthenticated ? (
-                <Switch>
-                    <Route path="/" element={<EnterpriseHome />} />
-                    <Route path="/vacancies" element={<VacanciesHistory />} />
-                    <Route path="/vacancies/create" element={<CreateVacancies />} />
-                    <Route path="/vacancies/:id/edit" element={<EditVacancies />} />
-                    <Route path="/vacancies/:id" element={<ListCandidatesVacancies />} />
-                    <Route path="/interviews" element={<Interviews />} />
-                    <Route path="/interviews/create" element={<InterviewPlanning />} />
-                    <Route path="*" element={<NotFound />} />
-                </Switch>
-            ) : (
-                <Switch>
-                    <Route path="/" element={<Offers />} />
-                    <Route path="*" element={<NotFound />} />
-                </Switch>
-            )}
-            <ScrollToTop />
+            <Layout>
+                {isAuthenticated ? (
+                    <Switch>
+                        <Route path="/" element={<EnterpriseHome />} />
+                        <Route path="/vacancies" element={<VacanciesHistory />} />
+                        <Route path="/vacancies/create" element={<CreateVacancies />} />
+                        <Route path="/vacancies/:id/edit" element={<EditVacancies />} />
+                        <Route path="/vacancies/:id" element={<ListCandidatesVacancies />} />
+                        <Route path="/interviews" element={<Interviews />} />
+                        <Route path="/interviews/create" element={<InterviewPlanning />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Switch>
+                ) : (
+                    <Switch>
+                        <Route path="/" element={<Offers />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Switch>
+                )}
+            </Layout>
         </BrowserRouter>
     );
 };
