@@ -31,12 +31,14 @@ export const Salary = styled.p`
 
 export const TagContainer = styled.div`
     display: flex;
+    margin: 20px 20px 10px 20px;
     width: 250px;
     justify-content: space-around;
 `;
 
 export const Tag = styled.div`
-    width: 100px;
+    width: 120px;
+    margin: 0 5px;
     height: 30px;
     display: flex;
     align-items: center;

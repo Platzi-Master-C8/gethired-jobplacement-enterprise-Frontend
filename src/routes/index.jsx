@@ -13,9 +13,14 @@ import { Interviews } from 'Pages/Interviews';
 import { PostulationDetail } from 'Pages/PostulationDetail';
 import Offers from 'Pages/Offers';
 import Layout from 'Components/Layout';
+import { Loader } from 'Components/Loader';
 
 const Routes = () => {
-    const { isAuthenticated } = useAuth0();
+    const { isAuthenticated, isLoading } = useAuth0();
+
+    if (isLoading) {
+        return <Loader />;
+    }
 
     return (
         <BrowserRouter>
@@ -34,8 +39,7 @@ const Routes = () => {
                     </Switch>
                 ) : (
                     <Switch>
-                        <Route path="/users" element={<Offers />} />
-                        <Route path="/" element={<VacanciesHistory />} />
+                        <Route path="/" element={<Offers />} />
                         <Route path="*" element={<NotFound />} />
                     </Switch>
                 )}
