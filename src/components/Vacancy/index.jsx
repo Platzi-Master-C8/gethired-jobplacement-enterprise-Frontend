@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import { Button, FormControlLabel, Switch } from '@mui/material';
-import { activeVacancy, inactiveVacancy } from '../../api/Vacancies/updateVacancy';
+import { inactiveVacancy } from '../../api/Vacancies/inactiveVacancy';
+import { activeVacancy } from '../../api/Vacancies/activeVacancy';
 import {
     Vacancy as Container,
     Header,
@@ -76,7 +77,7 @@ Vacancy.propTypes = {
     title: PropTypes.string.isRequired,
     checked: PropTypes.bool.isRequired,
     salary: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    modality: PropTypes.oneOf(['Remote', 'Full-time', 'Part-time']).isRequired,
+    modality: PropTypes.string.isRequired,
     applies: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     description: PropTypes.string.isRequired,
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,

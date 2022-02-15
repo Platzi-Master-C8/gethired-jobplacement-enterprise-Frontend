@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 
-import { getJobs } from 'Api/Vacancies/allVacancies';
+import { getJobs } from 'Api/Vacancies/allActiveVacancies';
 
 import useSearch from 'Hooks/useSearch';
 import useFetch from 'Hooks/useFetch';

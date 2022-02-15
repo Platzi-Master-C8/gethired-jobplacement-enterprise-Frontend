@@ -6,7 +6,7 @@ import { Container, Title, Header, LinkStyled } from './styles';
 import SkeletonVacancyHistory from '../SkeletonVacancyHistory';
 import { Vacancy } from '../Vacancy';
 
-import { getAllVacancy } from '../../api/Vacancies/updateVacancy';
+import { getAllVacancy } from '../../api/Vacancies/allVacancies';
 
 export const ListOfVacancies = () => {
     const [data, setData] = useState();
@@ -31,7 +31,7 @@ export const ListOfVacancies = () => {
             </Header>
             {data ? (
                 data.map((vacancy) => (
-                    <Container>
+                    <Container key={vacancy.id}>
                         <Vacancy
                             title={vacancy.name}
                             date={new Date()}
@@ -40,7 +40,6 @@ export const ListOfVacancies = () => {
                             modality={vacancy.typeWork}
                             applies={100}
                             description={vacancy.description}
-                            key={vacancy.id}
                             id={vacancy.id}
                         />
                         <Divider />
