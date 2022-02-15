@@ -11,12 +11,15 @@ import { VacanciesHistory } from 'Pages/VacanciesHistory';
 import { ListCandidatesVacancies } from 'Pages/ListCandidatesVacancies';
 import { Interviews } from 'Pages/Interviews';
 import Offers from 'Pages/Offers';
-
-import { HeaderEnterprise } from 'Components/Header';
-import { ScrollToTop } from 'Components/ScrollTop';
+import Layout from 'Components/Layout';
+import { Loader } from 'Components/Loader';
 
 const Routes = () => {
-    const { isAuthenticated } = useAuth0();
+    const { isAuthenticated, isLoading } = useAuth0();
+
+    if (isLoading) {
+        return <Loader />;
+    }
     return (
         <BrowserRouter>
             <HeaderEnterprise />
