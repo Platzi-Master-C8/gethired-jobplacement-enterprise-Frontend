@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import { StyledTableCell, StyledTableRow } from '../TableStyling';
+import { capWord } from './helpers';
 
 const process = [
     {
@@ -43,10 +44,6 @@ const process = [
         date: '',
     },
 ];
-
-const capWord = (str) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-};
 
 export const RecruitmentProcess = () => {
     return (

@@ -16,7 +16,7 @@ const JobCardData = {
     status: true,
     salary: '9085960',
     company_id: 1,
-    typeWork: '1',
+    typeWork: '2',
     job_location: '83005 Dayana Forks Apt. 953',
     skills: 'typescript,javascript,css',
     hoursWeek: '16',
@@ -32,12 +32,7 @@ const JobCardData = {
 export const PostulationDetail = () => {
     return (
         <Container sx={{ pt: 2 }}>
-            <Grid
-                sx={{
-                    display: 'flex',
-                    gap: '2rem',
-                }}
-            >
+            <Grid container spacing={4}>
                 <Grid item xs={12} sm={4}>
                     <Typography variant="h2" mb={2}>
                         Postulant

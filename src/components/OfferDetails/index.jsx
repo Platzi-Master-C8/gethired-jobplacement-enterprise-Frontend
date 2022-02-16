@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
 
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
@@ -19,6 +20,27 @@ export const OfferDetails = ({
     experience,
     startDate,
 }) => {
+    const newTypeWork = (value) => {
+        let work;
+        switch (value) {
+            case '1': {
+                work = 'Remote';
+                break;
+            }
+            case '2': {
+                work = 'Full-time';
+                break;
+            }
+            case '3': {
+                work = 'Part-time';
+                break;
+            }
+            default:
+                return null;
+        }
+        return work;
+    };
+
     return (
         <Fragment>
             <Typography variant="h2" mb={2}>
@@ -57,7 +79,7 @@ export const OfferDetails = ({
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }} mb={1}>
                     <Typography variant="body2">Type of work</Typography>
-                    <Typography variant="body2">{typeWork}</Typography>
+                    <Typography variant="body2">{newTypeWork(typeWork)}</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }} mb={1}>
                     <Typography variant="body2">Start date</Typography>
@@ -65,9 +87,13 @@ export const OfferDetails = ({
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }} mb={1}>
                     <Typography variant="body2">Skills needed</Typography>
-                    {skills.split(',').map((skill) => {
-                        return <Chip label={skill} size="small" variant="outlined" color="secondary" />;
-                    })}
+                    <Box>
+                        {skills.split(',').map((skill) => {
+                            return (
+                                <Chip label={skill} size="small" variant="outlined" color="secondary" key={uuidv4()} />
+                            );
+                        })}
+                    </Box>
                 </Box>
             </Paper>
         </Fragment>
