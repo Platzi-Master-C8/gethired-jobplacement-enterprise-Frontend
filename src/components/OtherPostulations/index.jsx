@@ -26,7 +26,7 @@ export const OtherPostulations = () => {
             <Typography variant="h2" sx={{ mb: 2 }}>
                 Other Postulations
             </Typography>
-            <TableContainer component={Paper} elevation={3} sx={{ px: 4 }}>
+            <TableContainer component={Paper} elevation={3} sx={{ px: 4, width: 'auto' }}>
                 <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>

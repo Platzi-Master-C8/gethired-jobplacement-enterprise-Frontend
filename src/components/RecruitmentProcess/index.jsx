@@ -1,54 +1,107 @@
-import * as React from 'react';
+import React, { Fragment } from 'react';
+import moment from 'moment';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
 
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import Checkbox from '@mui/material/Checkbox';
+import Button from '@mui/material/Button';
+import { StyledTableCell, StyledTableRow } from '../TableStyling';
 
-function createData(id, name, portfolio, experience, salary, start) {
-    return { id, name, portfolio, experience, salary, start };
-}
-
-const rows = [
-    createData(1, 'John Doe', 'Dribble', '1 year', '2k USD', '01/10/2020'),
-    createData(2, 'Adaline Reichel', 'Behance', '2 years', '3k USD', '15/11/2021'),
-    createData(3, 'Gracie Weber', 'GitHub', '3 years', '5k USD', '23/06/2000'),
-    createData(4, 'Keegan Thiel', 'GitHub', '5 years', '4k USD', '06/02/2011'),
-    createData(5, 'Roscoe Johns', 'Behance', '1 year', '1k USD', '30/11/2016'),
+const process = [
+    {
+        id: 1,
+        phase: 'apply',
+        status: true,
+        date: new Date(),
+    },
+    {
+        id: 2,
+        phase: 'interview',
+        status: true,
+        date: new Date(),
+    },
+    {
+        id: 3,
+        phase: 'tech test',
+        status: true,
+        date: new Date(),
+    },
+    {
+        id: 4,
+        phase: 'feedback',
+        status: false,
+        date: '',
+    },
+    {
+        id: 5,
+        phase: 'final response',
+        status: false,
+        date: '',
+    },
 ];
+
+const capWord = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+};
 
 export const RecruitmentProcess = () => {
     return (
-        <React.Fragment>
-            {/* <Grid container spacing={3} > */}
+        <Fragment>
             <Typography variant="h2" sx={{ mb: 2 }}>
                 Recruitment Progress
             </Typography>
-            <TableContainer component={Paper} elevation={3} sx={{ px: 4, mb: 2 }}>
+            <TableContainer component={Paper} elevation={3} sx={{ px: 4, pb: 4, mb: 2, width: 'auto' }}>
                 <Table aria-label="simple table">
                     <TableHead>
-                        <TableRow>
-                            <TableCell align="right">Status</TableCell>
-                            <TableCell align="right">Date</TableCell>
-                            <TableCell align="right">Details</TableCell>
-                        </TableRow>
+                        <StyledTableRow>
+                            <StyledTableCell align="center" className="id">
+                                Status
+                            </StyledTableCell>
+                            <StyledTableCell align="center">Stage</StyledTableCell>
+                            <StyledTableCell align="center">Date</StyledTableCell>
+                            <StyledTableCell align="center">Details</StyledTableCell>
+                        </StyledTableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
-                            <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                <TableCell align="right">{row.name}</TableCell>
-                                <TableCell align="right">{row.portfolio}</TableCell>
-                                <TableCell align="right">{row.experience}</TableCell>
-                            </TableRow>
-                        ))}
+                        {process.map((row, index) => {
+                            const labelId = `enhanced-table-checkbox-${index}`;
+
+                            return (
+                                <StyledTableRow key={row.id}>
+                                    <StyledTableCell align="center" padding="checkbox">
+                                        <Checkbox
+                                            color="primary"
+                                            checked={row.status}
+                                            inputProps={{
+                                                'aria-labelledby': labelId,
+                                            }}
+                                        />
+                                    </StyledTableCell>
+                                    <StyledTableCell align="center">{capWord(row.phase)}</StyledTableCell>
+                                    <StyledTableCell align="center">
+                                        {row.date ? moment(row.date).format('DD/MM/YYYY') : '-'}
+                                    </StyledTableCell>
+                                    <StyledTableCell align="center">
+                                        {index === 1 || index > 2 ? (
+                                            <Button variant="contained" sx={{ maxHeight: 40 }}>
+                                                Rate
+                                            </Button>
+                                        ) : (
+                                            <Button variant="outlined" sx={{ maxHeight: 40 }}>
+                                                View
+                                            </Button>
+                                        )}
+                                    </StyledTableCell>
+                                </StyledTableRow>
+                            );
+                        })}
                     </TableBody>
                 </Table>
             </TableContainer>
-            {/* </Grid> */}
-        </React.Fragment>
+        </Fragment>
     );
 };
