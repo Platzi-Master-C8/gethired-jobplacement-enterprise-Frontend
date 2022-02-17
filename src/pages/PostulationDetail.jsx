@@ -29,6 +29,18 @@ const JobCardData = {
     },
 };
 
+const CandidateData = {
+    id: 1,
+    name: 'John Doe',
+    profile: 'Fullstack Developer',
+    email: 'john@doe.com',
+    phone: '5712345678500',
+    location: {
+        city: 'Bogota',
+        country: 'Colombia',
+    },
+};
+
 export const PostulationDetail = () => {
     return (
         <Container sx={{ pt: 2 }}>
@@ -37,8 +49,12 @@ export const PostulationDetail = () => {
                     <Typography variant="h2" mb={2}>
                         Postulant
                     </Typography>
-                    <CardApplicantList />
-                    <OfferDetails {...JobCardData} />
+                    <Grid sx={{ mb: 5 }}>
+                        <CardApplicantList {...CandidateData} />
+                    </Grid>
+                    <Grid>
+                        <OfferDetails {...JobCardData} />
+                    </Grid>
                 </Grid>
                 <Grid item xs={12} sm={8}>
                     <RecruitmentProcess />
