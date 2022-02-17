@@ -9,11 +9,23 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
-import { IconButton, Typography } from '@mui/material';
+import { Chip, IconButton, Typography } from '@mui/material';
+import { helpColor } from '../JobOffers/helpers';
 
 const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
-    const { companyName, location, description, skills, name, salary, typeWork, hours_per_week, minimum_experience } =
-        vacancyInfo;
+    const {
+        company,
+        job_location,
+        description,
+        skills,
+        name,
+        salary,
+        typeWork,
+        hours_per_week,
+        minimum_experience,
+        tracking_code,
+        postulation_status,
+    } = vacancyInfo;
 
     return (
         <Dialog open={showDetail} onClose={handleOpenClose}>
@@ -39,10 +51,10 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                     }}
                 >
                     <Typography variant="h3" component="h3">
-                        {companyName}
+                        {company?.name}
                     </Typography>
                     <DialogTitle sx={{ textAlign: 'center', padding: '5px', fontWeight: 600 }}>{name}</DialogTitle>
-                    <Typography>{location}</Typography>
+                    <Typography>{job_location}</Typography>
                 </Box>
                 <Box component="div">
                     <DialogContent>
@@ -59,7 +71,7 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                             {skills}
                         </Typography>
                         <Typography variant="h2" component="h2" sx={{ marginTop: '20px' }}>
-                            Skills and Offer Details
+                            Offer Details
                         </Typography>
                         <ul>
                             <li>
@@ -86,21 +98,34 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                                     {minimum_experience}
                                 </Typography>
                             </li>
+                            {postulation_status && (
+                                <li>
+                                    <Typography variant="p" component="p" sx={{ marginTop: '10px' }}>
+                                        <b>Offer Status: </b>
+                                        <Chip
+                                            label={postulation_status?.name}
+                                            color={helpColor(postulation_status?.id)}
+                                        />
+                                    </Typography>
+                                </li>
+                            )}
                         </ul>
                     </DialogContent>
-                    <DialogActions sx={{ display: 'flex', justifyContent: 'space-around', mb: 3 }}>
-                        <Button onClick={() => console.log('Apply to Vacancy')} size="large" variant="contained">
-                            Apply
-                        </Button>
-                        <Button
-                            size="large"
-                            variant="contained"
-                            type="button"
-                            onClick={() => console.log('See Company Details')}
-                        >
-                            Company details
-                        </Button>
-                    </DialogActions>
+                    {!tracking_code && (
+                        <DialogActions sx={{ display: 'flex', justifyContent: 'space-around', mb: 3 }}>
+                            <Button onClick={() => console.log('Apply to Vacancy')} size="large" variant="contained">
+                                Apply
+                            </Button>
+                            <Button
+                                size="large"
+                                variant="contained"
+                                type="button"
+                                onClick={() => console.log('See Company Details')}
+                            >
+                                Company details
+                            </Button>
+                        </DialogActions>
+                    )}
                 </Box>
             </Box>
         </Dialog>
@@ -111,21 +136,27 @@ JobDetailsModal.propTypes = {
     handleOpenClose: PropTypes.func.isRequired,
     showDetail: PropTypes.bool.isRequired,
     vacancyInfo: PropTypes.shape({
-        companyName: PropTypes.string,
-        location: PropTypes.string,
+        company: PropTypes.shape({
+            name: PropTypes.string,
+        }),
+        postulation_status: PropTypes.shape({
+            name: PropTypes.string,
+            id: PropTypes.number,
+        }),
         description: PropTypes.string,
         skills: PropTypes.string,
         name: PropTypes.string,
         postulation_deadline: PropTypes.string,
         status: PropTypes.bool,
-        salary: PropTypes.string,
+        salary: PropTypes.number,
         company_id: PropTypes.number,
         typeWork: PropTypes.string,
         job_location: PropTypes.string,
-        hours_per_week: PropTypes.string,
-        minimum_experience: PropTypes.string,
+        hours_per_week: PropTypes.number,
+        minimum_experience: PropTypes.number,
         created_at: PropTypes.string,
         updated_at: PropTypes.string,
+        tracking_code: PropTypes.string,
     }).isRequired,
 };
 
