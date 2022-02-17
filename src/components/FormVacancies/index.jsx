@@ -124,6 +124,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
                         <InputText
                             name="salary"
                             label="Salary"
+                            type="number"
                             helperText="Please enter the salary"
                             control={control}
                             required
@@ -133,6 +134,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
                         <InputText
                             name="hours-per-week"
                             label="Hours per week"
+                            type="number"
                             helperText="Please enter the hours"
                             control={control}
                             required
@@ -141,7 +143,8 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
                     <Grid item xs={12} sm={6}>
                         <InputText
                             name="minimum-experience"
-                            label="Minimum experience"
+                            label="Minimum experience (years)"
+                            type="number"
                             helperText="Please enter the necessary experience"
                             control={control}
                             required
@@ -183,14 +186,14 @@ FormVacancies.propTypes = {
     defaultValues: PropTypes.shape({
         id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         name: PropTypes.string,
-        salary: PropTypes.string,
+        salary: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         description: PropTypes.string,
         company: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         'type-work': PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         'job-location': PropTypes.string,
         skills: PropTypes.arrayOf(PropTypes.string),
-        'hours-per-week': PropTypes.string,
-        'minimum-experience': PropTypes.string,
+        'hours-per-week': PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        'minimum-experience': PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     }),
     onSubmit: PropTypes.func.isRequired,
 };
