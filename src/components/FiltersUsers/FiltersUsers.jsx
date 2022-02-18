@@ -27,6 +27,7 @@ const FiltersUsers = () => {
             setOffer(info);
             handleClose();
             handleOpenDetails();
+            setError(null);
         } catch {
             setError('We have not found any application with this data');
         } finally {

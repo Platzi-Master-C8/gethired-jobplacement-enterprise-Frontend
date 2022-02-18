@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 export const countPage = (data) => {
     const numberPerPage = Math.ceil(data.length / 10);
     return numberPerPage;
@@ -20,4 +21,10 @@ export const helpColor = (id) => {
     }
 
     return null;
+};
+
+export const sum = (app) => {
+    const { company_id, applicant_name, id, applicant_id, created_at, ...rest } = app;
+    const sumTotal = Object.keys(rest).reduce((acc, key) => acc + parseFloat(rest[key] || 0), 0);
+    return (sumTotal / 7).toFixed(1);
 };
