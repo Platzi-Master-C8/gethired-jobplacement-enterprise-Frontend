@@ -10,6 +10,7 @@ import JobDetailsModal from '../JobDetailsModal';
 const FiltersUsers = () => {
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     const [openDetails, setOpenDetails] = useState(false);
     const [offer, setOffer] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -26,8 +27,8 @@ const FiltersUsers = () => {
             setOffer(info);
             handleClose();
             handleOpenDetails();
-            // eslint-disable-next-line no-empty
         } catch {
+            setError('We have not found any application with this data');
         } finally {
             setLoading(false);
         }
@@ -43,7 +44,7 @@ const FiltersUsers = () => {
             <Button sx={{ mt: 3 }} onClick={handleOpen}>
                 Status of my offer
             </Button>
-            <ModalCode open={open} handleClose={handleClose} onSubmit={onSubmit} loading={loading} />
+            <ModalCode open={open} handleClose={handleClose} onSubmit={onSubmit} loading={loading} error={error} />
             {openDetails && (
                 <JobDetailsModal showDetail={openDetails} handleOpenClose={handleCloseDetails} vacancyInfo={offer} />
             )}
