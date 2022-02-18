@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container, Grid, Typography } from '@mui/material';
 
-import { CardApplicantList } from '../components/CardApplicantList/CardApplicantList';
-import { OfferDetails } from '../components/OfferDetails/index';
-import { RecruitmentProcess } from '../components/RecruitmentProcess';
-import { OtherPostulations } from '../components/OtherPostulations';
+import { CardApplicantList } from 'Components/CardApplicantList/CardApplicantList';
+import { OfferDetails } from 'Components/OfferDetails/index';
+import { RecruitmentProcess } from 'Components/RecruitmentProcess';
+import { OtherPostulations } from 'Components/OtherPostulations';
 
 const JobCardData = {
     id: 1,

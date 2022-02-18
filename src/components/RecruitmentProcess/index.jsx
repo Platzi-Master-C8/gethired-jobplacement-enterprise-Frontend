@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
-import { StyledTableCell, StyledTableRow } from '../TableStyling';
+import { StyledTableCell, StyledTableRow } from 'Components/TableStyling';
 import { capWord } from './helpers';
 
 const process = [

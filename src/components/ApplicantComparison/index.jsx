@@ -24,7 +24,6 @@ const rows = [
 export const ApplicantComparison = () => {
     return (
         <React.Fragment>
-            {/* <Grid container spacing={3} > */}
             <Typography variant="h2" sx={{ mb: 2 }}>
                 Applicant comparison
             </Typography>
@@ -56,7 +55,6 @@ export const ApplicantComparison = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-            {/* </Grid> */}
         </React.Fragment>
     );
 };
