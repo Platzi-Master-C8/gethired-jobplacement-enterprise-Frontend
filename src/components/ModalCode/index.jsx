@@ -10,8 +10,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { Typography } from '@mui/material';
 
-const ModalCode = ({ handleClose, open, onSubmit, loading }) => {
+const ModalCode = ({ handleClose, open, onSubmit, loading, error }) => {
     const { register, handleSubmit, formState } = useForm();
     const { errors } = formState;
 
@@ -44,6 +45,11 @@ const ModalCode = ({ handleClose, open, onSubmit, loading }) => {
                         helperText={errors?.lastName?.message}
                     />
                 </DialogContent>
+                {error && (
+                    <Typography component="p" color="error" sx={{ px: 2, textAlign: 'center', pb: 1 }}>
+                        {error}
+                    </Typography>
+                )}
                 <DialogActions sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
                     <Button onClick={handleClose}>Cancel</Button>
                     <LoadingButton type="submit" variant="contained" size="large" loading={loading}>
@@ -55,11 +61,16 @@ const ModalCode = ({ handleClose, open, onSubmit, loading }) => {
     );
 };
 
+ModalCode.defaultProps = {
+    error: null,
+};
+
 ModalCode.propTypes = {
     handleClose: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired,
+    error: PropTypes.string,
 };
 
 export default ModalCode;
