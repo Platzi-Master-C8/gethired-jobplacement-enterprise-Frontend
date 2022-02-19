@@ -2,7 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
-import { NotFound } from 'Pages/NotFound';
+import { Loader } from 'Components/Loader';
+import { HeaderEnterprise } from 'Components/Header';
+import { ScrollToTop } from 'Components/ScrollTop';
 import { EnterpriseHome } from 'Pages/EnterpriseHome';
 import { CreateVacancies } from 'Pages/CreateVacancies';
 import { EditVacancies } from 'Pages/EditVacancies';
@@ -12,8 +14,7 @@ import { ListCandidatesVacancies } from 'Pages/ListCandidatesVacancies';
 import { Interviews } from 'Pages/Interviews';
 import { PostulationDetail } from 'Pages/PostulationDetail';
 import Offers from 'Pages/Offers';
-import Layout from 'Components/Layout';
-import { Loader } from 'Components/Loader';
+import { NotFound } from 'Pages/NotFound';
 
 const Routes = () => {
     const { isAuthenticated, isLoading } = useAuth0();
