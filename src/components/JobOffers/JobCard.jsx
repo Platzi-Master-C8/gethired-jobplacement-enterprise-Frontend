@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import JobDetailsModal from '../JobDetailsModal';
+import { helpCurrency } from './helpers';
 
 const JobCard = ({ job }) => {
     const [showDetail, setShowDetail] = useState(false);
@@ -18,7 +19,7 @@ const JobCard = ({ job }) => {
                         {job.name}
                     </Typography>
                     <Typography sx={{ mb: 4 }}>{job.description}</Typography>
-                    <Typography>${job.salary}</Typography>
+                    <Typography>{helpCurrency(job.salary)}</Typography>
                 </Grid>
                 <Grid item xs={12} sm={12} md={2} sx={{ display: 'flex', alignItems: 'center' }}>
                     <Button onClick={handleOpenClose} variant="contained" color="primary" size="large">

@@ -10,7 +10,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
 import { Chip, IconButton, Typography } from '@mui/material';
-import { helpColor, sum } from '../JobOffers/helpers';
+import { helpColor, sum, helpCurrency } from '../JobOffers/helpers';
 
 const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
     const {
@@ -41,7 +41,7 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
             >
                 <CloseIcon />
             </IconButton>
-            <Box component="div" sx={{ padding: '20px' }}>
+            <Box component="div" sx={{ padding: '20px', minWidth: 600 }}>
                 <Box
                     component="div"
                     sx={{
@@ -70,9 +70,11 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                         <Typography variant="h2" component="h2" sx={{ marginTop: '20px' }}>
                             Skills and Habilities
                         </Typography>
-                        <Typography variant="p" component="p" sx={{ marginTop: '10px' }}>
-                            {skills}
-                        </Typography>
+                        <Box sx={{ marginTop: '10px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                            {skills?.map((skill) => (
+                                <Chip label={skill} key={skill} variant="outlined" color="secondary" />
+                            ))}
+                        </Box>
                         <Typography variant="h2" component="h2" sx={{ marginTop: '20px' }}>
                             Offer Details
                         </Typography>
@@ -92,12 +94,12 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                             <li>
                                 <Typography variant="p" component="p" sx={{ marginTop: '10px' }}>
                                     <b>Salary: </b>
-                                    {salary}
+                                    {helpCurrency(salary)}
                                 </Typography>
                             </li>
                             <li>
                                 <Typography variant="p" component="p" sx={{ marginTop: '10px' }}>
-                                    <b>Minum experience: </b>
+                                    <b>Minimum experience: </b>
                                     {minimum_experience}
                                 </Typography>
                             </li>
@@ -177,7 +179,7 @@ JobDetailsModal.propTypes = {
             }),
         ),
         description: PropTypes.string,
-        skills: PropTypes.string,
+        skills: PropTypes.arrayOf(PropTypes.string),
         name: PropTypes.string,
         postulation_deadline: PropTypes.string,
         status: PropTypes.bool,

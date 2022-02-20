@@ -28,3 +28,5 @@ export const sum = (app) => {
     const sumTotal = Object.keys(rest).reduce((acc, key) => acc + parseFloat(rest[key] || 0), 0);
     return (sumTotal / 7).toFixed(1);
 };
+
+export const helpCurrency = (number) => `$ ${Intl.NumberFormat().format(number)}`;

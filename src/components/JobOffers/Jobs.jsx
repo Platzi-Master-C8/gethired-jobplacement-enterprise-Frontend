@@ -57,7 +57,7 @@ Jobs.propTypes = {
             company_id: PropTypes.number,
             typeWork: PropTypes.string,
             job_location: PropTypes.string,
-            skills: PropTypes.string,
+            skills: PropTypes.arrayOf(PropTypes.string),
             hours_per_week: PropTypes.number,
             minimum_experience: PropTypes.number,
         }),
