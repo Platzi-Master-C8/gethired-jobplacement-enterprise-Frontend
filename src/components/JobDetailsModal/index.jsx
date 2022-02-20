@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '@mui/material/Button';
@@ -11,9 +11,13 @@ import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
 import { IconButton, Typography } from '@mui/material';
 
+import RegisterApplicantForm from '../RegisterApplicantForm';
+
 const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
     const { companyName, location, description, skills, name, salary, typeWork, hours_per_week, minimum_experience } =
         vacancyInfo;
+
+    const [openApplyModal, setOpenApplyModal] = useState(false);
 
     return (
         <Dialog open={showDetail} onClose={handleOpenClose}>
@@ -89,7 +93,7 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                         </ul>
                     </DialogContent>
                     <DialogActions sx={{ display: 'flex', justifyContent: 'space-around', mb: 3 }}>
-                        <Button onClick={() => console.log('Apply to Vacancy')} size="large" variant="contained">
+                        <Button onClick={() => setOpenApplyModal(true)} size="large" variant="contained">
                             Apply
                         </Button>
                         <Button
@@ -103,6 +107,7 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                     </DialogActions>
                 </Box>
             </Box>
+            <RegisterApplicantForm open={openApplyModal} setOpen={setOpenApplyModal} />
         </Dialog>
     );
 };
