@@ -49,8 +49,8 @@ const RegisterApplicantForm = ({ open, setOpen }) => {
         data.append('maternal_last_name', applicantData.maternal_last_name);
         data.append('email', applicantData.email);
         data.append('cellphone', applicantData.cellphone);
-        data.append('country', applicantData.country);
-        data.append('city', applicantData.city);
+        data.append('country', applicantData.country.country);
+        data.append('city', applicantData.city.name);
         data.append('cv_file', applicantData.cv_file);
         data.append('motivation_letter_file', applicantData.motivation_letter_file);
         data.append('job_title', applicantData.job_title);

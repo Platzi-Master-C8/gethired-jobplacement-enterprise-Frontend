@@ -13,20 +13,18 @@ const StyledAutocomplete = styled(Autocomplete)`
     }
 `;
 
-export const CountrySelect = ({ applicantData, setApplicantData }) => {
-    const handleChage = (e, value) => {
-        setApplicantData({ ...applicantData, country: value });
-    };
+export const CountrySelect = ({ applicantData, setApplicantData, type }) => {
+    const { country, city } = applicantData;
 
-    return (
+    return type === 'country' ? (
         <StyledAutocomplete
             id="country-select-demo"
             options={countries}
-            value={applicantData?.country || ' '}
+            value={country || ' '}
             autoHighlight
             isOptionEqualToValue={(option, value) => option.title === value.title}
             getOptionLabel={(option) => option.country || ' '}
-            onChange={handleChage}
+            onChange={(e, value) => setApplicantData({ ...applicantData, country: value, city: '' })}
             renderOption={(props, option) => (
                 <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
                     <img
@@ -50,11 +48,37 @@ export const CountrySelect = ({ applicantData, setApplicantData }) => {
                 />
             )}
         />
+    ) : (
+        <StyledAutocomplete
+            id="country-select-demo"
+            options={country.cities}
+            value={city || ' '}
+            autoHighlight
+            isOptionEqualToValue={(option, value) => option.title === value.title}
+            getOptionLabel={(option) => option.name || ' '}
+            onChange={(e, value) => setApplicantData({ ...applicantData, city: value })}
+            renderOption={(props, option) => (
+                <Box component="li" {...props}>
+                    {option.name}
+                </Box>
+            )}
+            renderInput={(params) => (
+                <TextField
+                    variant="filled"
+                    {...params}
+                    inputProps={{
+                        ...params.inputProps,
+                        autoComplete: 'new-password',
+                    }}
+                />
+            )}
+        />
     );
 };
 
 CountrySelect.propTypes = {
     setApplicantData: PropTypes.func.isRequired,
+    type: PropTypes.string.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
     applicantData: PropTypes.object.isRequired,
 };

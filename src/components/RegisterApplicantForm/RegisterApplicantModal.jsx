@@ -89,7 +89,7 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                         </Grid>
                         <Grid item md={12}>
                             <StyledLabel htmlFor="input-6" shrink>
-                                linkedin_url *
+                                linkedin url *
                             </StyledLabel>
                             <StyledFormControl>
                                 <FilledInput id="input-6" name="linkedin_url" onChange={handleInput} />
@@ -99,14 +99,22 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                             <StyledLabel htmlFor="input-7" shrink>
                                 Country *
                             </StyledLabel>
-                            <CountrySelect setApplicantData={setApplicantData} applicantData={applicantData} />
+                            <CountrySelect
+                                setApplicantData={setApplicantData}
+                                applicantData={applicantData}
+                                type="country"
+                            />
                         </Grid>
                         {applicantData.country && (
                             <Grid item md={12}>
                                 <StyledLabel htmlFor="input-8" shrink>
                                     City *
                                 </StyledLabel>
-                                <CountrySelect setApplicantData={setApplicantData} applicantData={applicantData} />
+                                <CountrySelect
+                                    setApplicantData={setApplicantData}
+                                    applicantData={applicantData}
+                                    type="city"
+                                />
                             </Grid>
                         )}
                     </Grid>
@@ -206,7 +214,7 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                             >
                                 Continue
                             </Button>
-                            <Button variant="outlined" size="medium" sx={{ width: '6rem' }}>
+                            <Button variant="outlined" size="medium" sx={{ width: '6rem' }} onClick={handleClose}>
                                 Cancel
                             </Button>
                         </Grid>
