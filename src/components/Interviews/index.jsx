@@ -1,8 +1,6 @@
 import React from 'react';
 
-import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
 import Grid from '@mui/material/Grid';
 
 import { InterviewCard } from 'Components/InterviewCard';
@@ -10,8 +8,7 @@ import { CancelInterview } from 'Components/CancelInterviewModal';
 import { RescheduleInterview } from 'Components/RescheduleInterviewModal';
 import { InterviewNotification } from 'Components/InterviewNotificationModal';
 
-import useModal from '../hooks/useModal';
-import iconMessage from '../img/icon_message.svg';
+import useModal from 'Hooks/useModal';
 
 const fakeData = [
     {
@@ -76,53 +73,15 @@ export const Interviews = () => {
     const [isOpenNotificationModal, setNotificationModal] = useModal();
 
     return (
-        <Container maxWidth="xl">
-            <Grid container spacing={3}>
-                <Grid item xs={12} md={6}>
+        <React.Fragment>
+            <Grid container sx={{ my: 3, display: 'flex', justifyContent: 'center' }}>
+                <Grid item xs={12} sm={12} md={8}>
                     <TextField
                         fullWidth
                         id="search"
                         label="Search"
                         variant="filled"
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <img src={iconMessage} alt="Icon Message" />
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                </Grid>
-
-                <Grid item xs={12} md={3}>
-                    <TextField
-                        fullWidth
-                        id="location"
-                        label="Location"
-                        variant="filled"
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <img src={iconMessage} alt="Icon Message" />
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                </Grid>
-
-                <Grid item xs={12} md={3}>
-                    <TextField
-                        fullWidth
-                        id="date"
-                        label="Date"
-                        variant="filled"
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <img src={iconMessage} alt="Icon Message" />
-                                </InputAdornment>
-                            ),
-                        }}
+                        placeholder="Search by name or vacancy"
                     />
                 </Grid>
             </Grid>
@@ -149,6 +108,6 @@ export const Interviews = () => {
             <CancelInterview isOpen={isOpenModalCancel} onClose={setCancelModal} />
             <RescheduleInterview isOpen={isOpenScheduleModal} onClose={setScheduleModal} />
             <InterviewNotification isOpen={isOpenNotificationModal} onClose={setNotificationModal} />
-        </Container>
+        </React.Fragment>
     );
 };

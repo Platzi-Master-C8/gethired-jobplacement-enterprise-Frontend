@@ -11,7 +11,7 @@ import { EditVacancies } from 'Pages/EditVacancies';
 import { InterviewPlanning } from 'Pages/InterviewPlanning';
 import { VacanciesHistory } from 'Pages/VacanciesHistory';
 import { ListCandidatesVacancies } from 'Pages/ListCandidatesVacancies';
-import { Interviews } from 'Pages/Interviews';
+import { InterviessDashboard } from 'Pages/InterviewsDashboard';
 import { PostulationDetail } from 'Pages/PostulationDetail';
 import Offers from 'Pages/Offers';
 import { NotFound } from 'Pages/NotFound';
@@ -25,26 +25,26 @@ const Routes = () => {
 
     return (
         <BrowserRouter>
-            <Layout>
-                {isAuthenticated ? (
-                    <Switch>
-                        <Route path="/" element={<EnterpriseHome />} />
-                        <Route path="/vacancies" element={<VacanciesHistory />} />
-                        <Route path="/vacancies/create" element={<CreateVacancies />} />
-                        <Route path="/vacancies/:id/edit" element={<EditVacancies />} />
-                        <Route path="/vacancies/:id" element={<ListCandidatesVacancies />} />
-                        <Route path="/interviews" element={<Interviews />} />
-                        <Route path="/interviews/create" element={<InterviewPlanning />} />
-                        <Route path="/postulants" element={<PostulationDetail />} />
-                        <Route path="*" element={<NotFound />} />
-                    </Switch>
-                ) : (
-                    <Switch>
-                        <Route path="/" element={<Offers />} />
-                        <Route path="*" element={<NotFound />} />
-                    </Switch>
-                )}
-            </Layout>
+            <HeaderEnterprise />
+            {isAuthenticated ? (
+                <Switch>
+                    <Route path="/" element={<EnterpriseHome />} />
+                    <Route path="/vacancies" element={<VacanciesHistory />} />
+                    <Route path="/vacancies/create" element={<CreateVacancies />} />
+                    <Route path="/vacancies/:id/edit" element={<EditVacancies />} />
+                    <Route path="/vacancies/:id" element={<ListCandidatesVacancies />} />
+                    <Route path="/interviews" element={<InterviessDashboard />} />
+                    <Route path="/interviews/create" element={<InterviewPlanning />} />
+                    <Route path="/postulants" element={<PostulationDetail />} />
+                    <Route path="*" element={<NotFound />} />
+                </Switch>
+            ) : (
+                <Switch>
+                    <Route path="/" element={<Offers />} />
+                    <Route path="*" element={<NotFound />} />
+                </Switch>
+            )}
+            <ScrollToTop />
         </BrowserRouter>
     );
 };
