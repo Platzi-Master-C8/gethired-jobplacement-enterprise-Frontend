@@ -24,11 +24,10 @@ const rows = [
 export const ApplicantComparison = () => {
     return (
         <React.Fragment>
-            {/* <Grid container spacing={3} > */}
             <Typography variant="h2" sx={{ mb: 2 }}>
                 Applicant comparison
             </Typography>
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} elevation={3}>
                 <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -56,7 +55,6 @@ export const ApplicantComparison = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-            {/* </Grid> */}
         </React.Fragment>
     );
 };
