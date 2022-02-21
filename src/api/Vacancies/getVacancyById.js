@@ -14,7 +14,7 @@ export default async function getVacancyById(id) {
             company: vacancy.company_id,
             'type-work': vacancy.type_work_id,
             'job-location': vacancy.job_location,
-            skills: [],
+            skills: vacancy.skills,
             'hours-per-week': vacancy.hours_per_week,
             'minimum-experience': vacancy.minimum_experience,
         };
