@@ -68,7 +68,7 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                             {description}
                         </Typography>
                         <Typography variant="h2" component="h2" sx={{ marginTop: '20px' }}>
-                            Skills and Habilities
+                            Skills and abilities
                         </Typography>
                         <Box sx={{ marginTop: '10px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                             {skills?.map((skill) => (
