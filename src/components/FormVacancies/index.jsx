@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
@@ -24,6 +25,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
     const [skillsList, setSkills] = useState([]);
     const [companiesList, setCompanies] = useState([]);
     const [typesOfWorkList, setTypesOfWork] = useState([]);
+    const { user } = useAuth0();
     const navigate = useNavigate();
 
     const { handleSubmit, control, reset } = useForm({ defaultValues: initialValues });
@@ -33,7 +35,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
             .then(([skills, companies, typesWork]) => {
                 setSkills(skills.data);
                 setCompanies(companies.data);
-                setTypesOfWork(typesWork);
+                setTypesOfWork(typesWork.data);
             })
             .catch(() => {
                 setMessage('Occurs an error trying to get the data');
@@ -46,7 +48,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
     }, [reset, defaultValues]);
 
     const handleForm = (data) => {
-        onSubmit(data)
+        onSubmit({ user_id: user.sub, ...data })
             .then(navigate('/vacancies'))
             .catch(() => {
                 setMessage('There was an error creating the vacancy');
@@ -112,6 +114,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
                         <Tags
                             name="skills"
                             label="Skills and abilities"
+                            helperText="Please select the skills and abilities"
                             control={control}
                             options={skillsList}
                             required
@@ -121,6 +124,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
                         <InputText
                             name="salary"
                             label="Salary"
+                            type="number"
                             helperText="Please enter the salary"
                             control={control}
                             required
@@ -130,6 +134,7 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
                         <InputText
                             name="hours-per-week"
                             label="Hours per week"
+                            type="number"
                             helperText="Please enter the hours"
                             control={control}
                             required
@@ -138,8 +143,9 @@ export const FormVacancies = ({ mainButtonText, defaultValues, onSubmit }) => {
                     <Grid item xs={12} sm={6}>
                         <InputText
                             name="minimum-experience"
-                            label="Minimum experience"
-                            helperText="Please enter the neccessary experience"
+                            label="Minimum experience (years)"
+                            type="number"
+                            helperText="Please enter the necessary experience"
                             control={control}
                             required
                         />
@@ -180,14 +186,14 @@ FormVacancies.propTypes = {
     defaultValues: PropTypes.shape({
         id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         name: PropTypes.string,
-        salary: PropTypes.string,
+        salary: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         description: PropTypes.string,
         company: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         'type-work': PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         'job-location': PropTypes.string,
         skills: PropTypes.arrayOf(PropTypes.string),
-        'hours-per-week': PropTypes.string,
-        'minimum-experience': PropTypes.string,
+        'hours-per-week': PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        'minimum-experience': PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     }),
     onSubmit: PropTypes.func.isRequired,
 };
