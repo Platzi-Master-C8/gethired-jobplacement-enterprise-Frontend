@@ -9,11 +9,24 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
-import { IconButton, Typography } from '@mui/material';
+import { Chip, IconButton, Typography } from '@mui/material';
+import { helpColor, sum, helpCurrency } from '../JobOffers/helpers';
 
 const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
-    const { companyName, location, description, skills, name, salary, typeWork, hours_per_week, minimum_experience } =
-        vacancyInfo;
+    const {
+        company,
+        job_location,
+        description,
+        skills,
+        name,
+        salary,
+        typeWork,
+        hours_per_week,
+        minimum_experience,
+        tracking_code,
+        postulation_status,
+        applicant_evaluations,
+    } = vacancyInfo;
 
     return (
         <Dialog open={showDetail} onClose={handleOpenClose}>
@@ -28,7 +41,7 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
             >
                 <CloseIcon />
             </IconButton>
-            <Box component="div" sx={{ padding: '20px' }}>
+            <Box component="div" sx={{ padding: '20px', minWidth: 600 }}>
                 <Box
                     component="div"
                     sx={{
@@ -38,11 +51,13 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                         marginTop: '15px',
                     }}
                 >
-                    <Typography variant="h3" component="h3">
-                        {companyName}
+                    <Typography variant="h3" component="h3" sx={{ fontSize: '13px' }}>
+                        {company?.name}
                     </Typography>
                     <DialogTitle sx={{ textAlign: 'center', padding: '5px', fontWeight: 600 }}>{name}</DialogTitle>
-                    <Typography>{location}</Typography>
+                    <Typography variant="h3" component="h3" sx={{ fontSize: '13px' }}>
+                        {job_location}
+                    </Typography>
                 </Box>
                 <Box component="div">
                     <DialogContent>
@@ -53,13 +68,15 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                             {description}
                         </Typography>
                         <Typography variant="h2" component="h2" sx={{ marginTop: '20px' }}>
-                            Skills and Habilities
+                            Skills and abilities
                         </Typography>
-                        <Typography variant="p" component="p" sx={{ marginTop: '10px' }}>
-                            {skills}
-                        </Typography>
+                        <Box sx={{ marginTop: '10px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                            {skills?.map((skill) => (
+                                <Chip label={skill} key={skill} variant="outlined" color="secondary" />
+                            ))}
+                        </Box>
                         <Typography variant="h2" component="h2" sx={{ marginTop: '20px' }}>
-                            Skills and Offer Details
+                            Offer Details
                         </Typography>
                         <ul>
                             <li>
@@ -77,30 +94,67 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                             <li>
                                 <Typography variant="p" component="p" sx={{ marginTop: '10px' }}>
                                     <b>Salary: </b>
-                                    {salary}
+                                    {helpCurrency(salary)}
                                 </Typography>
                             </li>
                             <li>
                                 <Typography variant="p" component="p" sx={{ marginTop: '10px' }}>
-                                    <b>Minum experience: </b>
+                                    <b>Minimum experience: </b>
                                     {minimum_experience}
                                 </Typography>
                             </li>
+                            {postulation_status && (
+                                <li>
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            gap: '10px',
+                                            alignItems: 'center',
+                                            marginTop: '10px',
+                                        }}
+                                    >
+                                        <Typography variant="p" component="p">
+                                            <b>Offer Status: </b>
+                                        </Typography>
+                                        <Chip
+                                            label={postulation_status?.name}
+                                            color={helpColor(postulation_status?.id)}
+                                        />
+                                    </div>
+                                </li>
+                            )}
                         </ul>
+                        {!!applicant_evaluations?.length && (
+                            <div
+                                style={{
+                                    marginTop: '20px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                }}
+                            >
+                                <Typography variant="h2" component="h2">
+                                    Final Review
+                                </Typography>
+                                <Chip color="primary" size="large" label={`${sum(applicant_evaluations[0])} / 5`} />
+                            </div>
+                        )}
                     </DialogContent>
-                    <DialogActions sx={{ display: 'flex', justifyContent: 'space-around', mb: 3 }}>
-                        <Button onClick={() => console.log('Apply to Vacancy')} size="large" variant="contained">
-                            Apply
-                        </Button>
-                        <Button
-                            size="large"
-                            variant="contained"
-                            type="button"
-                            onClick={() => console.log('See Company Details')}
-                        >
-                            Company details
-                        </Button>
-                    </DialogActions>
+                    {!tracking_code && (
+                        <DialogActions sx={{ display: 'flex', justifyContent: 'space-around', mb: 3 }}>
+                            <Button onClick={() => console.log('Apply to Vacancy')} size="large" variant="contained">
+                                Apply
+                            </Button>
+                            <Button
+                                size="large"
+                                variant="contained"
+                                type="button"
+                                onClick={() => console.log('See Company Details')}
+                            >
+                                Company details
+                            </Button>
+                        </DialogActions>
+                    )}
                 </Box>
             </Box>
         </Dialog>
@@ -111,21 +165,33 @@ JobDetailsModal.propTypes = {
     handleOpenClose: PropTypes.func.isRequired,
     showDetail: PropTypes.bool.isRequired,
     vacancyInfo: PropTypes.shape({
-        companyName: PropTypes.string,
-        location: PropTypes.string,
+        company: PropTypes.shape({
+            name: PropTypes.string,
+        }),
+        postulation_status: PropTypes.shape({
+            name: PropTypes.string,
+            id: PropTypes.number,
+        }),
+        applicant_evaluations: PropTypes.arrayOf(
+            PropTypes.shape({
+                company_id: PropTypes.number,
+                applicant_name: PropTypes.string,
+            }),
+        ),
         description: PropTypes.string,
-        skills: PropTypes.string,
+        skills: PropTypes.arrayOf(PropTypes.string),
         name: PropTypes.string,
         postulation_deadline: PropTypes.string,
         status: PropTypes.bool,
-        salary: PropTypes.string,
+        salary: PropTypes.number,
         company_id: PropTypes.number,
         typeWork: PropTypes.string,
         job_location: PropTypes.string,
-        hours_per_week: PropTypes.string,
-        minimum_experience: PropTypes.string,
+        hours_per_week: PropTypes.number,
+        minimum_experience: PropTypes.number,
         created_at: PropTypes.string,
         updated_at: PropTypes.string,
+        tracking_code: PropTypes.string,
     }).isRequired,
 };
 
