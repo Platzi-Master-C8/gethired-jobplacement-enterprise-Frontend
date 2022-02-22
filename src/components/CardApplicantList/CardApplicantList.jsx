@@ -1,70 +1,112 @@
 import React from 'react';
-import { Button, Box, Typography } from '@mui/material';
+import PropTypes from 'prop-types';
+
+import { Button, Box, Typography, Card } from '@mui/material';
+import MailRoundedIcon from '@mui/icons-material/MailRounded';
+import LocalPhoneRoundedIcon from '@mui/icons-material/LocalPhoneRounded';
+import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 
 import Contact from '../../img/icon-contacts.png';
-import { LinkStyled, CardContainer, ImageProfile, Divider } from './styles';
+import { LinkStyled, ImageProfile } from './styles';
 
-export const CardApplicantList = () => {
+export const CardApplicantList = ({ name, profile, email, phone, location }) => {
     return (
-        <CardContainer>
+        <Card sx={{ p: 2 }} elevation={3}>
             <Box
                 sx={{
                     display: 'flex',
-                    justifyContent: 'center',
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
                 }}
             >
                 <ImageProfile>
                     <img src={Contact} alt="Profile" />
                 </ImageProfile>
-                <Box>
-                    <Typography
-                        component="p"
-                        sx={{
-                            py: 0.3,
-                        }}
-                    >
-                        Name
-                    </Typography>
-                    <Typography
-                        component="p"
-                        sx={{
-                            py: 0.3,
-                        }}
-                    >
-                        Profile name
-                    </Typography>
+                <Box
+                    sx={{
+                        mb: '1rem',
+                    }}
+                >
+                    <Typography variant="h3">{name}</Typography>
+                    <Typography variant="body2">{profile}</Typography>
                 </Box>
             </Box>
-            <Divider />
             <Box
                 sx={{
-                    display: 'flex',
-                    justifyContent: 'space-around',
+                    display: 'grid',
+                    gridTemplateColumns: '2fr 1fr',
+                    alignSelf: 'center',
                 }}
             >
-                <Typography
-                    component="p"
+                <Box
                     sx={{
-                        pr: 1.3,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        mx: '1rem',
                     }}
                 >
-                    Status
-                </Typography>
-                <Typography
-                    component="p"
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            gap: 2,
+                        }}
+                    >
+                        <MailRoundedIcon />
+                        <Typography variant="body2" sx={{ py: 0.3 }}>
+                            {email}
+                        </Typography>
+                    </Box>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            gap: 2,
+                        }}
+                    >
+                        <LocalPhoneRoundedIcon />
+                        <Typography variant="body2" sx={{ py: 0.3 }}>
+                            {phone}
+                        </Typography>
+                    </Box>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            gap: 2,
+                        }}
+                    >
+                        <LocationOnRoundedIcon />
+                        <Typography variant="body2" sx={{ py: 0.3 }}>
+                            {location.city} - {location.country}
+                        </Typography>
+                    </Box>
+                </Box>
+                <Box
                     sx={{
-                        pr: 1.3,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                     }}
                 >
-                    date
-                </Typography>
-
-                <Button size="small" variant="contained">
-                    <LinkStyled color="#FFF" to="/interviews/create">
-                        Interview
-                    </LinkStyled>
-                </Button>
+                    <Button size="small" variant="contained">
+                        <LinkStyled color="#FFF" to="/interviews/create">
+                            Interview
+                        </LinkStyled>
+                    </Button>
+                </Box>
             </Box>
-        </CardContainer>
+        </Card>
     );
+};
+
+CardApplicantList.propTypes = {
+    name: PropTypes.string.isRequired,
+    profile: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    location: PropTypes.shape({
+        city: PropTypes.string,
+        country: PropTypes.string,
+    }).isRequired,
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
-import { NotFound } from 'Pages/NotFound';
+import { Loader } from 'Components/Loader';
 import { EnterpriseHome } from 'Pages/EnterpriseHome';
 import { CreateVacancies } from 'Pages/CreateVacancies';
 import { EditVacancies } from 'Pages/EditVacancies';
@@ -10,9 +10,10 @@ import { InterviewPlanning } from 'Pages/InterviewPlanning';
 import { VacanciesHistory } from 'Pages/VacanciesHistory';
 import { ListCandidatesVacancies } from 'Pages/ListCandidatesVacancies';
 import { Interviews } from 'Pages/Interviews';
+import { PostulationDetail } from 'Pages/PostulationDetail';
 import Offers from 'Pages/Offers';
+import { NotFound } from 'Pages/NotFound';
 import Layout from 'Components/Layout';
-import { Loader } from 'Components/Loader';
 
 const Routes = () => {
     const { isAuthenticated, isLoading } = useAuth0();
@@ -33,6 +34,7 @@ const Routes = () => {
                         <Route path="/vacancies/:id" element={<ListCandidatesVacancies />} />
                         <Route path="/interviews" element={<Interviews />} />
                         <Route path="/interviews/create" element={<InterviewPlanning />} />
+                        <Route path="/postulants" element={<PostulationDetail />} />
                         <Route path="*" element={<NotFound />} />
                     </Switch>
                 ) : (
