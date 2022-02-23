@@ -10,14 +10,15 @@ export const Tags = ({ name, label, control, helperText, options, required }) =>
         <Controller
             name={name}
             control={control}
-            render={({ field: { onChange }, fieldState: { invalid, error } }) => (
+            render={({ field: { value, onChange }, fieldState: { invalid, error } }) => (
                 <Autocomplete
                     multiple
                     id={name}
                     options={options}
-                    filterSelectedOptions
-                    isOptionEqualToValue={(option, value) => option === value}
+                    defaultValue={value}
+                    getOptionLabel={(option) => option}
                     onChange={(_, data) => onChange(data)}
+                    value={value}
                     renderInput={(params) => (
                         <TextField
                             {...params}
