@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { registerApplicant } from '../../api/Applicants';
@@ -5,7 +6,7 @@ import SendForm from './SendForm';
 import RegisterApplicantModal from './RegisterApplicantModal';
 
 const initialState = {
-    vacancy_id: 1,
+    vacancy_id: null,
     name: '',
     paternal_last_name: '',
     maternal_last_name: '',
@@ -14,14 +15,14 @@ const initialState = {
     country: null,
     city: null,
     cv_file: null,
-    motivation_letter_file: null,
+    motivation_letter_file: '',
     job_title: '',
     company: '',
     linkedin_url: '',
 };
 
-const RegisterApplicantForm = ({ open, setOpen }) => {
-    const [applicantData, setApplicantData] = useState(initialState);
+const RegisterApplicantForm = ({ open, setOpen, id }) => {
+    const [applicantData, setApplicantData] = useState({ ...initialState, vacancy_id: id });
     const [error, setError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [sended, setSended] = useState(false);
@@ -40,24 +41,41 @@ const RegisterApplicantForm = ({ open, setOpen }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSended(true);
+
+        const {
+            vacancy_id,
+            name,
+            paternal_last_name,
+            maternal_last_name,
+            email,
+            cellphone,
+            country,
+            city,
+            cv_file,
+            motivation_letter_file,
+            job_title,
+            company,
+            linkedin_url,
+        } = applicantData;
 
         const data = new FormData();
-        data.append('vacancy_id', 1);
-        data.append('name', applicantData.name);
-        data.append('paternal_last_name', applicantData.paternal_last_name);
-        data.append('maternal_last_name', applicantData.maternal_last_name);
-        data.append('email', applicantData.email);
-        data.append('cellphone', applicantData.cellphone);
-        data.append('country', applicantData.country.country);
-        data.append('city', applicantData.city.name);
-        data.append('cv_file', applicantData.cv_file);
-        data.append('motivation_letter_file', applicantData.motivation_letter_file);
-        data.append('job_title', applicantData.job_title);
-        data.append('company', applicantData.company);
-        data.append('linkedin_url', applicantData.linkedin_url);
+        data.append('vacancy_id', vacancy_id);
+        data.append('name', name);
+        data.append('paternal_last_name', paternal_last_name);
+        data.append('maternal_last_name', maternal_last_name);
+        data.append('email', email);
+        data.append('cellphone', cellphone);
+        data.append('country', country?.country);
+        data.append('city', city?.name);
+        data.append('cv_file', cv_file);
+        data.append('motivation_letter_file', motivation_letter_file);
+        data.append('job_title', job_title);
+        data.append('company', company);
+        data.append('linkedin_url', linkedin_url);
 
+        setSended(true);
         setOpen(true);
+
         registerApplicant(data)
             .then((res) => {
                 if (res.status === 201) {
@@ -92,6 +110,7 @@ const RegisterApplicantForm = ({ open, setOpen }) => {
 RegisterApplicantForm.propTypes = {
     open: PropTypes.bool.isRequired,
     setOpen: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
 };
 
 export default RegisterApplicantForm;

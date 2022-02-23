@@ -10,14 +10,27 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
 import { IconButton, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import RegisterApplicantForm from '../RegisterApplicantForm';
 
 const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
-    const { companyName, location, description, skills, name, salary, typeWork, hours_per_week, minimum_experience } =
-        vacancyInfo;
+    const {
+        id,
+        companyName,
+        company_id,
+        location,
+        description,
+        skills,
+        name,
+        salary,
+        typeWork,
+        hours_per_week,
+        minimum_experience,
+    } = vacancyInfo;
 
     const [openApplyModal, setOpenApplyModal] = useState(false);
+    const navigate = useNavigate();
 
     return (
         <Dialog open={showDetail} onClose={handleOpenClose}>
@@ -100,14 +113,14 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                             size="large"
                             variant="contained"
                             type="button"
-                            onClick={() => console.log('See Company Details')}
+                            onClick={() => navigate(`gethired-jobplacement-ratings/${company_id}`)}
                         >
                             Company details
                         </Button>
                     </DialogActions>
                 </Box>
             </Box>
-            <RegisterApplicantForm open={openApplyModal} setOpen={setOpenApplyModal} />
+            <RegisterApplicantForm open={openApplyModal} setOpen={setOpenApplyModal} id={id} />
         </Dialog>
     );
 };
@@ -116,6 +129,7 @@ JobDetailsModal.propTypes = {
     handleOpenClose: PropTypes.func.isRequired,
     showDetail: PropTypes.bool.isRequired,
     vacancyInfo: PropTypes.shape({
+        id: PropTypes.number.isRequired,
         companyName: PropTypes.string,
         location: PropTypes.string,
         description: PropTypes.string,

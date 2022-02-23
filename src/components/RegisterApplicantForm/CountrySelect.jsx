@@ -45,6 +45,7 @@ export const CountrySelect = ({ applicantData, setApplicantData, type }) => {
                         ...params.inputProps,
                         autoComplete: 'new-password',
                     }}
+                    required
                 />
             )}
         />
@@ -70,6 +71,7 @@ export const CountrySelect = ({ applicantData, setApplicantData, type }) => {
                         ...params.inputProps,
                         autoComplete: 'new-password',
                     }}
+                    required
                 />
             )}
         />

@@ -16,7 +16,7 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
         >
             <Box component="form" sx={boxStyles} onSubmit={handleSubmit}>
                 <Grid container>
-                    <Grid item md={12} margin="1.5rem 7% 1rem">
+                    <Grid item md={12} sm={12} xs={12} margin="1.5rem 7% 1rem">
                         <StyledTypography fontSize={21} fontWeight="600" lineHeight={2}>
                             Job title
                         </StyledTypography>
@@ -24,10 +24,10 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                             Company name - Location
                         </StyledTypography>
                     </Grid>
-                    <Grid item md={12}>
+                    <Grid item md={12} sm={12} xs={12}>
                         <Divider variant="middle" />
                     </Grid>
-                    <Grid item md={12} margin="15px 0 10px 7%">
+                    <Grid item md={12} sm={12} xs={12} margin="15px 0 10px 7%">
                         <StyledTypography fontSize={16} fontWeight="300">
                             * These fields are required
                         </StyledTypography>
@@ -42,7 +42,7 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                     }}
                 >
                     <Grid container marginLeft="0.1rem" marginBottom="2rem" spacing={3}>
-                        <Grid item md={12}>
+                        <Grid item md={12} sm={12} xs={12}>
                             <StyledLabel htmlFor="input-1" shrink>
                                 Name *
                             </StyledLabel>
@@ -50,7 +50,7 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                                 <FilledInput id="input-1" name="name" onChange={handleInput} />
                             </StyledFormControl>
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} sm={12} xs={12}>
                             <StyledLabel htmlFor="input-2" shrink>
                                 Paternal last name *
                             </StyledLabel>
@@ -58,7 +58,7 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                                 <FilledInput id="input-2" name="paternal_last_name" onChange={handleInput} />
                             </StyledFormControl>
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} sm={12} xs={12}>
                             <StyledLabel htmlFor="input-3" shrink>
                                 Maternal last name *
                             </StyledLabel>
@@ -66,7 +66,7 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                                 <FilledInput id="input-3" name="maternal_last_name" onChange={handleInput} />
                             </StyledFormControl>
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} sm={12} xs={12}>
                             <StyledLabel htmlFor="input-4" shrink>
                                 Email *
                             </StyledLabel>
@@ -74,11 +74,11 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                                 <FilledInput id="input-4" name="email" onChange={handleInput} />
                             </StyledFormControl>
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} sm={12} xs={12}>
                             <StyledLabel htmlFor="input-5" shrink>
                                 Phone Number *
                             </StyledLabel>
-                            <StyledFormControl>
+                            <StyledFormControl required>
                                 <FilledInput
                                     id="input-5"
                                     name="cellphone"
@@ -87,15 +87,15 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                                 />
                             </StyledFormControl>
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} sm={12} xs={12}>
                             <StyledLabel htmlFor="input-6" shrink>
-                                linkedin url *
+                                linkedin url
                             </StyledLabel>
                             <StyledFormControl>
                                 <FilledInput id="input-6" name="linkedin_url" onChange={handleInput} />
                             </StyledFormControl>
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} sm={12} xs={12}>
                             <StyledLabel htmlFor="input-7" shrink>
                                 Country *
                             </StyledLabel>
@@ -126,12 +126,12 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                         }}
                     />
                     <Grid container marginLeft="0.1rem" marginBottom="1rem" spacing={3}>
-                        <Grid item md={12}>
+                        <Grid item md={12} sm={12} xs={12}>
                             <StyledTypography fontSize={16} fontWeight="700" lineHeight={2}>
                                 Relevant experience
                             </StyledTypography>
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} sm={12} xs={12}>
                             <StyledLabel htmlFor="input-9" shrink>
                                 Job Title
                             </StyledLabel>
@@ -139,7 +139,7 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                                 <FilledInput id="input-9" name="job_title" onChange={handleInput} />
                             </StyledFormControl>
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} sm={12} xs={12}>
                             <StyledLabel htmlFor="input-10" shrink>
                                 Company
                             </StyledLabel>
@@ -150,7 +150,7 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                     </Grid>
                 </Box>
                 <Grid container padding="1rem 0 2rem 0">
-                    <Grid item md={12} marginLeft="1rem">
+                    <Grid item md={12} sm={12} xs={12} marginLeft="1rem">
                         <StyledLabel htmlFor="button-file" shrink>
                             Resume *
                         </StyledLabel>
@@ -162,7 +162,7 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                                     type="file"
                                     sx={{ display: 'none' }}
                                     onChange={(e) => setApplicantData({ ...applicantData, cv_file: e.target.files[0] })}
-                                    // required
+                                    required
                                 />
                             </Button>
                             {applicantData.cv_file ? (
@@ -176,7 +176,7 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                             )}
                         </Grid>
                     </Grid>
-                    <Grid item md={12} margin="1rem">
+                    <Grid item md={12} sm={12} xs={12} margin="1rem">
                         <InputLabel htmlFor="icon-button-file" style={{ display: 'flex', alignItems: 'center' }}>
                             <Input
                                 id="icon-button-file"
@@ -198,10 +198,10 @@ const RegisterApplicantModal = ({ open, handleClose, handleSubmit, setApplicantD
                             </StyledTypography>
                         </InputLabel>
                     </Grid>
-                    <Grid item md={12}>
+                    <Grid item md={12} sm={12} xs={12}>
                         <Divider variant="middle" />
                     </Grid>
-                    <Grid item md={12} marginLeft="1rem">
+                    <Grid item md={12} sm={12} xs={12} marginLeft="1rem">
                         <StyledTypography lineHeight={4} fontSize={12} fontWeight="300">
                             By pressing continue you agree with our terms, conditions and personal data policy
                         </StyledTypography>
