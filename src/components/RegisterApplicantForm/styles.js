@@ -36,7 +36,7 @@ export const boxStyles = {
     transform: 'translate(-50%, -50%)',
     boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px;',
     width: '40rem',
-    height: '90%',
+    height: '95%',
     backgroundColor: 'white',
     overflow: 'hidden auto',
 }
