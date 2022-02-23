@@ -40,7 +40,13 @@ export const InterviewCard = ({
                 <Chip label={status} color="primary" />
 
                 <IconButton aria-label="settings" id="list-options" onClick={handleClick}>
-                    <MoreVertIcon />
+                    <MoreVertIcon
+                        sx={{
+                            color: 'rgba(0, 0, 0, 0.54)',
+                            fill: 'currentColor',
+                            stroke: 'none',
+                        }}
+                    />
                 </IconButton>
                 <Menu
                     id="basic-menu"

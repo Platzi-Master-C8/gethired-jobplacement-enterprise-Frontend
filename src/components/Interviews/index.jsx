@@ -3,12 +3,12 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 
-import { InterviewCard } from 'Components/InterviewCard';
 import { CancelInterview } from 'Components/CancelInterviewModal';
 import { RescheduleInterview } from 'Components/RescheduleInterviewModal';
 import { InterviewNotification } from 'Components/InterviewNotificationModal';
 
 import useModal from 'Hooks/useModal';
+import { InterviewCard } from './InterviewCard';
 
 const fakeData = [
     {
