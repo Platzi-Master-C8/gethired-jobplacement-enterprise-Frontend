@@ -44,6 +44,7 @@ const CandidateData = {
         city: 'Bogota',
         country: 'Colombia',
     },
+    postulationStatus: 'Applied',
 };
 
 export const ListCandidatesVacancies = () => {

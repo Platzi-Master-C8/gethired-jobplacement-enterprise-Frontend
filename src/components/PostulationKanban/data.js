@@ -1,0 +1,202 @@
+import { v4 as uuidv4 } from 'uuid';
+
+const appLimitNumber = 5;
+
+export const Data = [
+    {
+        id: 1,
+        name: "Applied",
+        limit: appLimitNumber,
+        appIds: [
+            {
+                id: uuidv4(),
+                name: "John Doe",
+                profile: "JavaScript Developer",
+                email: "john@doe.com",
+                phone: "573154654",
+                location: {
+                    city: 'Bogota',
+                    country: 'Colombia',
+                },
+                status: "applied",
+                created_at: "2022-02-17T19:10:45",
+                updated_at: "2022-02-17T19:10:45",
+            },
+            {
+                id: uuidv4(),
+                name: "John Doe",
+                profile: "PHP Developer",
+                email: "john@doe.com",
+                phone: "573154654",
+                location: {
+                    city: 'Bogota',
+                    country: 'Colombia',
+                },
+                status: "applied",
+                created_at: "2022-02-17T19:10:45",
+                updated_at: "2022-02-17T19:10:45",
+            },
+            {
+                id: uuidv4(),
+                name: "John Doe",
+                profile: "PHP Developer",
+                email: "john@doe.com",
+                phone: "573154654",
+                location: {
+                    city: 'Bogota',
+                    country: 'Colombia',
+                },
+                status: "applied",
+                created_at: "2022-02-17T19:10:45",
+                updated_at: "2022-02-17T19:10:45",
+            },
+        ],
+    },
+    {
+        id: 2,
+        name: "Interviews",
+        limit: appLimitNumber,
+        appIds: [
+            {
+                id: uuidv4(),
+                name: "John Doe",
+                profile: "JavaScript Developer",
+                email: "john@doe.com",
+                phone: "573154654",
+                location: {
+                    city: 'Bogota',
+                    country: 'Colombia',
+                },
+                status: "interviews",
+                created_at: "2022-02-17T19:10:45",
+                updated_at: "2022-02-17T19:10:45",
+            },
+            {
+                id: uuidv4(),
+                name: "John Doe",
+                profile: "PHP Developer",
+                email: "john@doe.com",
+                phone: "573154654",
+                location: {
+                    city: 'Bogota',
+                    country: 'Colombia',
+                },
+                status: "interviews",
+                created_at: "2022-02-17T19:10:45",
+                updated_at: "2022-02-17T19:10:45",
+            },
+            {
+                id: uuidv4(),
+                name: "John Doe",
+                profile: "PHP Developer",
+                email: "john@doe.com",
+                phone: "573154654",
+                location: {
+                    city: 'Bogota',
+                    country: 'Colombia',
+                },
+                status: "interviews",
+                created_at: "2022-02-17T19:10:45",
+                updated_at: "2022-02-17T19:10:45",
+            },
+        ],
+    },
+    {
+        id: 3,
+        name: "Accepted",
+        limit: appLimitNumber,
+        appIds: [
+            {
+                id: uuidv4(),
+                name: "John Doe",
+                profile: "JavaScript Developer",
+                email: "john@doe.com",
+                phone: "573154654",
+                location: {
+                    city: 'Bogota',
+                    country: 'Colombia',
+                },
+                status: "accepted",
+                created_at: "2022-02-17T19:10:45",
+                updated_at: "2022-02-17T19:10:45",
+            },
+            {
+                id: uuidv4(),
+                name: "John Doe",
+                profile: "PHP Developer",
+                email: "john@doe.com",
+                phone: "573154654",
+                location: {
+                    city: 'Bogota',
+                    country: 'Colombia',
+                },
+                status: "accepted",
+                created_at: "2022-02-17T19:10:45",
+                updated_at: "2022-02-17T19:10:45",
+            },
+            {
+                id: uuidv4(),
+                name: "John Doe",
+                profile: "PHP Developer",
+                email: "john@doe.com",
+                phone: "573154654",
+                location: {
+                    city: 'Bogota',
+                    country: 'Colombia',
+                },
+                status: "accepted",
+                created_at: "2022-02-17T19:10:45",
+                updated_at: "2022-02-17T19:10:45",
+            },
+        ],
+    },
+    {
+        id: 4,
+        name: "Rejected",
+        limit: appLimitNumber,
+        appIds: [
+            {
+                id: uuidv4(),
+                name: "John Doe",
+                profile: "JavaScript Developer",
+                email: "john@doe.com",
+                phone: "573154654",
+                location: {
+                    city: 'Bogota',
+                    country: 'Colombia',
+                },
+                status: "rejected",
+                created_at: "2022-02-17T19:10:45",
+                updated_at: "2022-02-17T19:10:45",
+            },
+            {
+                id: uuidv4(),
+                name: "John Doe",
+                profile: "PHP Developer",
+                email: "john@doe.com",
+                phone: "573154654",
+                location: {
+                    city: 'Bogota',
+                    country: 'Colombia',
+                },
+                status: "rejected",
+                created_at: "2022-02-17T19:10:45",
+                updated_at: "2022-02-17T19:10:45",
+            },
+            {
+                id: uuidv4(),
+                name: "John Doe",
+                profile: "PHP Developer",
+                email: "john@doe.com",
+                phone: "573154654",
+                location: {
+                    city: 'Bogota',
+                    country: 'Colombia',
+                },
+                status: "rejected",
+                created_at: "2022-02-17T19:10:45",
+                updated_at: "2022-02-17T19:10:45",
+            },
+        ],
+    }
+];

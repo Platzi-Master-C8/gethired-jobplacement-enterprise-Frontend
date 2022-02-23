@@ -39,6 +39,7 @@ const CandidateData = {
         city: 'Bogota',
         country: 'Colombia',
     },
+    status: 'Applied',
 };
 
 export const PostulationDetail = () => {
@@ -49,7 +50,7 @@ export const PostulationDetail = () => {
                     <Typography variant="h2" mb={2}>
                         Postulant
                     </Typography>
-                    <Grid sx={{ mb: 5 }}>
+                    <Grid sx={{ mb: 3 }}>
                         <CardApplicantList {...CandidateData} />
                     </Grid>
                     <Grid>
