@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -13,12 +14,11 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 export const InterviewCard = ({
-    status,
-    name,
-    location,
-    experience,
-    applyingFor,
-    typeTime,
+    id,
+    platform,
+    statusFinished,
+    url,
+    type,
     cancelModal,
     scheduleModal,
     notificationModal,
@@ -34,10 +34,15 @@ export const InterviewCard = ({
         setAnchorEl(null);
     };
 
+    const handleClickChip = (event) => {
+        event.preventDefault();
+        window.open(url, '_blank');
+    };
+
     return (
         <Paper sx={{ p: 2 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                <Chip label={status} color="primary" />
+                <Chip label={statusFinished} color="primary" />
 
                 <IconButton aria-label="settings" id="list-options" onClick={handleClick}>
                     <MoreVertIcon
@@ -86,26 +91,32 @@ export const InterviewCard = ({
 
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                 <Avatar alt="Avatar" sx={{ mr: 2 }}>
-                    {name.charAt(0)}
+                    A
                 </Avatar>
                 <Box>
-                    <Typography>{name}</Typography>
-                    <Typography variant="body2">{location}</Typography>
+                    <Typography>Name</Typography>
+                    <Typography variant="body2">Location</Typography>
                 </Box>
             </Box>
 
             <Grid container spacing={2}>
                 <Grid item xs={12} md={4} lg={4}>
                     <Typography>Experience</Typography>
-                    <Typography variant="body2">{experience}</Typography>
+                    <Chip
+                        label={platform}
+                        key={platform}
+                        variant="filled"
+                        color="secondary"
+                        onClick={handleClickChip}
+                    />
                 </Grid>
                 <Grid item xs={12} md={4} lg={4}>
                     <Typography>Applying for</Typography>
-                    <Typography variant="body2">{applyingFor}</Typography>
+                    <Typography variant="body2">Apply</Typography>
                 </Grid>
                 <Grid item xs={12} md={4} lg={4}>
                     <Typography>Time</Typography>
-                    <Typography variant="body2">{typeTime}</Typography>
+                    <Typography variant="body2">time</Typography>
                 </Grid>
             </Grid>
         </Paper>
@@ -113,13 +124,19 @@ export const InterviewCard = ({
 };
 
 InterviewCard.propTypes = {
-    status: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
-    experience: PropTypes.string.isRequired,
-    applyingFor: PropTypes.string.isRequired,
-    typeTime: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    platform: PropTypes.string,
+    statusFinished: PropTypes.string,
+    url: PropTypes.string,
+    type: PropTypes.string,
     cancelModal: PropTypes.func.isRequired,
     scheduleModal: PropTypes.func.isRequired,
     notificationModal: PropTypes.func.isRequired,
+};
+
+InterviewCard.defaultProps = {
+    platform: 'Zoom',
+    statusFinished: 'Finished',
+    url: 'https://zoom.us/j/123456789',
+    type: 'Remote',
 };

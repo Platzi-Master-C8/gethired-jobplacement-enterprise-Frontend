@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react';
 
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
@@ -7,8 +8,9 @@ import { CancelInterview } from 'Components/CancelInterviewModal';
 import { RescheduleInterview } from 'Components/RescheduleInterviewModal';
 import { InterviewNotification } from 'Components/InterviewNotificationModal';
 
+import { getAllInterviews } from 'Api/Interviews';
 import useModal from 'Hooks/useModal';
-import { InterviewCard } from './InterviewCard';
+import { InterviewsList } from './InterviewsList';
 
 const fakeData = [
     {
@@ -71,6 +73,11 @@ export const Interviews = () => {
     const [isOpenModalCancel, setCancelModal] = useModal();
     const [isOpenScheduleModal, setScheduleModal] = useModal();
     const [isOpenNotificationModal, setNotificationModal] = useModal();
+    const [interviews, setInterviews] = useState([]);
+
+    useEffect(() => {
+        getAllInterviews().then(({ data }) => setInterviews(data));
+    }, []);
 
     return (
         <React.Fragment>
@@ -87,22 +94,12 @@ export const Interviews = () => {
             </Grid>
 
             <Grid container spacing={3} sx={{ my: 2 }}>
-                {fakeData.map(({ id, status, name, location, experience, applyingFor, typeTime }) => (
-                    <Grid item xs={12} sm={6} lg={4} xl={3} key={id}>
-                        <InterviewCard
-                            id={id}
-                            status={status}
-                            name={name}
-                            location={location}
-                            experience={experience}
-                            applyingFor={applyingFor}
-                            typeTime={typeTime}
-                            cancelModal={setCancelModal}
-                            scheduleModal={setScheduleModal}
-                            notificationModal={setNotificationModal}
-                        />
-                    </Grid>
-                ))}
+                <InterviewsList
+                    interviews={interviews}
+                    cancelModal={setCancelModal}
+                    scheduleModal={setScheduleModal}
+                    notificationModal={setNotificationModal}
+                />
             </Grid>
 
             <CancelInterview isOpen={isOpenModalCancel} onClose={setCancelModal} />
