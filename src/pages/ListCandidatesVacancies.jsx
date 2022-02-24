@@ -48,7 +48,7 @@ const CandidateData = {
 
 export const ListCandidatesVacancies = () => {
     return (
-        <Container sx={{ mt: 5 }}>
+        <Container sx={{ mt: 5, mb: 5 }}>
             <Grid container spacing={2}>
                 <Grid item xs={12} sx={{ m: 'auto' }}>
                     <Filters />
@@ -63,8 +63,6 @@ export const ListCandidatesVacancies = () => {
                     <Typography variant="h2" mb={2}>
                         Applicant List
                     </Typography>
-                    <CardApplicantList {...CandidateData} />
-                    <CardApplicantList {...CandidateData} />
                     <CardApplicantList {...CandidateData} />
                     <CardApplicantList {...CandidateData} />
                 </Grid>
