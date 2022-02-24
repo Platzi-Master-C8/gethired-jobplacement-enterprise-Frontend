@@ -3,8 +3,6 @@ import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import { Loader } from 'Components/Loader';
-import { HeaderEnterprise } from 'Components/Header';
-import { ScrollToTop } from 'Components/ScrollTop';
 import { EnterpriseHome } from 'Pages/EnterpriseHome';
 import { CreateVacancies } from 'Pages/CreateVacancies';
 import { EditVacancies } from 'Pages/EditVacancies';
@@ -15,6 +13,7 @@ import { Interviews } from 'Pages/Interviews';
 import { PostulationDetail } from 'Pages/PostulationDetail';
 import Offers from 'Pages/Offers';
 import { NotFound } from 'Pages/NotFound';
+import Layout from '../components/Layout';
 
 const Routes = () => {
     const { isAuthenticated, isLoading } = useAuth0();
