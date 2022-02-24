@@ -23,7 +23,7 @@ const Routes = () => {
     }
 
     return (
-        <BrowserRouter basename="/gethired-jobplacement-enterprise-Frontend/">
+        <BrowserRouter>
             <Layout>
                 {isAuthenticated ? (
                     <Switch>
