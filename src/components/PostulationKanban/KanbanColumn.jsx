@@ -24,6 +24,8 @@ export const KanbanColumn = ({ columnData: { name, appIds } }) => {
                             location={app.location}
                             status={app.status}
                             index={index}
+                            isStatus={false}
+                            isInterview={false}
                         />
                     </Grid>
                 );

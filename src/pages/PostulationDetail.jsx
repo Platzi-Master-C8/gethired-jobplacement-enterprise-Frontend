@@ -51,7 +51,7 @@ export const PostulationDetail = () => {
                         Postulant
                     </Typography>
                     <Grid sx={{ mb: 3 }}>
-                        <CardApplicantList {...CandidateData} />
+                        <CardApplicantList {...CandidateData} isStatus isInterview={false} />
                     </Grid>
                     <Grid>
                         <OfferDetails {...JobCardData} />

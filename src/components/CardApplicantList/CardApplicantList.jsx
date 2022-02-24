@@ -1,49 +1,78 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button, Box, Typography, Card, Chip } from '@mui/material';
+import { Button, Box, Typography, Card, Chip, Link, Avatar } from '@mui/material';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import MailRoundedIcon from '@mui/icons-material/MailRounded';
 import LocalPhoneRoundedIcon from '@mui/icons-material/LocalPhoneRounded';
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
+import AddCircleOutlineSharpIcon from '@mui/icons-material/AddCircleOutlineSharp';
 
-import Contact from '../../img/icon-contacts.png';
-import { LinkStyled, ImageProfile } from './styles';
+// import Contact from '../../img/icon-contacts.png';
+import { LinkStyled } from './styles';
 
-export const CardApplicantList = ({ name, profile, email, phone, location, status }) => {
+export const CardApplicantList = ({ name, profile, email, phone, location, status, isStatus, isInterview }) => {
     return (
         <Card sx={{ p: 2 }} elevation={3}>
             <Box
                 sx={{
                     display: 'grid',
-                    gridTemplateColumns: '0.5fr 2fr 1fr',
+                    gridTemplateColumns: '0.5fr 2fr 0.3fr',
                     mb: 4,
                     alignItems: 'center',
                 }}
             >
-                <ImageProfile>
-                    <img src={Contact} alt="Profile" />
-                </ImageProfile>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        ml: !isStatus ? 'none' : '0.5rem',
+                    }}
+                >
+                    <Avatar alt="Applicant avatar" sx={{ mr: 2 }}>
+                        <AccountCircleRoundedIcon />
+                    </Avatar>
+                </Box>
                 <Box>
                     <Typography variant="h3">{name}</Typography>
                     <Typography variant="body2">{profile}</Typography>
                 </Box>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        gap: 1,
-                    }}
-                >
-                    <Typography variant="body2">Status</Typography>
-                    <Chip label={status} color="secondary" size="small" />
-                </Box>
+                {isStatus ? (
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <Typography variant="body2">Status</Typography>
+                        <Chip label={status} color="secondary" size="small" />
+                    </Box>
+                ) : (
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexDirection: 'column',
+                        }}
+                    >
+                        <Link
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                            }}
+                            href="/postulants"
+                        >
+                            <AddCircleOutlineSharpIcon />
+                        </Link>
+                    </Box>
+                )}
             </Box>
             <Box
                 sx={{
                     display: 'grid',
-                    gridTemplateColumns: '2fr 1fr',
+                    gridTemplateColumns: isInterview ? '2fr 1fr' : 'none',
                     alignSelf: 'center',
                     alignItems: 'center',
                 }}
@@ -52,7 +81,7 @@ export const CardApplicantList = ({ name, profile, email, phone, location, statu
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
-                        mx: '1rem',
+                        mx: !isStatus ? 'none' : '1rem',
                     }}
                 >
                     <Box
@@ -92,20 +121,22 @@ export const CardApplicantList = ({ name, profile, email, phone, location, statu
                         </Typography>
                     </Box>
                 </Box>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'flex-end',
-                        justifyContent: 'center',
-                    }}
-                >
-                    <Button size="small" variant="contained">
-                        <LinkStyled color="#FFF" to="/interviews/create">
-                            Interview
-                        </LinkStyled>
-                    </Button>
-                </Box>
+                {isInterview && (
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'flex-end',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <Button size="small" variant="contained">
+                            <LinkStyled color="#FFF" to="/interviews/create">
+                                Interview
+                            </LinkStyled>
+                        </Button>
+                    </Box>
+                )}
             </Box>
         </Card>
     );
@@ -121,4 +152,6 @@ CardApplicantList.propTypes = {
         country: PropTypes.string,
     }).isRequired,
     status: PropTypes.string.isRequired,
+    isStatus: PropTypes.bool.isRequired,
+    isInterview: PropTypes.bool.isRequired,
 };
