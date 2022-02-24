@@ -13,7 +13,7 @@ import { Interviews } from 'Pages/Interviews';
 import { PostulationDetail } from 'Pages/PostulationDetail';
 import Offers from 'Pages/Offers';
 import { NotFound } from 'Pages/NotFound';
-import Layout from '../components/Layout';
+import Layout from 'Components/Layout';
 
 const Routes = () => {
     const { isAuthenticated, isLoading } = useAuth0();
@@ -23,7 +23,7 @@ const Routes = () => {
     }
 
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/gethired-jobplacement-enterprise-Frontend/">
             <Layout>
                 {isAuthenticated ? (
                     <Switch>
