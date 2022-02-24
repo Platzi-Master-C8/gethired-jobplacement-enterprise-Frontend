@@ -1,13 +1,12 @@
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+
+import { StyledTableRow, StyledTableCell } from '../TableStyling';
 
 function createData(id, name, portfolio, experience, salary, start) {
     return { id, name, portfolio, experience, salary, start };
@@ -27,30 +26,30 @@ export const ApplicantComparison = () => {
             <Typography variant="h2" sx={{ mb: 2 }}>
                 Applicant comparison
             </Typography>
-            <TableContainer component={Paper} elevation={3}>
+            <TableContainer component={Paper} elevation={3} sx={{ px: 2, pb: 4, mb: 2, width: 'auto' }}>
                 <Table aria-label="simple table">
                     <TableHead>
-                        <TableRow>
-                            <TableCell>ID</TableCell>
-                            <TableCell align="right">name</TableCell>
-                            <TableCell align="right">portfolio</TableCell>
-                            <TableCell align="right">experience</TableCell>
-                            <TableCell align="right">salary</TableCell>
-                            <TableCell align="right">start</TableCell>
-                        </TableRow>
+                        <StyledTableRow>
+                            <StyledTableCell>ID</StyledTableCell>
+                            <StyledTableCell align="right">name</StyledTableCell>
+                            <StyledTableCell align="right">portfolio</StyledTableCell>
+                            <StyledTableCell align="right">experience</StyledTableCell>
+                            <StyledTableCell align="right">salary</StyledTableCell>
+                            <StyledTableCell align="right">start</StyledTableCell>
+                        </StyledTableRow>
                     </TableHead>
                     <TableBody>
                         {rows.map((row) => (
-                            <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                <TableCell component="th" scope="row">
+                            <StyledTableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                <StyledTableCell component="th" scope="row">
                                     {row.id}
-                                </TableCell>
-                                <TableCell align="right">{row.name}</TableCell>
-                                <TableCell align="right">{row.portfolio}</TableCell>
-                                <TableCell align="right">{row.experience}</TableCell>
-                                <TableCell align="right">{row.salary}</TableCell>
-                                <TableCell align="right">{row.start}</TableCell>
-                            </TableRow>
+                                </StyledTableCell>
+                                <StyledTableCell align="right">{row.name}</StyledTableCell>
+                                <StyledTableCell align="right">{row.portfolio}</StyledTableCell>
+                                <StyledTableCell align="right">{row.experience}</StyledTableCell>
+                                <StyledTableCell align="right">{row.salary}</StyledTableCell>
+                                <StyledTableCell align="right">{row.start}</StyledTableCell>
+                            </StyledTableRow>
                         ))}
                     </TableBody>
                 </Table>
