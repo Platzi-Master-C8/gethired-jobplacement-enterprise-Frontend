@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export const getJobs = async () => {
+export const getJobs = async (params) => {
     const {
         data: { data },
-    } = await axios.get('https://gethiredplatzi.herokuapp.com/api/v1/vacancies');
+    } = await axios.post('https://gethiredplatzi.herokuapp.com/api/v1/filter', null, { params });
     const statusActive = data?.filter((vacancy) => vacancy.status === true);
     return statusActive;
 };

@@ -41,7 +41,7 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
             >
                 <CloseIcon />
             </IconButton>
-            <Box component="div" sx={{ padding: '20px', minWidth: 600 }}>
+            <Box component="div" sx={{ padding: '20px', minWidth: 550 }}>
                 <Box
                     component="div"
                     sx={{
