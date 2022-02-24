@@ -11,7 +11,7 @@ import { LinkStyled, ImageProfile } from './styles';
 
 export const CardApplicantList = ({ name, profile, email, phone, location }) => {
     return (
-        <Card sx={{ p: 2 }} elevation={3}>
+        <Card sx={{ p: 2, mb: 2 }} elevation={3}>
             <Box
                 sx={{
                     display: 'flex',
