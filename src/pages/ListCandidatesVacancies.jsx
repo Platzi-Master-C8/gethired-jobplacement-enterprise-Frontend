@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Typography, Box } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 
 import { ApplicantComparison } from '../components/ApplicantComparison';
 import { CardApplicantList } from '../components/CardApplicantList/CardApplicantList';
@@ -48,27 +48,18 @@ const CandidateData = {
 
 export const ListCandidatesVacancies = () => {
     return (
-        <Container className="container-vacancies">
-            <div className="filter">
-                <Filters />
-            </div>
-            <Box
-                sx={{
-                    display: 'grid',
-                    gridAutoFlow: 'row',
-                    gridTemplateColumns: 'repeat(3, 1fr)',
-                    gridTemplateRows: 'repeat(2, 40%)',
-                    gap: 8,
-                }}
-                className="wrapper"
-            >
-                <div>
+        <Container sx={{ mt: 5 }}>
+            <Grid container spacing={2}>
+                <Grid item xs={12} sx={{ m: 'auto' }}>
+                    <Filters />
+                </Grid>
+                <Grid item xs={3}>
                     <OfferDetails {...JobCardData} />
-                </div>
-                <div>
+                </Grid>
+                <Grid item xs={6}>
                     <ApplicantComparison />
-                </div>
-                <div sx={{ gridRow: '1 / 2' }}>
+                </Grid>
+                <Grid item xs={3}>
                     <Typography variant="h2" mb={2}>
                         Applicant List
                     </Typography>
@@ -76,14 +67,14 @@ export const ListCandidatesVacancies = () => {
                     <CardApplicantList {...CandidateData} />
                     <CardApplicantList {...CandidateData} />
                     <CardApplicantList {...CandidateData} />
-                </div>
-                <div>
+                </Grid>
+                <Grid item xs={3.5}>
                     <SuccessfulApplicant />
-                </div>
-                <div>
+                </Grid>
+                <Grid item xs={4}>
                     <RecommendedApplicant />
-                </div>
-            </Box>
+                </Grid>
+            </Grid>
         </Container>
     );
 };
