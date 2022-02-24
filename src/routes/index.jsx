@@ -11,6 +11,7 @@ import { VacanciesHistory } from 'Pages/VacanciesHistory';
 import { ListCandidatesVacancies } from 'Pages/ListCandidatesVacancies';
 import { Interviews } from 'Pages/Interviews';
 import { PostulationDetail } from 'Pages/PostulationDetail';
+import { Postulations } from 'Pages/Postulations';
 import Offers from 'Pages/Offers';
 import { NotFound } from 'Pages/NotFound';
 import Layout from 'Components/Layout';
@@ -35,6 +36,7 @@ const Routes = () => {
                         <Route path="/interviews" element={<Interviews />} />
                         <Route path="/interviews/create" element={<InterviewPlanning />} />
                         <Route path="/postulants" element={<PostulationDetail />} />
+                        <Route path="/postulations" element={<Postulations />} />
                         <Route path="*" element={<NotFound />} />
                     </Switch>
                 ) : (

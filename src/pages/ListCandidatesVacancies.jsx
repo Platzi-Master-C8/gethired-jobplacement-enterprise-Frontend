@@ -44,6 +44,7 @@ const CandidateData = {
         city: 'Bogota',
         country: 'Colombia',
     },
+    status: 'Applied',
 };
 
 export const ListCandidatesVacancies = () => {
@@ -63,8 +64,8 @@ export const ListCandidatesVacancies = () => {
                     <Typography variant="h2" mb={2}>
                         Applicant List
                     </Typography>
-                    <CardApplicantList {...CandidateData} />
-                    <CardApplicantList {...CandidateData} />
+                    <CardApplicantList {...CandidateData} isStatus isInterview />
+                    <CardApplicantList {...CandidateData} isStatus isInterview />
                 </Grid>
                 <Grid item xs={3.5}>
                     <SuccessfulApplicant />

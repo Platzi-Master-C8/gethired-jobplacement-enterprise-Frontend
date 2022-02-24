@@ -9,7 +9,7 @@ export const ImageProfile = styled.figure`
     background-color: #fafafaed;
     border-radius: 50%;
     text-align: center;
-    margin: 0 1rem 1rem 1rem;
+    margin: 0 1rem 0 1rem;
 `;
 
 export const Divider = styled.div`
