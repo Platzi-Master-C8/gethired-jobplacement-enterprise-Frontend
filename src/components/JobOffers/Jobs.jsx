@@ -24,7 +24,7 @@ const Jobs = ({ loading, error, data }) => {
 
     return (
         <Fragment>
-            {!sliceData.length && loading && <GroupSkeleton />}
+            {loading && <GroupSkeleton />}
             {sliceData.length < 1 && !loading && (
                 <Typography variant="h6" sx={{ textAlign: 'center', mt: 4 }}>
                     No jobs found 🥲
