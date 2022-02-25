@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '@mui/material/Button';
@@ -9,11 +9,16 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
+import { useNavigate } from 'react-router-dom';
 import { Chip, IconButton, Typography } from '@mui/material';
 import { helpColor, sum, helpCurrency } from '../JobOffers/helpers';
 
+import RegisterApplicantForm from '../RegisterApplicantForm';
+
 const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
     const {
+        id,
+        company_id,
         company,
         job_location,
         description,
@@ -27,6 +32,9 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
         postulation_status,
         applicant_evaluations,
     } = vacancyInfo;
+
+    const [openApplyModal, setOpenApplyModal] = useState(false);
+    const navigate = useNavigate();
 
     return (
         <Dialog open={showDetail} onClose={handleOpenClose}>
@@ -142,14 +150,14 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                     </DialogContent>
                     {!tracking_code && (
                         <DialogActions sx={{ display: 'flex', justifyContent: 'space-around', mb: 3 }}>
-                            <Button onClick={() => console.log('Apply to Vacancy')} size="large" variant="contained">
+                            <Button onClick={() => setOpenApplyModal(true)} size="large" variant="contained">
                                 Apply
                             </Button>
                             <Button
                                 size="large"
                                 variant="contained"
                                 type="button"
-                                onClick={() => console.log('See Company Details')}
+                                onClick={() => navigate(`gethired-jobplacement-ratings/${company_id}`)}
                             >
                                 Company details
                             </Button>
@@ -157,6 +165,7 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                     )}
                 </Box>
             </Box>
+            <RegisterApplicantForm open={openApplyModal} setOpen={setOpenApplyModal} id={id} />
         </Dialog>
     );
 };
@@ -165,6 +174,9 @@ JobDetailsModal.propTypes = {
     handleOpenClose: PropTypes.func.isRequired,
     showDetail: PropTypes.bool.isRequired,
     vacancyInfo: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        companyName: PropTypes.string,
+        location: PropTypes.string,
         company: PropTypes.shape({
             name: PropTypes.string,
         }),
