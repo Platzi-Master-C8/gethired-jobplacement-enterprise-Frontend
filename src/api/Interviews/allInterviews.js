@@ -1,8 +1,8 @@
-import axios from 'axios';
+import axiosClient from '../axiosClient';
 
 export const getInterviews = async () => {
     const {
         data: { data },
-    } = await axios.get('https://gethiredplatzi.herokuapp.com/api/v1/interviews');
+    } = await axiosClient.get('/interviews');
     return data;
 };
