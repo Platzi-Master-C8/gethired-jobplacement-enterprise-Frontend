@@ -1,70 +1,157 @@
 import React from 'react';
-import { Button, Box, Typography } from '@mui/material';
+import PropTypes from 'prop-types';
 
-import Contact from '../../img/icon-contacts.png';
-import { LinkStyled, CardContainer, ImageProfile, Divider } from './styles';
+import { Button, Box, Typography, Card, Chip, Link, Avatar } from '@mui/material';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import MailRoundedIcon from '@mui/icons-material/MailRounded';
+import LocalPhoneRoundedIcon from '@mui/icons-material/LocalPhoneRounded';
+import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
+import AddCircleOutlineSharpIcon from '@mui/icons-material/AddCircleOutlineSharp';
 
-export const CardApplicantList = () => {
+// import Contact from '../../img/icon-contacts.png';
+import { LinkStyled } from './styles';
+
+export const CardApplicantList = ({ name, profile, email, phone, location, status, isStatus, isInterview }) => {
     return (
-        <CardContainer>
+        <Card sx={{ p: 2 }} elevation={3}>
             <Box
                 sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
+                    display: 'grid',
+                    gridTemplateColumns: '0.5fr 2fr 0.3fr',
+                    mb: 4,
+                    alignItems: 'center',
                 }}
             >
-                <ImageProfile>
-                    <img src={Contact} alt="Profile" />
-                </ImageProfile>
-                <Box>
-                    <Typography
-                        component="p"
-                        sx={{
-                            py: 0.3,
-                        }}
-                    >
-                        Name
-                    </Typography>
-                    <Typography
-                        component="p"
-                        sx={{
-                            py: 0.3,
-                        }}
-                    >
-                        Profile name
-                    </Typography>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        ml: !isStatus ? 'none' : '0.5rem',
+                    }}
+                >
+                    <Avatar alt="Applicant avatar" sx={{ mr: 2 }}>
+                        <AccountCircleRoundedIcon />
+                    </Avatar>
                 </Box>
+                <Box>
+                    <Typography variant="h3">{name}</Typography>
+                    <Typography variant="body2">{profile}</Typography>
+                </Box>
+                {isStatus ? (
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <Typography variant="body2">Status</Typography>
+                        <Chip label={status} color="secondary" size="small" />
+                    </Box>
+                ) : (
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexDirection: 'column',
+                        }}
+                    >
+                        <Link
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                            }}
+                            href="/postulants"
+                        >
+                            <AddCircleOutlineSharpIcon />
+                        </Link>
+                    </Box>
+                )}
             </Box>
-            <Divider />
             <Box
                 sx={{
-                    display: 'flex',
-                    justifyContent: 'space-around',
+                    display: 'grid',
+                    gridTemplateColumns: isInterview ? '2fr 1fr' : 'none',
+                    alignSelf: 'center',
+                    alignItems: 'center',
                 }}
             >
-                <Typography
-                    component="p"
+                <Box
                     sx={{
-                        pr: 1.3,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        mx: !isStatus ? 'none' : '1rem',
                     }}
                 >
-                    Status
-                </Typography>
-                <Typography
-                    component="p"
-                    sx={{
-                        pr: 1.3,
-                    }}
-                >
-                    date
-                </Typography>
-
-                <Button size="small" variant="contained">
-                    <LinkStyled color="#FFF" to="/interview-planning">
-                        Interview
-                    </LinkStyled>
-                </Button>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            gap: 2,
+                        }}
+                    >
+                        <MailRoundedIcon />
+                        <Typography variant="body2" sx={{ py: 0.3 }}>
+                            {email}
+                        </Typography>
+                    </Box>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            gap: 2,
+                        }}
+                    >
+                        <LocalPhoneRoundedIcon />
+                        <Typography variant="body2" sx={{ py: 0.3 }}>
+                            {phone}
+                        </Typography>
+                    </Box>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            gap: 2,
+                        }}
+                    >
+                        <LocationOnRoundedIcon />
+                        <Typography variant="body2" sx={{ py: 0.3 }}>
+                            {location.city} - {location.country}
+                        </Typography>
+                    </Box>
+                </Box>
+                {isInterview && (
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'flex-end',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <Button size="small" variant="contained">
+                            <LinkStyled color="#FFF" to="/interviews/create">
+                                Interview
+                            </LinkStyled>
+                        </Button>
+                    </Box>
+                )}
             </Box>
-        </CardContainer>
+        </Card>
     );
+};
+
+CardApplicantList.propTypes = {
+    name: PropTypes.string.isRequired,
+    profile: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    location: PropTypes.shape({
+        city: PropTypes.string,
+        country: PropTypes.string,
+    }).isRequired,
+    status: PropTypes.string.isRequired,
+    isStatus: PropTypes.bool.isRequired,
+    isInterview: PropTypes.bool.isRequired,
 };

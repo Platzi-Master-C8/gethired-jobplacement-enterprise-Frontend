@@ -11,6 +11,42 @@ import { SuccessfulApplicant } from '../components/SuccessfulApplicant';
 
 import '../style/listCandidatesVacancies.scss';
 
+const JobCardData = {
+    id: 1,
+    name: 'UX Design',
+    user_id: '1',
+    startDate: '1991-02-25 00:37:33',
+    description:
+        'Saepe explicabo aut odio earum hic qui optio et. Ab ea necessitatibus quia inventore ut et. Possimus labore blanditiis debitis enim perspiciatis sit sint illum. Libero et ratione voluptates dolorem quibusdam aut.',
+    status: true,
+    salary: '9085960',
+    company_id: 1,
+    typeWork: '2',
+    job_location: '83005 Dayana Forks Apt. 953',
+    skills: 'typescript,javascript,css',
+    hoursWeek: '16',
+    experience: '6',
+    created_at: '2022-02-15T02:17:33.000000Z',
+    updated_at: '2022-02-15T05:39:05.000000Z',
+    company: {
+        id: 1,
+        name: 'Perry Hansen',
+    },
+};
+
+const CandidateData = {
+    id: 1,
+    name: 'John Doe',
+    profile: 'Fullstack Developer',
+    email: 'john@doe.com',
+    phone: '5712345678500',
+    location: {
+        city: 'Bogota',
+        country: 'Colombia',
+    },
+    status: 'Applied',
+};
+
 export const ListCandidatesVacancies = () => {
     return (
         <Container className="container-vacancies">
@@ -28,7 +64,7 @@ export const ListCandidatesVacancies = () => {
                 className="wrapper"
             >
                 <div>
-                    <OfferDetails />
+                    <OfferDetails {...JobCardData} />
                 </div>
                 <div>
                     <ApplicantComparison />
@@ -37,10 +73,10 @@ export const ListCandidatesVacancies = () => {
                     <Typography variant="h2" mb={2}>
                         Applicant List
                     </Typography>
-                    <CardApplicantList />
-                    <CardApplicantList />
-                    <CardApplicantList />
-                    <CardApplicantList />
+                    <CardApplicantList {...CandidateData} isStatus isInterview />
+                    <CardApplicantList {...CandidateData} isStatus isInterview />
+                    <CardApplicantList {...CandidateData} isStatus isInterview />
+                    <CardApplicantList {...CandidateData} isStatus isInterview />
                 </div>
                 <div>
                     <SuccessfulApplicant />
