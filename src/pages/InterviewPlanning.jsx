@@ -43,5 +43,9 @@ export const InterviewPlanning = ({ user }) => {
 };
 
 InterviewPlanning.propTypes = {
-    user: PropTypes.string.isRequired,
+    user: PropTypes.string,
+};
+
+InterviewPlanning.defaultProps = {
+    user: 'candidate',
 };
