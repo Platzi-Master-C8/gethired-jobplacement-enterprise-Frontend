@@ -7,15 +7,23 @@ import SkeletonVacancyHistory from '../SkeletonVacancyHistory';
 import { Vacancy } from '../Vacancy';
 
 import { getAllVacancy } from '../../api/Vacancies/allVacancies';
+import getVacanciesByUser from '../../api/Vacancies/getVacanciesByUser';
 
 export const ListOfVacancies = () => {
     const [data, setData] = useState();
-    const { isAuthenticated } = useAuth0();
+    const { isAuthenticated, user } = useAuth0();
+
     useEffect(() => {
-        getAllVacancy().then((response) => {
-            setData(response.data.data);
-        });
-    }, []);
+        if (isAuthenticated) {
+            getVacanciesByUser(user.sub).then((response) => {
+                setData(response);
+            });
+        } else {
+            getAllVacancy().then((response) => {
+                setData(response.data.data);
+            });
+        }
+    }, [isAuthenticated]);
 
     return (
         <Container>
@@ -29,7 +37,7 @@ export const ListOfVacancies = () => {
                     </Button>
                 )}
             </Header>
-            {data ? (
+            {data?.length > 0 ? (
                 data.map((vacancy) => (
                     <Container key={vacancy.id}>
                         <Vacancy
