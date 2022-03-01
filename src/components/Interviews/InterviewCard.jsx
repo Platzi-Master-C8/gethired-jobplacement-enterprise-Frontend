@@ -25,6 +25,7 @@ export const InterviewCard = ({
     cancelModal,
     scheduleModal,
     notificationModal,
+    setCurrentInterview,
 }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -69,6 +70,7 @@ export const InterviewCard = ({
                         onClick={() => {
                             handleClose();
                             cancelModal();
+                            setCurrentInterview(id);
                         }}
                     >
                         Cancel
@@ -77,6 +79,7 @@ export const InterviewCard = ({
                         onClick={() => {
                             handleClose();
                             scheduleModal();
+                            setCurrentInterview(id);
                         }}
                     >
                         Reschedule
@@ -85,6 +88,7 @@ export const InterviewCard = ({
                         onClick={() => {
                             handleClose();
                             notificationModal();
+                            setCurrentInterview(id);
                         }}
                     >
                         Notification
@@ -138,6 +142,7 @@ InterviewCard.propTypes = {
     cancelModal: PropTypes.func.isRequired,
     scheduleModal: PropTypes.func.isRequired,
     notificationModal: PropTypes.func.isRequired,
+    setCurrentInterview: PropTypes.func.isRequired,
 };
 
 InterviewCard.defaultProps = {

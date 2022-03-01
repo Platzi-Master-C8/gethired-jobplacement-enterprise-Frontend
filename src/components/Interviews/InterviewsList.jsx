@@ -6,10 +6,10 @@ import Grid from '@mui/material/Grid';
 
 import { InterviewCard } from './InterviewCard';
 
-export const InterviewsList = ({ interviews, cancelModal, scheduleModal, notificationModal }) => {
+export const InterviewsList = ({ interviews, cancelModal, scheduleModal, notificationModal, setCurrentInterview }) => {
     return (
         <React.Fragment>
-            {interviews.map(({ id, platform, status_finished, url, type }) => (
+            {interviews.map(({ id, platform, status_finished, url, type, date }) => (
                 <Grid item xs={12} sm={6} lg={4} xl={3} key={id}>
                     <InterviewCard
                         id={id}
@@ -17,9 +17,11 @@ export const InterviewsList = ({ interviews, cancelModal, scheduleModal, notific
                         statusFinished={status_finished}
                         url={url}
                         type={type}
+                        date={date}
                         cancelModal={cancelModal}
                         scheduleModal={scheduleModal}
                         notificationModal={notificationModal}
+                        setCurrentInterview={setCurrentInterview}
                     />
                 </Grid>
             ))}
@@ -32,4 +34,5 @@ InterviewsList.propTypes = {
     cancelModal: PropTypes.func.isRequired,
     scheduleModal: PropTypes.func.isRequired,
     notificationModal: PropTypes.func.isRequired,
+    setCurrentInterview: PropTypes.func.isRequired,
 };
