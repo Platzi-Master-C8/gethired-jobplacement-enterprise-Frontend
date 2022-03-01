@@ -4,21 +4,24 @@ import PropTypes from 'prop-types';
 
 import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
-import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import LinkIcon from '@mui/icons-material/Link';
+
+import { format } from 'date-fns';
 
 export const InterviewCard = ({
     id,
     platform,
     statusFinished,
     url,
-    type,
+    date,
     cancelModal,
     scheduleModal,
     notificationModal,
@@ -34,15 +37,15 @@ export const InterviewCard = ({
         setAnchorEl(null);
     };
 
-    const handleClickChip = (event) => {
-        event.preventDefault();
-        window.open(url, '_blank');
-    };
+    const dateFns = new Date(date);
+    const formattedDate = format(dateFns, 'MMMM dd, yyyy');
+    const hour = dateFns.getHours();
+    const minute = dateFns.getMinutes();
 
     return (
-        <Paper sx={{ p: 2 }}>
+        <Paper sx={{ p: 2, boxShadow: 3 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                <Chip label={statusFinished} color="primary" />
+                <Chip label={statusFinished || 'Active'} color="secondary" />
 
                 <IconButton aria-label="settings" id="list-options" onClick={handleClick}>
                     <MoreVertIcon
@@ -99,26 +102,29 @@ export const InterviewCard = ({
                 </Box>
             </Box>
 
-            <Grid container spacing={2}>
-                <Grid item xs={12} md={4} lg={4}>
-                    <Typography>Experience</Typography>
-                    <Chip
-                        label={platform}
-                        key={platform}
-                        variant="filled"
-                        color="secondary"
-                        onClick={handleClickChip}
-                    />
-                </Grid>
-                <Grid item xs={12} md={4} lg={4}>
-                    <Typography>Applying for</Typography>
-                    <Typography variant="body2">Apply</Typography>
-                </Grid>
-                <Grid item xs={12} md={4} lg={4}>
-                    <Typography>Time</Typography>
-                    <Typography variant="body2">time</Typography>
-                </Grid>
-            </Grid>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+                <Box>
+                    <Typography variant="body1">{formattedDate}</Typography>
+                    <Typography variant="body2">{`${hour}:${minute}`}</Typography>
+                </Box>
+
+                <Button
+                    href={url}
+                    target="_blank"
+                    size="small"
+                    endIcon={
+                        <LinkIcon
+                            sx={{
+                                color: 'rgba(0, 0, 0, 0.54)',
+                                fill: 'currentColor',
+                                stroke: 'none',
+                            }}
+                        />
+                    }
+                >
+                    {platform}
+                </Button>
+            </Box>
         </Paper>
     );
 };
@@ -128,7 +134,7 @@ InterviewCard.propTypes = {
     platform: PropTypes.string,
     statusFinished: PropTypes.string,
     url: PropTypes.string,
-    type: PropTypes.string,
+    date: PropTypes.string.isRequired,
     cancelModal: PropTypes.func.isRequired,
     scheduleModal: PropTypes.func.isRequired,
     notificationModal: PropTypes.func.isRequired,
@@ -138,5 +144,4 @@ InterviewCard.defaultProps = {
     platform: 'Zoom',
     statusFinished: 'Finished',
     url: 'https://zoom.us/j/123456789',
-    type: 'Remote',
 };
