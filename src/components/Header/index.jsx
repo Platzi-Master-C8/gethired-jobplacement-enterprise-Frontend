@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
 import { Header } from '@master-c8/commons';
-import { useMediaQuery, useTheme, MenuList, MenuItem, ListItemIcon, ListItemText, Link } from '@mui/material';
+import { useMediaQuery, useTheme, MenuList, MenuItem, ListItemIcon, Typography, Link } from '@mui/material';
 import { useAuth0 } from '@auth0/auth0-react';
 
-import { grey } from '@mui/material/colors';
 import { Currency } from '@master-c8/icons';
 import { HeaderMobile } from './HeaderMobile';
 import { HeaderDesktop } from './HeaderDesktop';
@@ -21,10 +20,10 @@ const SalariesLink = () => (
                 }}
                 href={`${process.env.SALARIES_URL}`}
             >
-                <ListItemIcon>
-                    <Currency sx={{ color: grey[900] }} />
+                <ListItemIcon sx={{ justifyContent: 'center' }}>
+                    <Currency color="secondary" />
                 </ListItemIcon>
-                <ListItemText sx={{ color: 'black' }}>Calculator</ListItemText>
+                <Typography color="secondary">Calculator</Typography>
             </Link>
         </MenuItem>
     </MenuList>

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 import Avatar from '@mui/material/Avatar';
-import { Menu, MenuList, MenuItem, ListItemIcon, ListItemText, Box } from '@mui/material';
-import { grey } from '@mui/material/colors';
+import { Menu, MenuList, MenuItem, ListItemIcon, Typography, Box } from '@mui/material';
 
 import { Home, BriefCase, Blog, UserGroup } from '@master-c8/icons';
 
@@ -25,34 +24,34 @@ export const HeaderDesktop = () => {
         <MenuList sx={{ display: 'flex' }}>
             <MenuItem>
                 <LinkStyled to="/">
-                    <ListItemIcon>
-                        <Home sx={{ color: grey[900] }} />
+                    <ListItemIcon sx={{ justifyContent: 'center' }}>
+                        <Home color="secondary" />
                     </ListItemIcon>
-                    <ListItemText sx={{ color: 'black' }}>Home</ListItemText>
+                    <Typography color="secondary">Home</Typography>
                 </LinkStyled>
             </MenuItem>
             <MenuItem>
                 <LinkStyled to="/vacancies">
-                    <ListItemIcon>
-                        <BriefCase sx={{ color: grey[900] }} />
+                    <ListItemIcon sx={{ justifyContent: 'center' }}>
+                        <BriefCase color="secondary" />
                     </ListItemIcon>
-                    <ListItemText sx={{ color: 'black' }}>Vacancies</ListItemText>
+                    <Typography color="secondary">Vacancies</Typography>
                 </LinkStyled>
             </MenuItem>
             <MenuItem>
                 <LinkStyled to="/interviews">
-                    <ListItemIcon>
-                        <UserGroup sx={{ color: grey[900] }} />
+                    <ListItemIcon sx={{ justifyContent: 'center' }}>
+                        <UserGroup color="secondary" />
                     </ListItemIcon>
-                    <ListItemText sx={{ color: 'black' }}>Interviews</ListItemText>
+                    <Typography color="secondary">Interviews</Typography>
                 </LinkStyled>
             </MenuItem>
             <MenuItem>
                 <LinkStyled to="/postulations">
-                    <ListItemIcon>
-                        <Blog sx={{ color: grey[900] }} />
+                    <ListItemIcon sx={{ justifyContent: 'center' }}>
+                        <Blog color="secondary" />
                     </ListItemIcon>
-                    <ListItemText sx={{ color: 'black' }}>Postulations</ListItemText>
+                    <Typography color="secondary">Postulations</Typography>
                 </LinkStyled>
             </MenuItem>
             <Box sx={{ display: 'flex' }}>
