@@ -7,7 +7,9 @@ import { CancelInterview } from 'Components/CancelInterviewModal';
 import { RescheduleInterview } from 'Components/RescheduleInterviewModal';
 import { InterviewNotification } from 'Components/InterviewNotificationModal';
 
-import { getAllInterviews } from 'Api/Interviews';
+import { cancelInterview } from 'Api/interviews/cancelInterview';
+import { getAllInterviews } from 'Api/Interviews/getAllInterviews';
+
 import useModal from 'Hooks/useModal';
 import { InterviewsList } from './InterviewsList';
 
@@ -22,6 +24,10 @@ export const Interviews = () => {
         getAllInterviews().then(({ data }) => setInterviews(data));
     }, []);
 
+    const handleCancelInterview = (reason) => {
+        cancelInterview({ id: currentInterview, reason });
+    };
+
     return (
         <React.Fragment>
             <Grid container spacing={3} sx={{ my: 2 }}>
@@ -34,7 +40,7 @@ export const Interviews = () => {
                 />
             </Grid>
 
-            <CancelInterview isOpen={isOpenModalCancel} onClose={setCancelModal} />
+            <CancelInterview isOpen={isOpenModalCancel} onClose={setCancelModal} handleSubmit={handleCancelInterview} />
             <RescheduleInterview isOpen={isOpenScheduleModal} onClose={setScheduleModal} />
             <InterviewNotification isOpen={isOpenNotificationModal} onClose={setNotificationModal} />
         </React.Fragment>

@@ -11,11 +11,15 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import { FormButton } from '../FormVacancies/styles';
 
-export const CancelInterview = ({ isOpen, onClose }) => {
+export const CancelInterview = ({ isOpen, onClose, handleSubmit }) => {
     const [value, setValue] = useState();
 
     const handleChange = (event) => {
         setValue(event.target.value);
+    };
+
+    const handleClick = () => {
+        handleSubmit(value);
     };
 
     return (
@@ -40,7 +44,7 @@ export const CancelInterview = ({ isOpen, onClose }) => {
                 <FormButton variant="contained" color="error" onClick={onClose}>
                     Cancel
                 </FormButton>
-                <FormButton variant="contained" color="primary" type="submit" onClick={onClose}>
+                <FormButton variant="contained" color="primary" type="submit" onClick={handleClick}>
                     Send {'>'}
                 </FormButton>
             </DialogActions>
@@ -51,4 +55,5 @@ export const CancelInterview = ({ isOpen, onClose }) => {
 CancelInterview.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
 };
