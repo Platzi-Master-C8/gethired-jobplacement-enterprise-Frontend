@@ -14,6 +14,7 @@ import { Chip, IconButton, Typography } from '@mui/material';
 import { helpColor, sum, helpCurrency } from '../JobOffers/helpers';
 
 import RegisterApplicantForm from '../RegisterApplicantForm';
+import { ReviewApplicationProcessForm } from '../ReviewApplicationProcess';
 
 const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
     const {
@@ -31,6 +32,7 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
         tracking_code,
         postulation_status,
         applicant_evaluations,
+        applicant_id,
     } = vacancyInfo;
 
     const [openApplyModal, setOpenApplyModal] = useState(false);
@@ -132,6 +134,11 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                                 </li>
                             )}
                         </ul>
+                        {postulation_status && (
+                            <div style={{ textAlign: 'center', paddingTop: '1rem' }}>
+                                <ReviewApplicationProcessForm company_id={company_id} applicant_id={applicant_id} />
+                            </div>
+                        )}
                         {!!applicant_evaluations?.length && (
                             <div
                                 style={{
@@ -204,6 +211,7 @@ JobDetailsModal.propTypes = {
         created_at: PropTypes.string,
         updated_at: PropTypes.string,
         tracking_code: PropTypes.string,
+        applicant_id: PropTypes.number,
     }).isRequired,
 };
 

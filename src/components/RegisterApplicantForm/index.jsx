@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { registerApplicant } from '../../api/Applicants';
-import SendForm from './SendForm';
+import { SendForm } from '../SendForm';
 import RegisterApplicantModal from './RegisterApplicantModal';
 
 const initialState = {
