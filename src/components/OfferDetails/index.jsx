@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
 
 import Typography from '@mui/material/Typography';
@@ -9,38 +8,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 
-export const OfferDetails = ({
-    name,
-    description,
-    status,
-    salary,
-    typeWork,
-    skills,
-    hoursWeek,
-    experience,
-    startDate,
-}) => {
-    const newTypeWork = (value) => {
-        let work;
-        switch (value) {
-            case '1': {
-                work = 'Remote';
-                break;
-            }
-            case '2': {
-                work = 'Full-time';
-                break;
-            }
-            case '3': {
-                work = 'Part-time';
-                break;
-            }
-            default:
-                return null;
-        }
-        return work;
-    };
-
+export const OfferDetails = ({ name, description, status, salary, typeWork, skillsRaw, hoursWeek, experience }) => {
     return (
         <Fragment>
             <Typography variant="h2" mb={2}>
@@ -79,21 +47,28 @@ export const OfferDetails = ({
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }} mb={1}>
                     <Typography variant="body2">Type of work</Typography>
-                    <Typography variant="body2">{newTypeWork(typeWork)}</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between' }} mb={1}>
-                    <Typography variant="body2">Start date</Typography>
-                    <Typography variant="body2">{moment(startDate).format('DD/MM/YYYY')}</Typography>
+                    <Typography variant="body2">{typeWork}</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }} mb={1}>
                     <Typography variant="body2">Skills needed</Typography>
-                    <Box>
-                        {skills.split(',').map((skill) => {
-                            return (
-                                <Chip label={skill} size="small" variant="outlined" color="secondary" key={uuidv4()} />
-                            );
-                        })}
-                    </Box>
+                    {skillsRaw !== undefined ? (
+                        <Box>
+                            {skillsRaw.split(',').map((skill) => {
+                                return (
+                                    <Chip
+                                        sx={{ mb: 0.2, ml: 0.2 }}
+                                        label={skill}
+                                        size="small"
+                                        variant="outlined"
+                                        color="secondary"
+                                        key={uuidv4()}
+                                    />
+                                );
+                            })}
+                        </Box>
+                    ) : (
+                        <Box />
+                    )}
                 </Box>
             </Paper>
         </Fragment>
@@ -106,8 +81,7 @@ OfferDetails.propTypes = {
     status: PropTypes.bool.isRequired,
     salary: PropTypes.string.isRequired,
     typeWork: PropTypes.string.isRequired,
-    skills: PropTypes.string.isRequired,
-    hoursWeek: PropTypes.string.isRequired,
-    experience: PropTypes.string.isRequired,
-    startDate: PropTypes.string.isRequired,
+    skillsRaw: PropTypes.string.isRequired,
+    hoursWeek: PropTypes.number.isRequired,
+    experience: PropTypes.number.isRequired,
 };

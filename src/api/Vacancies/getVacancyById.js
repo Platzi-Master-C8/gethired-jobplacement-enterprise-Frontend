@@ -13,10 +13,14 @@ export default async function getVacancyById(id) {
             description: vacancy.description,
             company: vacancy.company_id,
             'type-work': vacancy.type_work_id,
+            typeWork: vacancy.typeWork,
             'job-location': vacancy.job_location,
             skills: vacancy.skills,
+            skillsRaw: vacancy.skills_raw,
             'hours-per-week': vacancy.hours_per_week,
+            hoursWeek: vacancy.hours_per_week,
             'minimum-experience': vacancy.minimum_experience,
+            experience: vacancy.minimum_experience,
         };
     } catch (error) {
         console.log(error);
