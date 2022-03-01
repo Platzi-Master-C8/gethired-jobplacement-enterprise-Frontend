@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Paper, Typography, Grid, Button } from '@mui/material';
+import { Paper, Typography, Grid } from '@mui/material';
 import { InterviewerCard } from 'Components/InterviewerCard';
 import { Container, Img } from './styles';
 

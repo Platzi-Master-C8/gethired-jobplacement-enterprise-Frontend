@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button, Box, Typography, Card, Chip, Link, Avatar } from '@mui/material';
+import { Button, Box, Typography, Card, Chip, Avatar } from '@mui/material';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import MailRoundedIcon from '@mui/icons-material/MailRounded';
 import LocalPhoneRoundedIcon from '@mui/icons-material/LocalPhoneRounded';
@@ -66,15 +66,9 @@ export const CardApplicantList = ({
                             flexDirection: 'column',
                         }}
                     >
-                        <Link
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                            }}
-                            href="/postulants"
-                        >
+                        <LinkStyled to="/postulants">
                             <AddCircleOutlineSharpIcon />
-                        </Link>
+                        </LinkStyled>
                     </Box>
                 )}
             </Box>
