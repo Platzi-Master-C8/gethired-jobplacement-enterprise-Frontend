@@ -8,10 +8,19 @@ import LocalPhoneRoundedIcon from '@mui/icons-material/LocalPhoneRounded';
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 import AddCircleOutlineSharpIcon from '@mui/icons-material/AddCircleOutlineSharp';
 
-// import Contact from '../../img/icon-contacts.png';
 import { LinkStyled } from './styles';
 
-export const CardApplicantList = ({ name, profile, email, phone, location, status, isStatus, isInterview }) => {
+export const CardApplicantList = ({
+    name,
+    profile,
+    email,
+    phone,
+    locationCity,
+    locationCountry,
+    status,
+    isStatus,
+    isInterview,
+}) => {
     return (
         <Card sx={{ p: 2, mb: 2 }} elevation={3}>
             <Box
@@ -26,7 +35,7 @@ export const CardApplicantList = ({ name, profile, email, phone, location, statu
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
-                        ml: !isStatus ? 'none' : '0.5rem',
+                        ml: isStatus ? 'none' : '0.5rem',
                     }}
                 >
                     <Avatar alt="Applicant avatar" sx={{ mr: 2 }}>
@@ -47,7 +56,7 @@ export const CardApplicantList = ({ name, profile, email, phone, location, statu
                         }}
                     >
                         <Typography variant="body2">Status</Typography>
-                        <Chip label={status} color="secondary" size="small" />
+                        <Chip label={status.name} color="secondary" size="small" />
                     </Box>
                 ) : (
                     <Box
@@ -117,27 +126,29 @@ export const CardApplicantList = ({ name, profile, email, phone, location, statu
                     >
                         <LocationOnRoundedIcon />
                         <Typography variant="body2" sx={{ py: 0.3 }}>
-                            {location.city} - {location.country}
+                            {locationCity} - {locationCountry}
                         </Typography>
                     </Box>
                 </Box>
-                {isInterview && (
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'flex-end',
-                            justifyContent: 'center',
-                        }}
-                    >
-                        <Button size="small" variant="contained">
-                            <LinkStyled color="#FFF" to="/interviews/create">
-                                Interview
-                            </LinkStyled>
-                        </Button>
-                    </Box>
-                )}
             </Box>
+            {isInterview && (
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        justifyContent: 'center',
+                        marginTop: 1,
+                        marginLeft: 2,
+                    }}
+                >
+                    <Button size="small" variant="contained">
+                        <LinkStyled color="#FFF" to="/interviews/create">
+                            Interview
+                        </LinkStyled>
+                    </Button>
+                </Box>
+            )}
         </Card>
     );
 };
@@ -147,11 +158,11 @@ CardApplicantList.propTypes = {
     profile: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
-    location: PropTypes.shape({
-        city: PropTypes.string,
-        country: PropTypes.string,
+    locationCity: PropTypes.string.isRequired,
+    locationCountry: PropTypes.string.isRequired,
+    status: PropTypes.shape({
+        name: PropTypes.string,
     }).isRequired,
-    status: PropTypes.string.isRequired,
     isStatus: PropTypes.bool.isRequired,
     isInterview: PropTypes.bool.isRequired,
 };
