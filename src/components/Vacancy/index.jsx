@@ -30,7 +30,7 @@ export const Vacancy = ({ title, checked, salary, modality, applies, description
                 <Grid item xs={4} sm={2} md={2}>
                     <Salary>$ {Intl.NumberFormat().format(salary)}</Salary>
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={12} md={2}>
                     {isAuthenticated && (
                         <FormControlLabel
                             sx={{ mr: 2 }}
@@ -39,10 +39,10 @@ export const Vacancy = ({ title, checked, salary, modality, applies, description
                         />
                     )}
                 </Grid>
-                <Grid item xs={8}>
+                <Grid item xs={12} md={8}>
                     <Tag>{applies} applied </Tag>
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={12} md={2}>
                     <Tag>{modality}</Tag>
                 </Grid>
                 <Grid item xs={12}>
