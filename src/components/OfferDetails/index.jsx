@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
-import Typography from '@mui/material/Typography';
+import { Typography, Card } from '@mui/material';
 import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -10,11 +10,8 @@ import Divider from '@mui/material/Divider';
 
 export const OfferDetails = ({ name, description, status, salary, typeWork, skillsRaw, hoursWeek, experience }) => {
     return (
-        <Fragment>
-            <Typography variant="h2" mb={2}>
-                Vacancy Details
-            </Typography>
-            <Paper sx={{ p: 2 }} elevation={3}>
+        <Card elevation={3}>
+            <Paper sx={{ p: 2 }}>
                 <Typography variant="h3" mb={2}>
                     {name}
                 </Typography>
@@ -71,7 +68,7 @@ export const OfferDetails = ({ name, description, status, salary, typeWork, skil
                     )}
                 </Box>
             </Paper>
-        </Fragment>
+        </Card>
     );
 };
 
@@ -79,7 +76,7 @@ OfferDetails.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     status: PropTypes.bool.isRequired,
-    salary: PropTypes.string.isRequired,
+    salary: PropTypes.number.isRequired,
     typeWork: PropTypes.string.isRequired,
     skillsRaw: PropTypes.string.isRequired,
     hoursWeek: PropTypes.number.isRequired,

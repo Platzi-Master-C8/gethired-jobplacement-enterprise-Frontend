@@ -17,7 +17,16 @@ import { CardNoApplicant } from '../components/CardNoApplicant';
 
 export const ListCandidatesVacancies = () => {
     const { id } = useParams();
-    const [currentVacancy, setCurrentVacancy] = useState({});
+    const [currentVacancy, setCurrentVacancy] = useState({
+        name: '',
+        description: '',
+        status: true,
+        salary: 0,
+        typeWork: '',
+        skillsRaw: '',
+        hoursWeek: 0,
+        experience: 0,
+    });
     const [applicants, setApplicants] = useState([]);
 
     useEffect(() => {
@@ -36,7 +45,19 @@ export const ListCandidatesVacancies = () => {
                     <Filters />
                 </Grid>
                 <Grid item xs={12} md={3}>
-                    <OfferDetails {...currentVacancy} />
+                    <Typography variant="h2" mb={2}>
+                        Vacancy Details
+                    </Typography>
+                    <OfferDetails
+                        name={currentVacancy.name}
+                        description={currentVacancy.description}
+                        status={currentVacancy.status}
+                        salary={currentVacancy.salary}
+                        typeWork={currentVacancy.typeWork}
+                        skillsRaw={currentVacancy.skillsRaw}
+                        hoursWeek={currentVacancy.hoursWeek}
+                        experience={currentVacancy.experience}
+                    />
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <ApplicantComparison applicants={applicants} />
@@ -51,6 +72,7 @@ export const ListCandidatesVacancies = () => {
                         applicants.map((applicant) => {
                             return (
                                 <CardApplicantList
+                                    key={applicant.id}
                                     name={applicant.name}
                                     profile={applicant.job_title}
                                     email={applicant.email}

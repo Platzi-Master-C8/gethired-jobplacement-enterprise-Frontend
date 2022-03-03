@@ -54,6 +54,9 @@ export const PostulationDetail = () => {
                         <CardApplicantList {...CandidateData} isStatus isInterview={false} />
                     </Grid>
                     <Grid>
+                        <Typography variant="h2" mb={2}>
+                            Vacancy Details
+                        </Typography>
                         <OfferDetails {...JobCardData} />
                     </Grid>
                 </Grid>
