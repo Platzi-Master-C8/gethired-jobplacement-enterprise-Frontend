@@ -9,7 +9,6 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
-import { useNavigate } from 'react-router-dom';
 import { Chip, IconButton, Typography } from '@mui/material';
 import { helpColor, sum, helpCurrency } from '../JobOffers/helpers';
 
@@ -36,7 +35,6 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
     } = vacancyInfo;
 
     const [openApplyModal, setOpenApplyModal] = useState(false);
-    const navigate = useNavigate();
 
     return (
         <Dialog open={showDetail} onClose={handleOpenClose}>
@@ -164,7 +162,7 @@ const JobDetailsModal = ({ showDetail, handleOpenClose, vacancyInfo }) => {
                                 size="large"
                                 variant="contained"
                                 type="button"
-                                onClick={() => navigate(`gethired-jobplacement-ratings/${company_id}`)}
+                                onClick={() => window.location.assign(`${process.env.RATINGS_URL}${company_id}`)}
                             >
                                 Company details
                             </Button>
