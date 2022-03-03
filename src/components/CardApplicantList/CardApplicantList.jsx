@@ -78,6 +78,7 @@ export const CardApplicantList = ({
                     gridTemplateColumns: isInterview ? '2fr 1fr' : 'none',
                     alignSelf: 'center',
                     alignItems: 'center',
+                    mb: isInterview ? 2 : 'none',
                 }}
             >
                 <Box
@@ -130,10 +131,8 @@ export const CardApplicantList = ({
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'flex-start',
+                        alignItems: 'center',
                         justifyContent: 'center',
-                        marginTop: 1,
-                        marginLeft: 2,
                     }}
                 >
                     <Button size="small" variant="contained">
@@ -149,7 +148,7 @@ export const CardApplicantList = ({
 
 CardApplicantList.propTypes = {
     name: PropTypes.string.isRequired,
-    profile: PropTypes.string.isRequired,
+    profile: PropTypes.string,
     email: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
     locationCity: PropTypes.string.isRequired,
@@ -159,4 +158,8 @@ CardApplicantList.propTypes = {
     }).isRequired,
     isStatus: PropTypes.bool.isRequired,
     isInterview: PropTypes.bool.isRequired,
+};
+
+CardApplicantList.defaultProps = {
+    profile: '',
 };

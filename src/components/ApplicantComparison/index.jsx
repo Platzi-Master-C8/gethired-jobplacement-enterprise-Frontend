@@ -101,13 +101,19 @@ export const ApplicantComparison = ({ applicants }) => {
 };
 
 ApplicantComparison.propTypes = {
-    applicants: PropTypes.arrayOf(
+    applicants: PropTypes.oneOfType([
+        PropTypes.arrayOf(
+            PropTypes.shape({
+                vacancy_id: PropTypes.number,
+                name: PropTypes.string,
+                email: PropTypes.string,
+                country: PropTypes.string,
+                city: PropTypes.string,
+            }),
+        ),
         PropTypes.shape({
-            vacancy_id: PropTypes.number,
-            name: PropTypes.string,
-            email: PropTypes.string,
-            country: PropTypes.string,
-            city: PropTypes.string,
+            message: PropTypes.string,
+            data: PropTypes.arrayOf(PropTypes.object),
         }),
-    ).isRequired,
+    ]).isRequired,
 };

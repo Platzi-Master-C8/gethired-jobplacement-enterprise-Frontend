@@ -17,25 +17,25 @@ import { CardNoApplicant } from '../components/CardNoApplicant';
 
 export const ListCandidatesVacancies = () => {
     const { id } = useParams();
-    const [currentVacancy, setCurrentVacancy] = useState({
-        name: '',
-        description: '',
-        status: true,
-        salary: 0,
-        typeWork: '',
-        skillsRaw: '',
-        hoursWeek: 0,
-        experience: 0,
+    const [data, setData] = useState({
+        vacancy: {},
+        postulants: [],
     });
-    const [applicants, setApplicants] = useState([]);
+
+    const [hidden] = useState(true);
+
+    const fetchData = async () => {
+        try {
+            const vacancy = await getVacancyById(id);
+            const postulants = await getApplicantByVacancy(id);
+            setData({ vacancy, postulants });
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     useEffect(() => {
-        Promise.all([getVacancyById(id), getApplicantByVacancy(id)])
-            .then(([vacancy, applicantVacancy]) => {
-                setCurrentVacancy(vacancy);
-                setApplicants(applicantVacancy);
-            })
-            .catch(console.error);
+        fetchData();
     }, [id]);
 
     return (
@@ -48,31 +48,23 @@ export const ListCandidatesVacancies = () => {
                     <Typography variant="h2" mb={2}>
                         Vacancy Details
                     </Typography>
-                    <OfferDetails
-                        name={currentVacancy.name}
-                        description={currentVacancy.description}
-                        status={currentVacancy.status}
-                        salary={currentVacancy.salary}
-                        typeWork={currentVacancy.typeWork}
-                        skillsRaw={currentVacancy.skillsRaw}
-                        hoursWeek={currentVacancy.hoursWeek}
-                        experience={currentVacancy.experience}
-                    />
+                    <OfferDetails offerInfo={data.vacancy} />
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <ApplicantComparison applicants={applicants} />
+                    <ApplicantComparison applicants={data.postulants} />
                 </Grid>
                 <Grid item xs={12} md={3}>
                     <Typography variant="h2" mb={2}>
                         Applicant List
                     </Typography>
-                    {applicants.message === 'No Applicants have been added to the vacancy' ? (
-                        <CardNoApplicant {...applicants} />
+                    {data.postulants.message ? (
+                        <CardNoApplicant {...data.postulants} />
                     ) : (
-                        applicants.map((applicant) => {
+                        data.postulants.map((applicant) => {
                             return (
                                 <CardApplicantList
                                     key={applicant.id}
+                                    id={applicant.id}
                                     name={applicant.name}
                                     profile={applicant.job_title}
                                     email={applicant.email}
@@ -87,8 +79,7 @@ export const ListCandidatesVacancies = () => {
                         })
                     )}
                 </Grid>
-                {/* hide the session */}
-                {true ? (
+                {hidden ? (
                     <Box />
                 ) : (
                     <Box>

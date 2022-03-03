@@ -8,7 +8,9 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 
-export const OfferDetails = ({ name, description, status, salary, typeWork, skillsRaw, hoursWeek, experience }) => {
+export const OfferDetails = ({ offerInfo }) => {
+    const { name, description, status, salary, typeWork, skillsRaw, hoursWeek, experience } = offerInfo;
+
     return (
         <Card elevation={3}>
             <Paper sx={{ p: 2 }}>
@@ -73,12 +75,14 @@ export const OfferDetails = ({ name, description, status, salary, typeWork, skil
 };
 
 OfferDetails.propTypes = {
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    status: PropTypes.bool.isRequired,
-    salary: PropTypes.number.isRequired,
-    typeWork: PropTypes.string.isRequired,
-    skillsRaw: PropTypes.string.isRequired,
-    hoursWeek: PropTypes.number.isRequired,
-    experience: PropTypes.number.isRequired,
+    offerInfo: PropTypes.shape({
+        name: PropTypes.string,
+        description: PropTypes.string,
+        status: PropTypes.bool,
+        salary: PropTypes.number,
+        typeWork: PropTypes.string,
+        skillsRaw: PropTypes.string,
+        hoursWeek: PropTypes.number,
+        experience: PropTypes.number,
+    }).isRequired,
 };
