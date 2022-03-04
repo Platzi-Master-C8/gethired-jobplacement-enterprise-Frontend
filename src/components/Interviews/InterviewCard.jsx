@@ -116,7 +116,7 @@ export const InterviewCard = ({
                     href={url}
                     target="_blank"
                     size="small"
-                    endIcon={
+                    startIcon={
                         <LinkIcon
                             sx={{
                                 color: 'rgba(0, 0, 0, 0.54)',

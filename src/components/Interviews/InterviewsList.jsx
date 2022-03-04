@@ -10,7 +10,7 @@ export const InterviewsList = ({ interviews, cancelModal, scheduleModal, notific
     return (
         <React.Fragment>
             {interviews.map(({ id, platform, status_finished, url, type, date }) => (
-                <Grid item xs={12} sm={6} lg={4} xl={3} key={id}>
+                <Grid item xs={12} sm={6} lg={4} xl={4} key={id}>
                     <InterviewCard
                         id={id}
                         platform={platform}
