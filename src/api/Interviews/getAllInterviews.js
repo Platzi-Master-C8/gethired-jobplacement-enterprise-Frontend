@@ -1,8 +1,9 @@
 import axiosClient from '../axiosClient';
 
-export const getAllInterviews = () => {
-    return axiosClient
-        .get('/interviews')
-        .then((response) => response.data)
-        .catch((error) => error);
+export const getAllInterviews = async () => {
+    const {
+        data: { data },
+    } = await axiosClient.get('/interviews');
+
+    return data;
 };
