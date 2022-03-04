@@ -1,5 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
-import * as React from 'react';
+import React, { Fragment, useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
@@ -12,12 +12,13 @@ import PropTypes from 'prop-types';
 import { format, parseISO } from 'date-fns';
 
 import { TableFooter, TablePagination } from '@mui/material';
+import { LoadingTable } from 'Components/Commons/TableSkeleton';
 import { StyledTableRow, StyledTableCell } from '../TableStyling';
 import { TablePaginationActions } from '../TablePagination';
 
 export const ApplicantComparison = ({ applicants }) => {
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -26,12 +27,12 @@ export const ApplicantComparison = ({ applicants }) => {
         setPage(0);
     };
     return (
-        <React.Fragment>
+        <Fragment>
             <Typography variant="h2" sx={{ mb: 2 }}>
                 Applicant comparison
             </Typography>
             <TableContainer component={Paper} elevation={3} sx={{ px: 2, pb: 4, mb: 2, width: 'auto' }}>
-                {applicants.message === 'No Applicants have been added to the vacancy' ? (
+                {applicants.message && (
                     <Box
                         sx={{
                             display: 'flex',
@@ -42,7 +43,8 @@ export const ApplicantComparison = ({ applicants }) => {
                     >
                         <Typography variant="h3">{applicants.message}</Typography>
                     </Box>
-                ) : (
+                )}
+                {applicants.length > 0 && (
                     <Table aria-label="simple table">
                         <TableHead>
                             <StyledTableRow>
@@ -95,8 +97,9 @@ export const ApplicantComparison = ({ applicants }) => {
                         </TableFooter>
                     </Table>
                 )}
+                {applicants.length === 0 && <LoadingTable />}
             </TableContainer>
-        </React.Fragment>
+        </Fragment>
     );
 };
 
