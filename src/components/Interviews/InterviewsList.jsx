@@ -10,12 +10,20 @@ import { GroupSkeleton } from './InterviewCardSkeleton';
 
 export const InterviewsList = ({
     isLoading,
+    error,
     interviews,
     cancelModal,
     scheduleModal,
     notificationModal,
     setCurrentInterview,
 }) => {
+    if (error && !isLoading)
+        return (
+            <Typography variant="h6" sx={{ textAlign: 'center', mt: 4 }}>
+                {error} 🥲
+            </Typography>
+        );
+
     return (
         <Fragment>
             {isLoading && <GroupSkeleton />}
@@ -52,9 +60,14 @@ export const InterviewsList = ({
 
 InterviewsList.propTypes = {
     isLoading: PropTypes.bool.isRequired,
+    error: PropTypes.string,
     interviews: PropTypes.arrayOf(PropTypes.object).isRequired,
     cancelModal: PropTypes.func.isRequired,
     scheduleModal: PropTypes.func.isRequired,
     notificationModal: PropTypes.func.isRequired,
     setCurrentInterview: PropTypes.func.isRequired,
+};
+
+InterviewsList.defaultProps = {
+    error: '',
 };

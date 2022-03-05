@@ -15,14 +15,20 @@ export const Interviews = () => {
     const [isOpenScheduleModal, setScheduleModal] = useModal();
     const [isOpenNotificationModal, setNotificationModal] = useModal();
     const [isLoading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [interviews, setInterviews] = useState([]);
     const [currentInterview, setCurrentInterview] = useState();
 
     useEffect(() => {
-        getAllInterviews().then((data) => {
-            setLoading(false);
-            setInterviews(data);
-        });
+        getAllInterviews()
+            .then((data) => {
+                setLoading(false);
+                setInterviews(data);
+            })
+            .catch(() => {
+                setLoading(false);
+                setError('Error while loading interviews');
+            });
     }, []);
 
     const handleCancelInterview = (reason) => {
@@ -33,6 +39,7 @@ export const Interviews = () => {
         <React.Fragment>
             <InterviewsList
                 isLoading={isLoading}
+                error={error}
                 interviews={interviews}
                 cancelModal={setCancelModal}
                 scheduleModal={setScheduleModal}
