@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Grid, Typography } from '@mui/material';
 
-import { CardApplicantList } from 'Components/CardApplicantList/CardApplicantList';
+import { CardApplicant } from 'Components/CardApplicantList/CardApplicant';
 import { OfferDetails } from 'Components/OfferDetails/index';
 import { RecruitmentProcess } from 'Components/RecruitmentProcess';
 import { OtherPostulations } from 'Components/OtherPostulations';
@@ -51,7 +51,7 @@ export const PostulationDetail = () => {
                         Postulant
                     </Typography>
                     <Grid sx={{ mb: 3 }}>
-                        <CardApplicantList {...CandidateData} isStatus isInterview={false} />
+                        <CardApplicant {...CandidateData} isStatus isInterview={false} />
                     </Grid>
                     <Grid>
                         <Typography variant="h2" mb={2}>

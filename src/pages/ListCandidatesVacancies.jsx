@@ -3,17 +3,15 @@ import { useParams } from 'react-router-dom';
 
 import { Container, Grid, Typography, Box } from '@mui/material';
 import { getVacancyById } from 'Services/Vacancies';
+import { Applicants } from 'Components/CardApplicantList';
+import { ApplicantComparison } from 'Components/ApplicantComparison';
 
-import { ApplicantComparison } from '../components/ApplicantComparison';
-import { CardApplicantList } from '../components/CardApplicantList/CardApplicantList';
-import { OfferDetails } from '../components/OfferDetails/index';
-import { Filters } from '../components/Filters';
-import { RecommendedApplicant } from '../components/RecomendedApplicant';
-import { SuccessfulApplicant } from '../components/SuccessfulApplicant';
-
+import { OfferDetails } from 'Components/OfferDetails/index';
+import { RecommendedApplicant } from 'Components/RecomendedApplicant';
+import { SuccessfulApplicant } from 'Components/SuccessfulApplicant';
+import { CardNoApplicant } from 'Components/CardNoApplicant';
 import '../style/listCandidatesVacancies.scss';
 import getApplicantByVacancy from '../api/Applicant/getApplicantByVacancy';
-import { CardNoApplicant } from '../components/CardNoApplicant';
 
 export const ListCandidatesVacancies = () => {
     const { id } = useParams();
@@ -41,9 +39,6 @@ export const ListCandidatesVacancies = () => {
     return (
         <Container sx={{ mt: 5, mb: 5 }}>
             <Grid container spacing={2}>
-                <Grid item xs={12} sx={{ m: 'auto' }}>
-                    <Filters />
-                </Grid>
                 <Grid item xs={12} md={3}>
                     <Typography variant="h2" mb={2}>
                         Vacancy Details
@@ -60,23 +55,7 @@ export const ListCandidatesVacancies = () => {
                     {data.postulants.message ? (
                         <CardNoApplicant {...data.postulants} />
                     ) : (
-                        data.postulants.map((applicant) => {
-                            return (
-                                <CardApplicantList
-                                    key={applicant.id}
-                                    id={applicant.id}
-                                    name={applicant.name}
-                                    profile={applicant.job_title}
-                                    email={applicant.email}
-                                    phone={applicant.cellphone}
-                                    locationCity={applicant.city}
-                                    locationCountry={applicant.country}
-                                    status={applicant.postulation_status}
-                                    isStatus
-                                    isInterview
-                                />
-                            );
-                        })
+                        <Applicants data={data.postulants} />
                     )}
                 </Grid>
                 {hidden ? (

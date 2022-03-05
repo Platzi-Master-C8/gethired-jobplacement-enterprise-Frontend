@@ -10,19 +10,9 @@ import AddCircleOutlineSharpIcon from '@mui/icons-material/AddCircleOutlineSharp
 
 import { LinkStyled } from './styles';
 
-export const CardApplicantList = ({
-    name,
-    profile,
-    email,
-    phone,
-    locationCity,
-    locationCountry,
-    status,
-    isStatus,
-    isInterview,
-}) => {
+export const CardApplicant = ({ applicant, isStatus, isInterview, isList }) => {
     return (
-        <Card sx={{ p: 2, mb: 2 }} elevation={3}>
+        <Card sx={{ p: 2, m: 1 }} elevation={3}>
             <Box
                 sx={{
                     display: 'grid',
@@ -43,10 +33,12 @@ export const CardApplicantList = ({
                     </Avatar>
                 </Box>
                 <Box>
-                    <Typography variant="h3">{name}</Typography>
-                    <Typography variant="body2">{profile}</Typography>
+                    <Typography variant="h3">
+                        {applicant.name} {applicant.paternal_last_name}
+                    </Typography>
+                    <Typography variant="body2">{applicant.job_title}</Typography>
                 </Box>
-                {isStatus ? (
+                {isStatus && !isList && (
                     <Box
                         sx={{
                             display: 'flex',
@@ -56,9 +48,10 @@ export const CardApplicantList = ({
                         }}
                     >
                         <Typography variant="body2">Status</Typography>
-                        <Chip label={status.name} color="secondary" size="small" />
+                        <Chip label={applicant.postulation_status.name} color="secondary" size="small" />
                     </Box>
-                ) : (
+                )}
+                {!isStatus && (
                     <Box
                         sx={{
                             display: 'flex',
@@ -74,9 +67,7 @@ export const CardApplicantList = ({
             </Box>
             <Box
                 sx={{
-                    display: 'grid',
-                    gridTemplateColumns: isInterview ? '2fr 1fr' : 'none',
-                    alignSelf: 'center',
+                    display: 'flex',
                     alignItems: 'center',
                     mb: isInterview ? 2 : 'none',
                 }}
@@ -97,7 +88,7 @@ export const CardApplicantList = ({
                     >
                         <MailRoundedIcon />
                         <Typography variant="body2" sx={{ py: 0.3 }}>
-                            {email}
+                            {applicant.email}
                         </Typography>
                     </Box>
                     <Box
@@ -109,7 +100,7 @@ export const CardApplicantList = ({
                     >
                         <LocalPhoneRoundedIcon />
                         <Typography variant="body2" sx={{ py: 0.3 }}>
-                            {phone}
+                            {applicant.cellphone}
                         </Typography>
                     </Box>
                     <Box
@@ -121,20 +112,31 @@ export const CardApplicantList = ({
                     >
                         <LocationOnRoundedIcon />
                         <Typography variant="body2" sx={{ py: 0.3 }}>
-                            {locationCity} - {locationCountry}
+                            {applicant.city} - {applicant.country}
                         </Typography>
                     </Box>
                 </Box>
             </Box>
-            {isInterview && (
+            {isInterview && isList && (
                 <Box
                     sx={{
                         display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
+                        flexDirection: 'row',
+                        alignItems: 'flex-end',
+                        justifyContent: 'space-between',
                     }}
                 >
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <Typography variant="body2">Status</Typography>
+                        <Chip label={applicant.postulation_status.name} color="secondary" size="small" />
+                    </Box>
                     <Button size="small" variant="contained">
                         <LinkStyled color="#FFF" to="/interviews/create">
                             Interview
@@ -146,20 +148,26 @@ export const CardApplicantList = ({
     );
 };
 
-CardApplicantList.propTypes = {
-    name: PropTypes.string.isRequired,
-    profile: PropTypes.string,
-    email: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
-    locationCity: PropTypes.string.isRequired,
-    locationCountry: PropTypes.string.isRequired,
-    status: PropTypes.shape({
-        name: PropTypes.string,
-    }).isRequired,
+CardApplicant.propTypes = {
+    applicant: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        paternal_last_name: PropTypes.string.isRequired,
+        job_title: PropTypes.string,
+        email: PropTypes.string.isRequired,
+        cellphone: PropTypes.string.isRequired,
+        city: PropTypes.string.isRequired,
+        country: PropTypes.string.isRequired,
+        postulation_status: PropTypes.shape({
+            name: PropTypes.string,
+        }).isRequired,
+    }),
     isStatus: PropTypes.bool.isRequired,
     isInterview: PropTypes.bool.isRequired,
+    isList: PropTypes.bool.isRequired,
 };
 
-CardApplicantList.defaultProps = {
-    profile: '',
+CardApplicant.defaultProps = {
+    applicant: {
+        job_title: '',
+    },
 };
