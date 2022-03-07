@@ -31,7 +31,14 @@ export const Interviews = () => {
     }, []);
 
     const handleCancelInterview = (reason) => {
-        cancelInterview({ id: currentInterview, reason });
+        cancelInterview({ id: currentInterview, reason })
+            .then(() => {
+                setCancelModal();
+                const interview = interviews.find((inter) => inter.id === currentInterview);
+                const filteredInterviews = interviews.filter((inter) => inter.id !== currentInterview);
+                setInterviews([...filteredInterviews, interview]);
+            })
+            .catch(console.error);
     };
 
     return (

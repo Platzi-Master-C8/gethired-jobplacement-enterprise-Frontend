@@ -6,5 +6,5 @@ export const cancelInterview = ({ id, reason }) => {
         description: reason,
     };
 
-    return axiosClient.patch(`/interviews/${id}/cancel`, data).then(console.log).catch(console.log);
+    return axiosClient.patch(`/interviews/${id}/cancel`, data);
 };

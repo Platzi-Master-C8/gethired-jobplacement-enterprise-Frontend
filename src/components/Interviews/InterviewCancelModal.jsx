@@ -12,7 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 
 export const CancelInterview = ({ isOpen, onClose, handleSubmit }) => {
-    const [value, setValue] = useState();
+    const [value, setValue] = useState('');
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -26,7 +26,7 @@ export const CancelInterview = ({ isOpen, onClose, handleSubmit }) => {
         <Dialog open={isOpen} onClose={onClose}>
             <DialogTitle sx={{ fontWeight: 'bold' }}>Why are you going to cancel the interview?</DialogTitle>
             <DialogContent>
-                <FormControl component="fieldset">
+                <FormControl>
                     <RadioGroup
                         aria-label="cancel-interview"
                         name="radio-buttons-group"
