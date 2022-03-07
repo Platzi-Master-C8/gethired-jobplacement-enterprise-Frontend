@@ -18,6 +18,8 @@ import { format } from 'date-fns';
 
 export const InterviewCard = ({
     id,
+    active,
+    vacancyName,
     platform,
     statusFinished,
     url,
@@ -48,52 +50,56 @@ export const InterviewCard = ({
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
                 <Chip label={statusFinished || 'Active'} color="secondary" />
 
-                <IconButton aria-label="settings" id="list-options" onClick={handleClick}>
-                    <MoreVertIcon
-                        sx={{
-                            color: 'rgba(0, 0, 0, 0.54)',
-                            fill: 'currentColor',
-                            stroke: 'none',
-                        }}
-                    />
-                </IconButton>
-                <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    MenuListProps={{
-                        'aria-labelledby': 'list-options',
-                    }}
-                >
-                    <MenuItem
-                        onClick={() => {
-                            handleClose();
-                            cancelModal();
-                            setCurrentInterview(id);
-                        }}
-                    >
-                        Cancel
-                    </MenuItem>
-                    <MenuItem
-                        onClick={() => {
-                            handleClose();
-                            scheduleModal();
-                            setCurrentInterview(id);
-                        }}
-                    >
-                        Reschedule
-                    </MenuItem>
-                    <MenuItem
-                        onClick={() => {
-                            handleClose();
-                            notificationModal();
-                            setCurrentInterview(id);
-                        }}
-                    >
-                        Notification
-                    </MenuItem>
-                </Menu>
+                {active && (
+                    <React.Fragment>
+                        <IconButton aria-label="settings" id="list-options" onClick={handleClick}>
+                            <MoreVertIcon
+                                sx={{
+                                    color: 'rgba(0, 0, 0, 0.54)',
+                                    fill: 'currentColor',
+                                    stroke: 'none',
+                                }}
+                            />
+                        </IconButton>
+                        <Menu
+                            id="basic-menu"
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}
+                            MenuListProps={{
+                                'aria-labelledby': 'list-options',
+                            }}
+                        >
+                            <MenuItem
+                                onClick={() => {
+                                    handleClose();
+                                    cancelModal();
+                                    setCurrentInterview(id);
+                                }}
+                            >
+                                Cancel
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    handleClose();
+                                    scheduleModal();
+                                    setCurrentInterview(id);
+                                }}
+                            >
+                                Reschedule
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    handleClose();
+                                    notificationModal();
+                                    setCurrentInterview(id);
+                                }}
+                            >
+                                Notification
+                            </MenuItem>
+                        </Menu>
+                    </React.Fragment>
+                )}
             </Box>
 
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -107,9 +113,12 @@ export const InterviewCard = ({
             </Box>
 
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                <Box>
-                    <Typography variant="body1">{formattedDate}</Typography>
-                    <Typography variant="body2">{`${hour}:${minute}`}</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <Typography variant="body1" sx={{ marginBottom: '.5rem' }}>
+                        {vacancyName}
+                    </Typography>
+                    <Typography variant="body2">{formattedDate}</Typography>
+                    <Typography variant="caption">{`${hour}:${minute}`}</Typography>
                 </Box>
 
                 <Button
@@ -135,6 +144,8 @@ export const InterviewCard = ({
 
 InterviewCard.propTypes = {
     id: PropTypes.number.isRequired,
+    active: PropTypes.bool.isRequired,
+    vacancyName: PropTypes.string.isRequired,
     platform: PropTypes.string,
     statusFinished: PropTypes.string,
     url: PropTypes.string,

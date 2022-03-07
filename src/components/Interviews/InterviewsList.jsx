@@ -36,15 +36,17 @@ export const InterviewsList = ({
 
             {interviews.length > 0 && (
                 <Grid container spacing={3} sx={{ my: 2 }}>
-                    {interviews.map(({ id, platform, status_finished, url, type, date }) => (
+                    {interviews.map(({ id, active, platform, status_finished, url, type, date, vacancy }) => (
                         <Grid item xs={12} sm={6} lg={4} xl={4} key={id}>
                             <InterviewCard
                                 id={id}
+                                active={active}
                                 platform={platform}
                                 statusFinished={status_finished}
                                 url={url}
                                 type={type}
                                 date={date}
+                                vacancyName={vacancy.name}
                                 cancelModal={cancelModal}
                                 scheduleModal={scheduleModal}
                                 notificationModal={notificationModal}
