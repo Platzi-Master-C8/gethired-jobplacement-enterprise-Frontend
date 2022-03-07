@@ -1,31 +1,66 @@
-# React template platzi master [c8]
+<h1 align="center">
+<br>
+<br>
+<img src="https://user-images.githubusercontent.com/23388616/156953620-5fb4cbf6-bfc5-40ca-9a42-fbbf37985dad.png" width="130"/>
+<br>
+Job Placement Enterprise | Cohort 8 💚
+</h1>
 
-This project is a template for a React app.
+In enterprises the recruiters can manage their vacancies, candidates interviews, postulations and more. 💼 📅
 
-This project is configured with webpack, [Material react](https://mui.com), Prettier and eslint.
+## About the project 📚
+This project is part of Job Placement Cell in a new platform called GetHired and built for Platzi Master Cohort 8
 
-This project already have a theme file configuration (`src/constants/theme.constant.js`) following the design system from Platzi master C8 in [figma](https://www.figma.com/file/JbToDZz42lRNoZFCdDxya5/Standards?node-id=0%3A1)
+### Technologies ⚒
+-   [React.js](https://reactjs.org/)
+-   [Auth0](https://auth0.com)
+-   [React Hook form](https://react-hook-form.com)
+-   [Mui](https://mui.com/)
+-   [@master-c8/commons](https://www.npmjs.com/package/@master-c8/commons)
+-   [@master-c8/icons](https://www.npmjs.com/package/@master-c8/icons)
+-   [@master-c8/theme](https://www.npmjs.com/package/@master-c8/theme)
+-   [Vercel](https://vercel.com/)
+-   [Webpack](https://webpack.js.org/)
 
-## Setup and test
+### Set up and use ⚙️
+First, you must to clone the project
+```Shell
+git clone https://github.com/Platzi-Master-C8/gethired-jobplacement-enterprise-Frontend.git
+```
 
-First, clone the repository and install the dependencies
+Install the dependencies of the project
+```Shell
+yarn start
+```
 
-`yarn install`
+This project uses [Auth0](https://auth0.com) for manage the user sesion and his information. You have to create an account and fill the neccesary information in the `.env` file
 
-Run the project with the script start
+```Shell
+# .env
+API= # The route of the backend API
+DOMAIN= # This value is from auth0
+CLIENTID= # This value is from auth0
+```
+After install the dependencies and filled the `.env` file with the neccesary information, the project is ready to run
+```Shell
+yarn start
+```
 
-`yarn start`
+The project will be launched in `http://localhost:3000`
 
-the page will be loaded on `http://localhost:3000`
+### Contributors 📧
 
-<img width="1395" alt="Screen Shot 2021-11-21 at 11 41 08 PM" src="https://user-images.githubusercontent.com/6579616/142802252-b5b6a6dc-4263-42ed-91e7-7b648ecae9fa.png">
+- [Daniel González](https://github.com/odagora)
+- [Fernando de Leon](https://github.com/ferchodeleon)
+- [Leonardo Espinoza](https://github.com/LeoCode0)
+- [Zajith Corro](https://github.com/ZajithCorro)
 
 
 ## How to contribute
-
 Thank you for being here, we're really happy you decided to contribute to the project.
 
 Before you contribute to the project please make sure to read all items below.
 
-* [Code of Conduct](/CODE_OF_CONDUCT.md)
-* [Contributing Guide](/CONTRIBUTING.md)
+-   [Code of Conduct](/CODE_OF_CONDUCT.md)
+-   [Contributing Guide](/CONTRIBUTING.md)
+
