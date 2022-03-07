@@ -12,40 +12,39 @@ import DatePicker from '@mui/lab/DatePicker';
 import TimePicker from '@mui/lab/TimePicker';
 import Button from '@mui/material/Button';
 
-export const RescheduleInterview = ({ isOpen, onClose }) => {
+export const RescheduleInterview = ({ isOpen, onClose, handleSubmit }) => {
     const [date, setDate] = useState(null);
     const [hour, setHour] = useState(null);
+
+    const onSubmit = () => {
+        handleSubmit(date, hour);
+    };
 
     return (
         <Dialog open={isOpen} onClose={onClose}>
             <DialogTitle sx={{ fontWeight: 'bold' }}>Specify the new information for the interview</DialogTitle>
             <DialogContent sx={{ display: 'flex', flexDirection: 'column' }}>
-                <Box sx={{ mt: 2 }}>
+                <Box sx={{ mt: 2, display: 'flex', gap: 1 }}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <Box sx={{ width: '40%' }}>
-                            <DatePicker
-                                label="Choose date"
-                                value={date}
-                                onChange={(newValue) => {
-                                    setDate(newValue);
-                                }}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </Box>
+                        <DatePicker
+                            label="Choose date"
+                            value={date}
+                            onChange={(newValue) => {
+                                setDate(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
                     </LocalizationProvider>
-                </Box>
-                <Box sx={{ mt: 2 }}>
+
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <Box sx={{ width: '40%' }}>
-                            <TimePicker
-                                label="Choose hour"
-                                value={hour}
-                                onChange={(newValue) => {
-                                    setHour(newValue);
-                                }}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </Box>
+                        <TimePicker
+                            label="Choose hour"
+                            value={hour}
+                            onChange={(newValue) => {
+                                setHour(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
                     </LocalizationProvider>
                 </Box>
                 <TextField
@@ -60,7 +59,7 @@ export const RescheduleInterview = ({ isOpen, onClose }) => {
                 <Button variant="contained" color="error" onClick={onClose}>
                     Close
                 </Button>
-                <Button variant="contained" color="primary" type="submit" onClick={onClose}>
+                <Button variant="contained" color="primary" type="submit" onClick={onSubmit}>
                     Reschedule interview
                 </Button>
             </DialogActions>
@@ -71,4 +70,5 @@ export const RescheduleInterview = ({ isOpen, onClose }) => {
 RescheduleInterview.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
 };
