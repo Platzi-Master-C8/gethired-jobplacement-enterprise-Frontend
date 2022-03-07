@@ -23,7 +23,7 @@ export const Interviews = () => {
         getAllInterviews()
             .then((data) => {
                 setLoading(false);
-                setInterviews(data);
+                setInterviews(data.data);
             })
             .catch(() => {
                 setLoading(false);
