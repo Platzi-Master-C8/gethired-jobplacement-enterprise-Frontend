@@ -10,7 +10,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import TimePicker from '@mui/lab/TimePicker';
-import { FormButton } from '../FormVacancies/styles';
+import Button from '@mui/material/Button';
 
 export const RescheduleInterview = ({ isOpen, onClose }) => {
     const [date, setDate] = useState(null);
@@ -57,12 +57,12 @@ export const RescheduleInterview = ({ isOpen, onClose }) => {
                 />
             </DialogContent>
             <DialogActions>
-                <FormButton variant="contained" color="error" onClick={onClose}>
-                    Cancel
-                </FormButton>
-                <FormButton variant="contained" color="primary" type="submit" onClick={onClose}>
-                    Send {'>'}
-                </FormButton>
+                <Button variant="contained" color="error" onClick={onClose}>
+                    Close
+                </Button>
+                <Button variant="contained" color="primary" type="submit" onClick={onClose}>
+                    Reschedule interview
+                </Button>
             </DialogActions>
         </Dialog>
     );

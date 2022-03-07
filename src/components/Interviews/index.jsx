@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-import { CancelInterview } from 'Components/CancelInterviewModal';
-import { RescheduleInterview } from 'Components/RescheduleInterviewModal';
-import { InterviewNotification } from 'Components/InterviewNotificationModal';
-
+import useModal from 'Hooks/useModal';
 import { cancelInterview } from 'Api/Interviews/cancelInterview';
 import { getAllInterviews } from 'Api/Interviews/getAllInterviews';
+import { InterviewNotification } from 'Components/InterviewNotificationModal';
 
-import useModal from 'Hooks/useModal';
+import { CancelInterview } from './InterviewCancelModal';
+import { RescheduleInterview } from './InterviewRescheduleModal';
 import { InterviewsList } from './InterviewsList';
 
 export const Interviews = () => {
