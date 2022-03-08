@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+import { format } from 'date-fns';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -89,7 +89,7 @@ export const NewVacancies = () => {
                                 <VacancyItemCard
                                     vacancy={vacancy.vacancy}
                                     applications={vacancy.applications}
-                                    date={moment(vacancy.date).format('DD/MM/YYYY')}
+                                    date={format(vacancy.date, 'dd/MM/yyyy')}
                                 />
                             </TableCell>
                         </TableRow>

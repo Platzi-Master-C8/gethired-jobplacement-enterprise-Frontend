@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import moment from 'moment';
+import { format } from 'date-fns';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
@@ -80,7 +80,7 @@ export const RecruitmentProcess = () => {
                                     </StyledTableCell>
                                     <StyledTableCell align="center">{capWord(row.phase)}</StyledTableCell>
                                     <StyledTableCell align="center">
-                                        {row.date ? moment(row.date).format('DD/MM/YYYY') : '-'}
+                                        {row.date ? format(row.date, 'dd/MM/yyyy') : '-'}
                                     </StyledTableCell>
                                     <StyledTableCell align="center">
                                         {index === 1 || index > 2 ? (
