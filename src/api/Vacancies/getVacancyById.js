@@ -11,6 +11,7 @@ export default async function getVacancyById(id) {
             name: vacancy.name,
             salary: vacancy.salary,
             description: vacancy.description,
+            status: vacancy.status,
             company: vacancy.company_id,
             'type-work': vacancy.type_work_id,
             typeWork: vacancy.typeWork,

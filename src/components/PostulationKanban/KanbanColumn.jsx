@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Box, Typography } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
-import { CardApplicantList } from 'Components/CardApplicantList/CardApplicantList';
+import { CardApplicant } from 'Components/CardApplicantList/CardApplicant';
 
 export const KanbanColumn = ({ columnData: { name, appIds } }) => {
     return (
@@ -13,7 +13,7 @@ export const KanbanColumn = ({ columnData: { name, appIds } }) => {
             {appIds.map((app, index) => {
                 return (
                     <Grid sx={{ mb: 2 }} key={uuidv4()}>
-                        <CardApplicantList
+                        <CardApplicant
                             id={app.id}
                             key={app.id}
                             app={app}

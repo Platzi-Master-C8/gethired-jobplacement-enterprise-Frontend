@@ -1,5 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
-import * as React from 'react';
+import React, { Fragment, useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
@@ -9,14 +9,16 @@ import Typography from '@mui/material/Typography';
 import TableRow from '@mui/material/TableRow';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
+import { format, parseISO } from 'date-fns';
 
 import { TableFooter, TablePagination } from '@mui/material';
+import { LoadingTable } from 'Components/Commons/TableSkeleton';
 import { StyledTableRow, StyledTableCell } from '../TableStyling';
 import { TablePaginationActions } from '../TablePagination';
 
-export const ApplicantComparison = (applicants) => {
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(3);
+export const ApplicantComparison = ({ applicants }) => {
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -25,12 +27,12 @@ export const ApplicantComparison = (applicants) => {
         setPage(0);
     };
     return (
-        <React.Fragment>
+        <Fragment>
             <Typography variant="h2" sx={{ mb: 2 }}>
                 Applicant comparison
             </Typography>
             <TableContainer component={Paper} elevation={3} sx={{ px: 2, pb: 4, mb: 2, width: 'auto' }}>
-                {applicants.applicants.message === 'No Applicants have been added to the vacancy' ? (
+                {applicants.message && (
                     <Box
                         sx={{
                             display: 'flex',
@@ -39,35 +41,36 @@ export const ApplicantComparison = (applicants) => {
                             height: 100,
                         }}
                     >
-                        <Typography variant="h3">{applicants.applicants.message}</Typography>
+                        <Typography variant="h3">{applicants.message}</Typography>
                     </Box>
-                ) : (
+                )}
+                {applicants.length > 0 && (
                     <Table aria-label="simple table">
                         <TableHead>
                             <StyledTableRow>
                                 <StyledTableCell>ID</StyledTableCell>
-                                <StyledTableCell align="right">Name</StyledTableCell>
-                                <StyledTableCell align="right">CV</StyledTableCell>
-                                <StyledTableCell align="right">Email</StyledTableCell>
-                                <StyledTableCell align="right">Phone</StyledTableCell>
-                                <StyledTableCell align="right">Vacancy application</StyledTableCell>
+                                <StyledTableCell align="center">Name</StyledTableCell>
+                                <StyledTableCell align="center">CV</StyledTableCell>
+                                <StyledTableCell align="center">Email</StyledTableCell>
+                                <StyledTableCell align="center">Phone</StyledTableCell>
+                                <StyledTableCell align="center">Applied on</StyledTableCell>
                             </StyledTableRow>
                         </TableHead>
                         <TableBody>
-                            {applicants.applicants.map((applicant) => (
+                            {applicants.map((applicant) => (
                                 <StyledTableRow
                                     key={applicant.name}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <StyledTableCell component="th" scope="row">
-                                        {applicant.vacancy_id}
+                                        {applicant.id}
                                     </StyledTableCell>
-                                    <StyledTableCell align="right">{applicant.name}</StyledTableCell>
-                                    <StyledTableCell align="right">{applicant.cv_url}</StyledTableCell>
-                                    <StyledTableCell align="right">{applicant.email}</StyledTableCell>
-                                    <StyledTableCell align="right">{applicant.cellphone}</StyledTableCell>
-                                    <StyledTableCell align="right">
-                                        {applicant.postulation_status.created_at}
+                                    <StyledTableCell align="center">{applicant.name}</StyledTableCell>
+                                    <StyledTableCell align="center">{applicant.cv_url}</StyledTableCell>
+                                    <StyledTableCell align="center">{applicant.email}</StyledTableCell>
+                                    <StyledTableCell align="center">{applicant.cellphone}</StyledTableCell>
+                                    <StyledTableCell align="center">
+                                        {format(parseISO(applicant.postulation_status.created_at), 'MM/dd/yyyy')}
                                     </StyledTableCell>
                                 </StyledTableRow>
                             ))}
@@ -77,7 +80,7 @@ export const ApplicantComparison = (applicants) => {
                                 <TablePagination
                                     rowsPerPageOptions={[{ label: 'All', value: -1 }]}
                                     colSpan={5}
-                                    count={applicants.applicants.length}
+                                    count={applicants.length}
                                     rowsPerPage={rowsPerPage}
                                     page={page}
                                     SelectProps={{
@@ -94,17 +97,26 @@ export const ApplicantComparison = (applicants) => {
                         </TableFooter>
                     </Table>
                 )}
+                {applicants.length === 0 && <LoadingTable />}
             </TableContainer>
-        </React.Fragment>
+        </Fragment>
     );
 };
 
 ApplicantComparison.propTypes = {
-    applicants: PropTypes.shape({
-        vacancy_id: PropTypes.number,
-        name: PropTypes.string,
-        email: PropTypes.string,
-        country: PropTypes.string,
-        city: PropTypes.string,
-    }).isRequired,
+    applicants: PropTypes.oneOfType([
+        PropTypes.arrayOf(
+            PropTypes.shape({
+                vacancy_id: PropTypes.number,
+                name: PropTypes.string,
+                email: PropTypes.string,
+                country: PropTypes.string,
+                city: PropTypes.string,
+            }),
+        ),
+        PropTypes.shape({
+            message: PropTypes.string,
+            data: PropTypes.arrayOf(PropTypes.object),
+        }),
+    ]).isRequired,
 };
