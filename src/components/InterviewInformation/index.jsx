@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { Paper, Typography, Grid } from '@mui/material';
 import { InterviewerCard } from 'Components/InterviewerCard';
 import { Container, Img } from './styles';
+import IconPlatzi from '../../../public/icon-platzi.png';
 
 export const InterviewInformation = ({
-    img,
     companyName,
     country,
     dateWorking,
@@ -23,7 +23,7 @@ export const InterviewInformation = ({
     return (
         <Paper sx={{ p: 3, width: 400 }}>
             <Container>
-                <Img src={img} alt={companyName} />
+                <Img src={IconPlatzi} alt={companyName} />
             </Container>
             <Typography variant="h2" align="center">
                 {companyName}
@@ -86,13 +86,12 @@ export const InterviewInformation = ({
             <Typography variant="body1" sx={{ mb: 2 }}>
                 {interviewDescription}
             </Typography>
-            <InterviewerCard name="Lorem ipsum" img="https://picsum.photos/300" roleRecruiter="Recruiter" />
+            <InterviewerCard name="Lorem ipsum" img={IconPlatzi} roleRecruiter="Recruiter" />
         </Paper>
     );
 };
 
 InterviewInformation.propTypes = {
-    img: PropTypes.string.isRequired,
     companyName: PropTypes.string.isRequired,
     country: PropTypes.string.isRequired,
     dateWorking: PropTypes.instanceOf(Date).isRequired,
