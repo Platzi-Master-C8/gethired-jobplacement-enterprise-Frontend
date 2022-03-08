@@ -99,15 +99,6 @@ export const InterviewCard = ({
                             >
                                 Reschedule
                             </MenuItem>
-                            <MenuItem
-                                onClick={() => {
-                                    handleClose();
-                                    notificationModal();
-                                    setCurrentInterview(id);
-                                }}
-                            >
-                                Notification
-                            </MenuItem>
                         </Menu>
                     </React.Fragment>
                 )}
