@@ -1,15 +1,10 @@
-import { v4 as uuidv4 } from 'uuid';
-
-const appLimitNumber = 5;
-
 export const Data = [
     {
         id: 1,
         name: "Applied",
-        limit: appLimitNumber,
         data: [
             {
-                id: uuidv4(),
+                id: 1,
                 name: "Javier",
                 paternal_last_name: "Amaya",
                 job_title: "Backend Developer",
@@ -24,7 +19,7 @@ export const Data = [
                 },
             },
             {
-                id: uuidv4(),
+                id: 2,
                 name: "Kevin",
                 paternal_last_name: "Cruz",
                 job_title: "Fullstack Developer",
@@ -39,7 +34,7 @@ export const Data = [
                 },
             },
             {
-                id: uuidv4(),
+                id: 3,
                 name: "Daniel",
                 paternal_last_name: "González",
                 job_title: "Fullstack Developer",
@@ -58,10 +53,9 @@ export const Data = [
     {
         id: 2,
         name: "Interviews",
-        limit: appLimitNumber,
         data: [
             {
-                id: uuidv4(),
+                id: 1,
                 name: "Yadurani",
                 paternal_last_name: "López",
                 job_title: "Frontend Developer",
@@ -70,13 +64,13 @@ export const Data = [
                 city: 'Bogota',
                 country: 'Colombia',
                 postulation_status: {
-                    name: "applied",
+                    name: "interviews",
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
             },
             {
-                id: uuidv4(),
+                id: 2,
                 name: "Fernando",
                 paternal_last_name: "de Leon",
                 job_title: "Frontend Developer",
@@ -85,13 +79,13 @@ export const Data = [
                 city: 'Bogota',
                 country: 'Colombia',
                 postulation_status: {
-                    name: "applied",
+                    name: "interviews",
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
             },
             {
-                id: uuidv4(),
+                id: 3,
                 name: "Leonardo",
                 paternal_last_name: "Espinoza",
                 job_title: "Reactjs Developer",
@@ -100,7 +94,7 @@ export const Data = [
                 city: 'Bogota',
                 country: 'Colombia',
                 postulation_status: {
-                    name: "applied",
+                    name: "interviews",
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
@@ -110,10 +104,9 @@ export const Data = [
     {
         id: 3,
         name: "Accepted",
-        limit: appLimitNumber,
         data: [
             {
-                id: uuidv4(),
+                id: 1,
                 name: "Zajith",
                 paternal_last_name: "Corro",
                 job_title: "Frontend Developer",
@@ -122,13 +115,13 @@ export const Data = [
                 city: 'Mérida',
                 country: 'México',
                 postulation_status: {
-                    name: "applied",
+                    name: "accepted",
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
             },
             {
-                id: uuidv4(),
+                id: 2,
                 name: "Jimmy",
                 paternal_last_name: "Anaya",
                 job_title: "PHP Developer",
@@ -137,13 +130,13 @@ export const Data = [
                 city: 'Bucaramanga',
                 country: 'Colombia',
                 postulation_status: {
-                    name: "applied",
+                    name: "accepted",
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
             },
             {
-                id: uuidv4(),
+                id: 3,
                 name: "Diego",
                 paternal_last_name: "Lozano",
                 job_title: "PHP Developer",
@@ -152,7 +145,7 @@ export const Data = [
                 city: 'Bogota',
                 country: 'Colombia',
                 postulation_status: {
-                    name: "applied",
+                    name: "accepted",
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
@@ -162,10 +155,9 @@ export const Data = [
     {
         id: 4,
         name: "Rejected",
-        limit: appLimitNumber,
         data: [
             {
-                id: uuidv4(),
+                id: 1,
                 name: "Camilo",
                 paternal_last_name: "Cruz",
                 job_title: "JavaScript Developer",
@@ -174,13 +166,13 @@ export const Data = [
                 city: 'Bogota',
                 country: 'Colombia',
                 postulation_status: {
-                    name: "applied",
+                    name: "rejected",
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
             },
             {
-                id: uuidv4(),
+                id: 2,
                 name: "Felipe",
                 paternal_last_name: "Ramírez",
                 job_title: "Angular Developer",
@@ -189,13 +181,13 @@ export const Data = [
                 city: 'Medellín',
                 country: 'Colombia',
                 postulation_status: {
-                    name: "applied",
+                    name: "rejected",
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
             },
             {
-                id: uuidv4(),
+                id: 3,
                 name: "David",
                 paternal_last_name: "Camargo",
                 job_title: "JavaScript Developer",
@@ -204,7 +196,7 @@ export const Data = [
                 city: 'Bogota',
                 country: 'Colombia',
                 postulation_status: {
-                    name: "applied",
+                    name: "rejected",
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
