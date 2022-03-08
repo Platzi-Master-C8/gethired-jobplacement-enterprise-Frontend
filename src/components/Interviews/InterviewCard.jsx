@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+
+import { format } from 'date-fns';
 
 import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
@@ -13,8 +15,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import LinkIcon from '@mui/icons-material/Link';
+import Skeleton from '@mui/material/Skeleton';
 
-import { format } from 'date-fns';
+import { getApplicantById } from '../../api/Applicant/getApplicantById';
 
 export const InterviewCard = ({
     id,
@@ -24,11 +27,13 @@ export const InterviewCard = ({
     statusFinished,
     url,
     date,
+    applicantId,
     cancelModal,
     scheduleModal,
     notificationModal,
     setCurrentInterview,
 }) => {
+    const [applicant, setApplicant] = useState(null);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
@@ -44,6 +49,12 @@ export const InterviewCard = ({
     const formattedDate = format(dateFns, 'MMMM dd, yyyy');
     const hour = dateFns.getHours();
     const minute = dateFns.getMinutes();
+
+    useEffect(() => {
+        getApplicantById(applicantId)
+            .then((applicantData) => setApplicant(applicantData))
+            .catch(console.err);
+    }, [applicantId]);
 
     return (
         <Paper sx={{ p: 2, boxShadow: 3 }}>
@@ -107,8 +118,16 @@ export const InterviewCard = ({
                     A
                 </Avatar>
                 <Box>
-                    <Typography>Name</Typography>
-                    <Typography variant="body2">Location</Typography>
+                    <Typography>
+                        {applicant ? (
+                            `${applicant.name} ${applicant.paternal_last_name}`
+                        ) : (
+                            <Skeleton width={100} height={20} />
+                        )}
+                    </Typography>
+                    <Typography variant="body2">
+                        {applicant ? `${applicant.city}, ${applicant.country}` : <Skeleton width={100} height={20} />}
+                    </Typography>
                 </Box>
             </Box>
 
@@ -150,6 +169,7 @@ InterviewCard.propTypes = {
     statusFinished: PropTypes.string,
     url: PropTypes.string,
     date: PropTypes.string.isRequired,
+    applicantId: PropTypes.number.isRequired,
     cancelModal: PropTypes.func.isRequired,
     scheduleModal: PropTypes.func.isRequired,
     notificationModal: PropTypes.func.isRequired,
