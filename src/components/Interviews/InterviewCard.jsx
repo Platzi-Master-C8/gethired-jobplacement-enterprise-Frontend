@@ -17,7 +17,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import LinkIcon from '@mui/icons-material/Link';
 import Skeleton from '@mui/material/Skeleton';
 
-import { getApplicantById } from '../../api/Applicant/getApplicantById';
+import { getApplicantById } from 'Api/Applicants/getApplicantById';
 
 export const InterviewCard = ({
     id,

@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 
 import { Interviews } from 'Components/Interviews';
 
-export const InterviessDashboard = () => {
+export const InterviewsDashboard = () => {
     return (
         <Container>
             <Interviews />
