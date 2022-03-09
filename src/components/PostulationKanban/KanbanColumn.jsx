@@ -21,6 +21,7 @@ export const KanbanColumn = ({ columnData: { name, data } }) => {
                                 isStatus={false}
                                 isInterview={false}
                                 isList={false}
+                                isPostulant={false}
                             />
                         </Grid>
                     ))
@@ -47,6 +48,7 @@ KanbanColumn.propTypes = {
                 postulation_status: PropTypes.shape({
                     name: PropTypes.string,
                 }).isRequired,
+                vacancy_id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
             }).isRequired,
         ),
     }).isRequired,

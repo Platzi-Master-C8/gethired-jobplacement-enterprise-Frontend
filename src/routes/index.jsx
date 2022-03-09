@@ -36,7 +36,7 @@ const Routes = () => {
                         <Route path="/interviews" element={<Interviews />} />
                         <Route path="/interviews/create" element={<InterviewPlanning />} />
                         <Route path="/postulations" element={<Postulations />} />
-                        <Route path="/postulants/:status/:id" element={<PostulationDetail />} />
+                        <Route path="/postulants/:id" element={<PostulationDetail />} />
                         <Route path="*" element={<NotFound />} />
                     </Switch>
                 ) : (

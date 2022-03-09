@@ -59,7 +59,7 @@ export const CardApplicant = ({ applicant, isStatus, isInterview, isList }) => {
                             flexDirection: 'column',
                         }}
                     >
-                        <LinkStyled to={`/postulants/${applicant.postulation_status.name}/${applicant.id}`}>
+                        <LinkStyled to={`/postulants/${applicant.id}`}>
                             <AddCircleOutlineSharpIcon />
                         </LinkStyled>
                     </Box>
@@ -161,6 +161,7 @@ CardApplicant.propTypes = {
         postulation_status: PropTypes.shape({
             name: PropTypes.string,
         }).isRequired,
+        vacancy_id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     }),
     isStatus: PropTypes.bool.isRequired,
     isInterview: PropTypes.bool.isRequired,

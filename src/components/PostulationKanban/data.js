@@ -17,6 +17,7 @@ export const Data = [
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
+                vacancy_id: 1,
             },
             {
                 id: 2,
@@ -32,6 +33,7 @@ export const Data = [
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
+                vacancy_id: 1,
             },
             {
                 id: 3,
@@ -47,6 +49,7 @@ export const Data = [
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
+                vacancy_id: 1,
             },
         ],
     },
@@ -55,7 +58,7 @@ export const Data = [
         name: "Interviews",
         data: [
             {
-                id: 1,
+                id: 4,
                 name: "Yadurani",
                 paternal_last_name: "López",
                 job_title: "Frontend Developer",
@@ -68,9 +71,10 @@ export const Data = [
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
+                vacancy_id: 1,
             },
             {
-                id: 2,
+                id: 5,
                 name: "Fernando",
                 paternal_last_name: "de Leon",
                 job_title: "Frontend Developer",
@@ -83,9 +87,10 @@ export const Data = [
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
+                vacancy_id: 1,
             },
             {
-                id: 3,
+                id: 6,
                 name: "Leonardo",
                 paternal_last_name: "Espinoza",
                 job_title: "Reactjs Developer",
@@ -98,6 +103,7 @@ export const Data = [
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
+                vacancy_id: 1,
             },
         ],
     },
@@ -106,7 +112,7 @@ export const Data = [
         name: "Accepted",
         data: [
             {
-                id: 1,
+                id: 7,
                 name: "Zajith",
                 paternal_last_name: "Corro",
                 job_title: "Frontend Developer",
@@ -119,9 +125,10 @@ export const Data = [
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
+                vacancy_id: 1,
             },
             {
-                id: 2,
+                id: 8,
                 name: "Jimmy",
                 paternal_last_name: "Anaya",
                 job_title: "PHP Developer",
@@ -134,9 +141,10 @@ export const Data = [
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
+                vacancy_id: 1,
             },
             {
-                id: 3,
+                id: 9,
                 name: "Diego",
                 paternal_last_name: "Lozano",
                 job_title: "PHP Developer",
@@ -149,6 +157,7 @@ export const Data = [
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
+                vacancy_id: 1,
             },
         ],
     },
@@ -157,7 +166,7 @@ export const Data = [
         name: "Rejected",
         data: [
             {
-                id: 1,
+                id: 10,
                 name: "Camilo",
                 paternal_last_name: "Cruz",
                 job_title: "JavaScript Developer",
@@ -170,9 +179,10 @@ export const Data = [
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
+                vacancy_id: 1,
             },
             {
-                id: 2,
+                id: 11,
                 name: "Felipe",
                 paternal_last_name: "Ramírez",
                 job_title: "Angular Developer",
@@ -185,9 +195,10 @@ export const Data = [
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
+                vacancy_id: 1,
             },
             {
-                id: 3,
+                id: 12,
                 name: "David",
                 paternal_last_name: "Camargo",
                 job_title: "JavaScript Developer",
@@ -200,6 +211,7 @@ export const Data = [
                     created_at: "2022-02-17T19:10:45",
                     updated_at: "2022-02-17T19:10:45",
                 },
+                vacancy_id: 1,
             },
         ],
     }
