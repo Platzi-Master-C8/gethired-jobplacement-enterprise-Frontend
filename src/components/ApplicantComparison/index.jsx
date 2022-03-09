@@ -59,7 +59,7 @@ export const ApplicantComparison = ({ applicants }) => {
                         <TableBody>
                             {applicants.map((applicant) => (
                                 <StyledTableRow
-                                    key={applicant.name}
+                                    key={applicant.id}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <StyledTableCell component="th" scope="row">

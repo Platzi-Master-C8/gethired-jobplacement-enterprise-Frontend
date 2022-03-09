@@ -11,7 +11,7 @@ import { RecommendedApplicant } from 'Components/RecomendedApplicant';
 import { SuccessfulApplicant } from 'Components/SuccessfulApplicant';
 import { CardNoApplicant } from 'Components/CardNoApplicant';
 import '../style/listCandidatesVacancies.scss';
-import getApplicantByVacancy from '../api/Applicant/getApplicantByVacancy';
+import getApplicantByVacancy from 'Api/Applicants/getApplicantByVacancy';
 
 export const ListCandidatesVacancies = () => {
     const { id } = useParams();

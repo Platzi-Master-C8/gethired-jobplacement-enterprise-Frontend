@@ -1,35 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Box, Typography } from '@mui/material';
+import { Grid, Box, Typography, Card } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 import { CardApplicant } from 'Components/CardApplicantList/CardApplicant';
+import { LoadingCardsSkeleton } from 'Components/CardApplicantList/CardApplicantSkeleton';
 
-export const KanbanColumn = ({ columnData: { name, appIds } }) => {
+export const KanbanColumn = ({ columnData: { name, data } }) => {
     return (
         <Box>
             <Typography variant="h2" align="center" sx={{ mb: 2 }}>
                 {name}
             </Typography>
-            {appIds.map((app, index) => {
-                return (
-                    <Grid sx={{ mb: 2 }} key={uuidv4()}>
-                        <CardApplicant
-                            id={app.id}
-                            key={app.id}
-                            app={app}
-                            name={app.name}
-                            profile={app.profile}
-                            email={app.email}
-                            phone={app.phone}
-                            location={app.location}
-                            status={app.status}
-                            index={index}
-                            isStatus={false}
-                            isInterview={false}
-                        />
-                    </Grid>
-                );
-            })}
+            <Card sx={{ maxHeight: 700, overflow: 'auto' }} elevation={3}>
+                {data.length > 0 ? (
+                    data.map((app) => (
+                        <Grid sx={{ mb: 2 }} key={uuidv4()}>
+                            <CardApplicant
+                                key={app.id}
+                                applicant={app}
+                                isStatus={false}
+                                isInterview={false}
+                                isList={false}
+                            />
+                        </Grid>
+                    ))
+                ) : (
+                    <LoadingCardsSkeleton />
+                )}
+            </Card>
         </Box>
     );
 };
@@ -37,19 +35,19 @@ export const KanbanColumn = ({ columnData: { name, appIds } }) => {
 KanbanColumn.propTypes = {
     columnData: PropTypes.shape({
         name: PropTypes.string.isRequired,
-        appIds: PropTypes.arrayOf(
+        data: PropTypes.arrayOf(
             PropTypes.shape({
-                id: PropTypes.string.isRequired,
                 name: PropTypes.string.isRequired,
-                profile: PropTypes.string.isRequired,
+                paternal_last_name: PropTypes.string.isRequired,
+                job_title: PropTypes.string,
                 email: PropTypes.string.isRequired,
-                phone: PropTypes.string.isRequired,
-                location: PropTypes.shape({
-                    city: PropTypes.string,
-                    country: PropTypes.string,
+                cellphone: PropTypes.string.isRequired,
+                city: PropTypes.string.isRequired,
+                country: PropTypes.string.isRequired,
+                postulation_status: PropTypes.shape({
+                    name: PropTypes.string,
                 }).isRequired,
-                status: PropTypes.string.isRequired,
-            }),
-        ).isRequired,
+            }).isRequired,
+        ),
     }).isRequired,
 };
