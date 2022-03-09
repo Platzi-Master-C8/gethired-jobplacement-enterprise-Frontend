@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import moment from 'moment';
+import { format } from 'date-fns';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -104,9 +104,7 @@ export const OtherPostulations = () => {
                                 <StyledTableCell align="center">{row.company}</StyledTableCell>
                                 <StyledTableCell align="center">{row.vacancy}</StyledTableCell>
                                 <StyledTableCell align="center">{capWord(row.stage)}</StyledTableCell>
-                                <StyledTableCell align="center">
-                                    {moment(row.date).format('DD/MM/YYYY')}
-                                </StyledTableCell>
+                                <StyledTableCell align="center">{format(row.date, 'dd/MM/yyyy')}</StyledTableCell>
                             </StyledTableRow>
                         ))}
                         {emptyRows > 0 && (

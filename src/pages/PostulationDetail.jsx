@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Grid, Typography } from '@mui/material';
 
-import { CardApplicantList } from 'Components/CardApplicantList/CardApplicantList';
+import { CardApplicant } from 'Components/CardApplicantList/CardApplicant';
 import { OfferDetails } from 'Components/OfferDetails/index';
 import { RecruitmentProcess } from 'Components/RecruitmentProcess';
 import { OtherPostulations } from 'Components/OtherPostulations';
@@ -39,6 +39,7 @@ const CandidateData = {
         city: 'Bogota',
         country: 'Colombia',
     },
+    status: 'Applied',
 };
 
 export const PostulationDetail = () => {
@@ -49,10 +50,13 @@ export const PostulationDetail = () => {
                     <Typography variant="h2" mb={2}>
                         Postulant
                     </Typography>
-                    <Grid sx={{ mb: 5 }}>
-                        <CardApplicantList {...CandidateData} />
+                    <Grid sx={{ mb: 3 }}>
+                        <CardApplicant {...CandidateData} isStatus isInterview={false} />
                     </Grid>
                     <Grid>
+                        <Typography variant="h2" mb={2}>
+                            Vacancy Details
+                        </Typography>
                         <OfferDetails {...JobCardData} />
                     </Grid>
                 </Grid>

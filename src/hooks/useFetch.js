@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const useFetch = (callback) => {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
 
-    const fetchData = async () => {
+    const fetchData = async (filters) => {
         setLoading(true);
         try {
-            const listData = await callback();
+            const listData = await callback(filters);
             setData(listData);
         } catch {
             setError('Ups!! There is an error!');
@@ -17,11 +17,7 @@ const useFetch = (callback) => {
         }
     };
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    return { loading, error, data };
+    return { loading, error, data, fetchData };
 };
 
 export default useFetch;

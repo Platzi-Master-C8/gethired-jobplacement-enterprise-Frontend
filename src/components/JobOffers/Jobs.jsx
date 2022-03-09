@@ -24,7 +24,7 @@ const Jobs = ({ loading, error, data }) => {
 
     return (
         <Fragment>
-            {!sliceData.length && loading && <GroupSkeleton />}
+            {loading && <GroupSkeleton />}
             {sliceData.length < 1 && !loading && (
                 <Typography variant="h6" sx={{ textAlign: 'center', mt: 4 }}>
                     No jobs found 🥲
@@ -53,13 +53,13 @@ Jobs.propTypes = {
             postulation_deadline: PropTypes.string,
             description: PropTypes.string,
             status: PropTypes.bool,
-            salary: PropTypes.string,
+            salary: PropTypes.number,
             company_id: PropTypes.number,
             typeWork: PropTypes.string,
             job_location: PropTypes.string,
-            skills: PropTypes.string,
-            hours_per_week: PropTypes.string,
-            minimum_experience: PropTypes.string,
+            skills: PropTypes.arrayOf(PropTypes.string),
+            hours_per_week: PropTypes.number,
+            minimum_experience: PropTypes.number,
         }),
     ).isRequired,
 };

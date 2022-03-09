@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 
 import { Controller } from 'react-hook-form';
 
-export const InputText = ({ name, control, label, required, rows, multiline, helperText }) => {
+export const InputText = ({ name, control, label, type, required, rows, multiline, helperText }) => {
     return (
         <Controller
             name={name}
@@ -19,6 +19,7 @@ export const InputText = ({ name, control, label, required, rows, multiline, hel
                     helperText={error && error.message}
                     label={label}
                     rows={rows}
+                    type={type}
                     multiline={multiline}
                     variant="filled"
                     fullWidth
@@ -42,6 +43,7 @@ InputText.propTypes = {
     rows: PropTypes.number,
     multiline: PropTypes.bool,
     control: PropTypes.shape({}).isRequired,
+    type: PropTypes.oneOf(['text', 'number', 'password']),
 };
 
 InputText.defaultProps = {
@@ -49,4 +51,5 @@ InputText.defaultProps = {
     rows: 1,
     multiline: false,
     helperText: 'Please enter the value',
+    type: 'text',
 };
