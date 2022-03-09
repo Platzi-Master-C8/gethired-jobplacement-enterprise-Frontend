@@ -9,20 +9,24 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import { FormButton } from '../FormVacancies/styles';
+import Button from '@mui/material/Button';
 
-export const CancelInterview = ({ isOpen, onClose }) => {
-    const [value, setValue] = useState();
+export const CancelInterview = ({ isOpen, onClose, handleSubmit }) => {
+    const [value, setValue] = useState('');
 
     const handleChange = (event) => {
         setValue(event.target.value);
+    };
+
+    const handleClick = () => {
+        handleSubmit(value);
     };
 
     return (
         <Dialog open={isOpen} onClose={onClose}>
             <DialogTitle sx={{ fontWeight: 'bold' }}>Why are you going to cancel the interview?</DialogTitle>
             <DialogContent>
-                <FormControl component="fieldset">
+                <FormControl>
                     <RadioGroup
                         aria-label="cancel-interview"
                         name="radio-buttons-group"
@@ -37,12 +41,12 @@ export const CancelInterview = ({ isOpen, onClose }) => {
                 </FormControl>
             </DialogContent>
             <DialogActions>
-                <FormButton variant="contained" color="error" onClick={onClose}>
-                    Cancel
-                </FormButton>
-                <FormButton variant="contained" color="primary" type="submit" onClick={onClose}>
-                    Send {'>'}
-                </FormButton>
+                <Button variant="contained" color="error" onClick={onClose}>
+                    Close
+                </Button>
+                <Button variant="contained" color="primary" type="submit" onClick={handleClick}>
+                    Cancel interview
+                </Button>
             </DialogActions>
         </Dialog>
     );
@@ -51,4 +55,5 @@ export const CancelInterview = ({ isOpen, onClose }) => {
 CancelInterview.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
 };
