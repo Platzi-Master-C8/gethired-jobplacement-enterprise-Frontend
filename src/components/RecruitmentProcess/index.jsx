@@ -15,31 +15,25 @@ import { capWord } from './helpers';
 const process = [
     {
         id: 1,
-        phase: 'apply',
+        phase: 'applied',
         status: true,
         date: new Date(),
     },
     {
         id: 2,
-        phase: 'interview',
+        phase: 'interviews',
         status: true,
         date: new Date(),
     },
     {
         id: 3,
-        phase: 'tech test',
+        phase: 'accepted',
         status: true,
         date: new Date(),
     },
     {
         id: 4,
-        phase: 'feedback',
-        status: false,
-        date: '',
-    },
-    {
-        id: 5,
-        phase: 'final response',
+        phase: 'rejected',
         status: false,
         date: '',
     },
@@ -83,7 +77,7 @@ export const RecruitmentProcess = () => {
                                         {row.date ? format(row.date, 'dd/MM/yyyy') : '-'}
                                     </StyledTableCell>
                                     <StyledTableCell align="center">
-                                        {index === 1 || index > 2 ? (
+                                        {index > 0 ? (
                                             <Button variant="contained" sx={{ maxHeight: 40 }}>
                                                 Rate
                                             </Button>
