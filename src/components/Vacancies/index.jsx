@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { Divider, Button } from '@mui/material';
+import React, { useState, useEffect, Fragment } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+
+import { Divider, Button } from '@mui/material';
 
 import getVacanciesByUser from 'Api/Vacancies/getVacanciesByUser';
 
-import { Container, Title, Header, LinkStyled } from './styles';
+import { Filters } from './Filters';
 import SkeletonVacancyHistory from '../SkeletonVacancyHistory';
 import { Vacancy } from '../Vacancy';
 
-export const ListOfVacancies = () => {
+import { Container, Title, Header, LinkStyled } from './styles';
+
+export const Vacancies = () => {
     const [data, setData] = useState();
     const { user } = useAuth0();
 
@@ -19,14 +22,15 @@ export const ListOfVacancies = () => {
     }, []);
 
     return (
-        <Container>
+        <Fragment>
+            <Filters />
             <Header>
                 <Title>History</Title>
-                <Button type="button" variant="contained">
-                    <LinkStyled color="#FFF" to="/vacancies/create">
+                <LinkStyled color="#FFF" to="/vacancies/create">
+                    <Button type="button" variant="contained">
                         Create new vacancy
-                    </LinkStyled>
-                </Button>
+                    </Button>
+                </LinkStyled>
             </Header>
             {data?.length > 0 ? (
                 data.map((vacancy) => (
@@ -47,6 +51,6 @@ export const ListOfVacancies = () => {
             ) : (
                 <SkeletonVacancyHistory />
             )}
-        </Container>
+        </Fragment>
     );
 };

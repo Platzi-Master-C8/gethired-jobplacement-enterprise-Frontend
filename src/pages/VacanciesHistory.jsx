@@ -1,21 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import { ListOfVacancies } from 'Components/ListOfVacancies';
-import { Filters } from 'Components/Filters';
+import Container from '@mui/material/Container';
 
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 1rem;
-`;
+import { Vacancies } from 'Components/Vacancies';
 
 export const VacanciesHistory = () => {
     return (
-        <Container>
-            <Filters />
-            <ListOfVacancies />
+        <Container sx={{ marginTop: 2 }}>
+            <Vacancies />
         </Container>
     );
 };
