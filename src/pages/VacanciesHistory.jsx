@@ -6,7 +6,7 @@ import { Vacancies } from 'Components/Vacancies';
 
 export const VacanciesHistory = () => {
     return (
-        <Container sx={{ marginTop: 2 }}>
+        <Container sx={{ my: 2 }}>
             <Vacancies />
         </Container>
     );

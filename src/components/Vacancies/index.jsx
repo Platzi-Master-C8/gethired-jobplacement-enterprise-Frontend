@@ -6,17 +6,20 @@ import { Divider, Button } from '@mui/material';
 import getVacanciesByUser from 'Api/Vacancies/getVacanciesByUser';
 
 import { Filters } from './Filters';
-import SkeletonVacancyHistory from '../SkeletonVacancyHistory';
-import { Vacancy } from '../Vacancy';
+import { NoVacancies } from './NoVacancies';
+import { SkeletonVacancy } from './SkeletonVacancy';
+import { VacancyCard } from './VacancyCard';
 
 import { Container, Title, Header, LinkStyled } from './styles';
 
 export const Vacancies = () => {
-    const [data, setData] = useState();
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
     const { user } = useAuth0();
 
     useEffect(() => {
         getVacanciesByUser(user.sub).then((response) => {
+            setLoading(false);
             setData(response);
         });
     }, []);
@@ -32,10 +35,13 @@ export const Vacancies = () => {
                     </Button>
                 </LinkStyled>
             </Header>
-            {data?.length > 0 ? (
+
+            {loading && <SkeletonVacancy />}
+
+            {data.length > 0 &&
                 data.map((vacancy) => (
                     <Container key={vacancy.id}>
-                        <Vacancy
+                        <VacancyCard
                             title={vacancy.name}
                             date={new Date()}
                             checked={vacancy.status}
@@ -47,10 +53,9 @@ export const Vacancies = () => {
                         />
                         <Divider />
                     </Container>
-                ))
-            ) : (
-                <SkeletonVacancyHistory />
-            )}
+                ))}
+
+            {data.length === 0 && !loading && <NoVacancies />}
         </Fragment>
     );
 };
