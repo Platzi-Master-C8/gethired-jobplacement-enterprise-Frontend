@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
-import { Divider, Button } from '@mui/material';
+import { Button } from '@mui/material';
 
 import getVacanciesByUser from 'Api/Vacancies/getVacanciesByUser';
 
@@ -10,7 +10,7 @@ import { NoVacancies } from './NoVacancies';
 import { SkeletonVacancy } from './SkeletonVacancy';
 import { VacancyCard } from './VacancyCard';
 
-import { Container, Title, Header, LinkStyled } from './styles';
+import { Title, Header, LinkStyled } from './styles';
 
 export const Vacancies = () => {
     const [data, setData] = useState([]);
@@ -40,19 +40,17 @@ export const Vacancies = () => {
 
             {data.length > 0 &&
                 data.map((vacancy) => (
-                    <Container key={vacancy.id}>
-                        <VacancyCard
-                            title={vacancy.name}
-                            date={new Date()}
-                            checked={vacancy.status}
-                            salary={vacancy.salary}
-                            modality={vacancy.typeWork}
-                            applies={100}
-                            description={vacancy.description}
-                            id={vacancy.id}
-                        />
-                        <Divider />
-                    </Container>
+                    <VacancyCard
+                        title={vacancy.name}
+                        date={new Date()}
+                        checked={vacancy.status}
+                        salary={vacancy.salary}
+                        modality={vacancy.typeWork}
+                        applies={100}
+                        description={vacancy.description}
+                        id={vacancy.id}
+                        key={vacancy.id}
+                    />
                 ))}
 
             {data.length === 0 && !loading && <NoVacancies />}
