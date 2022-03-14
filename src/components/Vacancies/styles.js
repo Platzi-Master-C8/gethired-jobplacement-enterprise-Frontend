@@ -19,5 +19,6 @@ export const Title = styled.h2`
 `;
 
 export const LinkStyled = styled(Link)`
+    text-decoration: none;
     color: ${(props) => props.color};
 `;

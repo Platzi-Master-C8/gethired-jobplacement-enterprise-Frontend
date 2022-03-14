@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import { Button, Card, FormControlLabel, Grid, Switch } from '@mui/material';
-import { inactiveVacancy } from '../../api/Vacancies/inactiveVacancy';
-import { activeVacancy } from '../../api/Vacancies/activeVacancy';
+
+import { inactiveVacancy } from 'Api/Vacancies/inactiveVacancy';
+import { activeVacancy } from 'Api/Vacancies/activeVacancy';
+
 import { Tag, Salary, Title, Body, LinkStyled } from './vacancyStyles';
 
 export const VacancyCard = ({ title, checked, salary, modality, applies, description, id }) => {
