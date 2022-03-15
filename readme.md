@@ -9,7 +9,6 @@ Job Placement Enterprises | Cohort 8 💚
 In enterprises the recruiters can manage their vacancies, candidates interviews, postulations and more. 💼 📅
 
 ## About the project 📚
----
 This project is part of the GetHired recruitment platform developed for Platzi Master program Cohort 8.
 
 ### Main inspiration 💡
@@ -40,7 +39,6 @@ The core functionalities are:
 -   [Webpack](https://webpack.js.org/)
 
 ## Getting started ⚙️
----
 First, you need to clone the project
 ```Shell
 git clone https://github.com/Platzi-Master-C8/gethired-jobplacement-enterprise-Frontend.git
@@ -60,7 +58,6 @@ DOMAIN= # Value from auth0
 CLIENTID= # Value from auth0
 ```
 ## Running the project 💻
----
 
 After installing dependencies and filling `.env` information, you're ready to run the project
 ```Shell
@@ -70,7 +67,6 @@ yarn start
 The project will be launched in `http://localhost:3000`
 
 ## Deployment 📦
----
 To deploy the project you need to run the following script:
 ```
 npm run deploy
@@ -78,7 +74,6 @@ npm run deploy
 Set in the `.env` information as environment variables in your deployment platform
 
 ## Authors 🤓
----
 
 - [Daniel González](https://github.com/odagora)
 - [Fernando de Leon](https://github.com/ferchodeleon)
@@ -87,7 +82,6 @@ Set in the `.env` information as environment variables in your deployment platfo
 
 
 ## How to contribute ⛑
----
 Thank you for being here, we're really happy you decided to contribute with the project.
 
 But first, please make sure to read the following information:
