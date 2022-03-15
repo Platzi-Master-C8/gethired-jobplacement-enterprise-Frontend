@@ -30,7 +30,7 @@ const LoadingVacancyHistory = () => {
     );
 };
 
-const SkeletonVacancyHistory = () => {
+export const SkeletonVacancy = () => {
     return (
         <Fragment>
             <LoadingVacancyHistory />
@@ -44,5 +44,3 @@ const SkeletonVacancyHistory = () => {
         </Fragment>
     );
 };
-
-export default SkeletonVacancyHistory;
