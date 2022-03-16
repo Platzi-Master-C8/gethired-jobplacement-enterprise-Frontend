@@ -21,7 +21,6 @@ export const KanbanColumn = ({ columnData: { name, data } }) => {
                                 isStatus={false}
                                 isInterview={false}
                                 isList={false}
-                                isPostulant={false}
                             />
                         </Grid>
                     ))
