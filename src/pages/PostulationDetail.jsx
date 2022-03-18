@@ -9,6 +9,33 @@ import { OtherPostulations } from 'Components/OtherPostulations';
 import { getApplicantById } from 'Api/Applicants';
 import { getVacancyById } from 'Api/Vacancies';
 
+const process = [
+    {
+        id: 1,
+        stage: 'applied',
+        status: true,
+        date: '2022-03-12T18:30:16',
+    },
+    {
+        id: 2,
+        stage: 'interviews',
+        status: true,
+        date: '2022-03-14T18:30:16',
+    },
+    {
+        id: 3,
+        stage: 'accepted',
+        status: true,
+        date: '2022-03-15T18:30:16',
+    },
+    {
+        id: 4,
+        stage: 'rejected',
+        status: false,
+        date: '',
+    },
+];
+
 export const PostulationDetail = () => {
     const { id } = useParams();
     const [data, setData] = useState({
@@ -49,7 +76,7 @@ export const PostulationDetail = () => {
                     </Grid>
                 </Grid>
                 <Grid item xs={12} sm={8}>
-                    <RecruitmentProcess />
+                    <RecruitmentProcess process={process} />
                     <OtherPostulations />
                 </Grid>
             </Grid>

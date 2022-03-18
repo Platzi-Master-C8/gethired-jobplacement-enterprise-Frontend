@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { format } from 'date-fns';
+import PropTypes from 'prop-types';
 import {
     Paper,
     Typography,
@@ -17,36 +17,10 @@ import CheckIcon from '@mui/icons-material/Check';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { StyledTableCell, StyledTableRow } from 'Components/TableStyling';
+import { format } from 'date-fns';
 import { capWord } from './helpers';
 
-const process = [
-    {
-        id: 1,
-        phase: 'applied',
-        status: true,
-        date: new Date(),
-    },
-    {
-        id: 2,
-        phase: 'interviews',
-        status: true,
-        date: new Date(),
-    },
-    {
-        id: 3,
-        phase: 'accepted',
-        status: true,
-        date: new Date(),
-    },
-    {
-        id: 4,
-        phase: 'rejected',
-        status: false,
-        date: '',
-    },
-];
-
-export const RecruitmentProcess = () => {
+export const RecruitmentProcess = ({ process }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
@@ -87,9 +61,9 @@ export const RecruitmentProcess = () => {
                                             <HorizontalRuleIcon color="secondary" />
                                         )}
                                     </StyledTableCell>
-                                    <StyledTableCell align="center">{capWord(row.phase)}</StyledTableCell>
+                                    <StyledTableCell align="center">{capWord(row.stage)}</StyledTableCell>
                                     <StyledTableCell align="center">
-                                        {row.date ? format(row.date, 'dd/MM/yyyy') : '-'}
+                                        {row.date ? format(Date.parse(row.date), 'MM/dd/yyyy') : '-'}
                                     </StyledTableCell>
                                     <StyledTableCell align="center">
                                         {index > 0 ? (
@@ -115,7 +89,6 @@ export const RecruitmentProcess = () => {
                                                 'aria-labelledby': 'list-options',
                                             }}
                                         >
-                                            <MenuItem onClick={handleClose}>Update</MenuItem>
                                             <MenuItem onClick={handleClose}>Done</MenuItem>
                                         </Menu>
                                     </StyledTableCell>
@@ -127,4 +100,15 @@ export const RecruitmentProcess = () => {
             </TableContainer>
         </Fragment>
     );
+};
+
+RecruitmentProcess.propTypes = {
+    process: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number,
+            stage: PropTypes.string,
+            status: PropTypes.bool,
+            date: PropTypes.string,
+        }),
+    ).isRequired,
 };
