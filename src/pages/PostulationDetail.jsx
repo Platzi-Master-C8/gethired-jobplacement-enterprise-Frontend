@@ -8,47 +8,26 @@ import { RecruitmentProcess } from 'Components/RecruitmentProcess';
 import { OtherPostulations } from 'Components/OtherPostulations';
 import { getApplicantById } from 'Api/Applicants';
 import { getVacancyById } from 'Api/Vacancies';
-
-const process = [
-    {
-        id: 1,
-        stage: 'applied',
-        status: true,
-        date: '2022-03-12T18:30:16',
-    },
-    {
-        id: 2,
-        stage: 'interviews',
-        status: true,
-        date: '2022-03-14T18:30:16',
-    },
-    {
-        id: 3,
-        stage: 'accepted',
-        status: true,
-        date: '2022-03-15T18:30:16',
-    },
-    {
-        id: 4,
-        stage: 'rejected',
-        status: false,
-        date: '',
-    },
-];
+import { getPostulationStatus } from 'Api/Applicants/getPostulationStatus';
+import { formatProcess } from 'Components/RecruitmentProcess/helpers';
 
 export const PostulationDetail = () => {
     const { id } = useParams();
     const [data, setData] = useState({
         postulant: {},
         vacancy: {},
+        process: [],
     });
 
     const fetchData = async () => {
         try {
             const postulant = await getApplicantById(id);
             const vacancy = await getVacancyById(postulant.vacancyId);
+            const postulation = await getPostulationStatus();
 
-            setData({ postulant, vacancy });
+            const process = formatProcess(postulation, postulant);
+
+            setData({ postulant, vacancy, process });
         } catch (err) {
             console.log(err);
         }
@@ -76,7 +55,7 @@ export const PostulationDetail = () => {
                     </Grid>
                 </Grid>
                 <Grid item xs={12} sm={8}>
-                    <RecruitmentProcess process={process} />
+                    <RecruitmentProcess process={data.process} />
                     <OtherPostulations />
                 </Grid>
             </Grid>

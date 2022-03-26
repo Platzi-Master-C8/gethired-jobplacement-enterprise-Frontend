@@ -14,7 +14,8 @@ export default async function getApplicantById (id) {
             cellPhone: postulant.cellphone,
             city: postulant.city,
             country: postulant.country,
-            status: postulant.postulation_status.name,
+            statusInfo: postulant.postulation_status,
+            statusName: postulant.postulation_status.name,
             statusDate: postulant.postulation_status.updated_at,
             vacancyId: postulant.vacancy_id
         }

@@ -46,6 +46,7 @@ export const RecruitmentProcess = ({ process }) => {
                             </StyledTableCell>
                             <StyledTableCell align="center">Stage</StyledTableCell>
                             <StyledTableCell align="center">Date</StyledTableCell>
+                            <StyledTableCell align="center">Hour</StyledTableCell>
                             <StyledTableCell align="center">Details</StyledTableCell>
                             <StyledTableCell align="center">Options</StyledTableCell>
                         </StyledTableRow>
@@ -61,9 +62,16 @@ export const RecruitmentProcess = ({ process }) => {
                                             <HorizontalRuleIcon color="secondary" />
                                         )}
                                     </StyledTableCell>
-                                    <StyledTableCell align="center">{capWord(row.stage)}</StyledTableCell>
+                                    <StyledTableCell align="center">{capWord(row.name)}</StyledTableCell>
                                     <StyledTableCell align="center">
-                                        {row.date ? format(Date.parse(row.date), 'MM/dd/yyyy') : '-'}
+                                        {row.status && row.updated_at
+                                            ? format(Date.parse(row.updated_at), 'MM/dd/yyyy')
+                                            : '-'}
+                                    </StyledTableCell>
+                                    <StyledTableCell align="center">
+                                        {row.status && row.updated_at
+                                            ? format(Date.parse(row.updated_at), 'hh:mm aaaa')
+                                            : '-'}
                                     </StyledTableCell>
                                     <StyledTableCell align="center">
                                         {index > 0 ? (
@@ -106,9 +114,10 @@ RecruitmentProcess.propTypes = {
     process: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number,
-            stage: PropTypes.string,
+            name: PropTypes.string,
             status: PropTypes.bool,
-            date: PropTypes.string,
+            created_at: PropTypes.string,
+            updated_at: PropTypes.string,
         }),
     ).isRequired,
 };

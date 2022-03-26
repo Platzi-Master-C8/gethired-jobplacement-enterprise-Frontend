@@ -49,7 +49,7 @@ export const CardPostulant = ({ postulant }) => {
                             }}
                         >
                             <Typography variant="body2">Status</Typography>
-                            <Chip label={postulant.status} color="secondary" size="small" />
+                            <Chip label={postulant.statusName} color="secondary" size="small" />
                         </Box>
                     </Box>
                     <Box
@@ -122,7 +122,7 @@ CardPostulant.propTypes = {
         cellPhone: PropTypes.string,
         city: PropTypes.string,
         country: PropTypes.string,
-        status: PropTypes.string,
+        statusName: PropTypes.string,
         vacancyId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     }).isRequired,
 };
