@@ -6,7 +6,7 @@ export const capWord = (str) => {
 
 export const formatProcess = (process, postulant) => {
 
-    const { updated_at, id } = postulant.statusInfo;
+    const [ updated_at, id ] = [postulant.updatedDate, postulant.statusId];
     const newProcess = process.map(item => {
         return item.id === id
             ? {...item, updated_at, status: true}

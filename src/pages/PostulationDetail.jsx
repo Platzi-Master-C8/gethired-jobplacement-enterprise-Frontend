@@ -24,7 +24,6 @@ export const PostulationDetail = () => {
             const postulant = await getApplicantById(id);
             const vacancy = await getVacancyById(postulant.vacancyId);
             const postulation = await getPostulationStatus();
-
             const process = formatProcess(postulation, postulant);
 
             setData({ postulant, vacancy, process });
