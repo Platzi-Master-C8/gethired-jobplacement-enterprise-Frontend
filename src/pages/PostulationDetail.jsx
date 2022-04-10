@@ -39,7 +39,7 @@ export const PostulationDetail = () => {
     return (
         <Container sx={{ pt: 2 }}>
             <Grid container spacing={4}>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} md={4}>
                     <Typography variant="h2" mb={2}>
                         Postulant
                     </Typography>
@@ -53,7 +53,7 @@ export const PostulationDetail = () => {
                         <OfferDetails offerInfo={data.vacancy} />
                     </Grid>
                 </Grid>
-                <Grid item xs={12} sm={8}>
+                <Grid item xs={12} md={8}>
                     <RecruitmentProcess process={data.process} />
                     <OtherPostulations />
                 </Grid>
